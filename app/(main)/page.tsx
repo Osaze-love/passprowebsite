@@ -41,7 +41,7 @@ export default function Home() {
           <div className="space-y-[20px] border-r p-[30px]">
             <p className="font-semibold text-[20px] text-[#343434]">Search by Date</p>
            <div className="flex items-center space-x-3">
-            <Image src={'/icons/calendarIcon.svg'} width={20} height={20} alt="icon"/>
+            <Image src={'/icons/dateicon.svg'} width={20} height={20} alt="icon"/>
             <p className="text-[#D9D9D9]">Select date range</p>
            </div>
           </div>
