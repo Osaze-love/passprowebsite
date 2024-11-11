@@ -13,7 +13,7 @@ export default function Home() {
 
           <section
             style={{
-              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/images/bannerImage.jpeg')`, // Adjust opacity in rgba
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/images/frontpageimage.jpeg')`, // Adjust opacity in rgba
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
