@@ -4,16 +4,16 @@ import { Button } from './ui/button'
 const Banner = () => {
     return (
         <div className="flex flex-col items-center justify-center space-y-3 text-center">
-          <p className="text-white font-medium text-[24px]">The Events and experience marketplace</p>
-          <p className="font-extrabold text-[#FC6435] text-[72px] w-3/4">DISCOVER EVENTS AND EXPERIENCES NEAR YOU</p>
-          <p className="text-[24px] text-white w-3/4">
+          <p className="text-white font-medium text-[16px] lg:text-[24px]">The Events and experience marketplace</p>
+          <p className="font-extrabold text-[#FC6435] text-[30px] lg:text-[72px] w-3/4">DISCOVER EVENTS AND EXPERIENCES NEAR YOU</p>
+          <p className="text-[14px] lg:text-[24px]  text-white w-3/4">
             Find tickets to concerts, sports, festivals, and more. Easily browse, book, and share your favorite events with friends.
           </p>
-          <div className="flex items-center space-x-3">
-            <Button variant="outline" className="hover:bg-[#FC6435] font-medium bg-[#FC6435] text-white px-[56px] h-[56px] py-[18.5px] hover:text-white active:scale-90 transition-all border-none">
+          <div className="flex flex-col lg:flex-row items-center pt-[30px] lg:mt-0 space-y-3 space-x-3">
+            <Button variant="outline" className="hover:bg-[#FC6435] font-medium bg-[#FC6435] text-white w-[273px] lg:px-[56px] h-[50px] lg:h-[56px] py-[18.5px] hover:text-white active:scale-90 transition-all border-none">
               Create Event
             </Button>
-            <Button variant="outline" className="hover:bg-[white] font-medium bg-[white] text-[#FC6435] px-[56px] h-[56px] py-[18.5px] hover:text-[#FC6435] active:scale-90 transition-all border-[#FC6435]">
+            <Button variant="outline" className="hover:bg-[white] font-medium bg-[white] text-[#FC6435] w-[273px] lg:px-[56px] h-[50px] lg:h-[56px] py-[18.5px] hover:text-[#FC6435] active:scale-90 transition-all border-[#FC6435]">
               Find events around you
             </Button>
           </div>

@@ -65,7 +65,7 @@ const Featured = () => {
   return (
     <div className="flex  items-center flex-col w-full">
     
-      <section className='grid grid-cols-4 gap-[20px] '>
+      <section className='grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-[20px] '>
         {featureData.map((feature: any) => (
         <div className='shadown-sm border rounded-[10px] bg-white'>
             <div style={{ position: 'relative', width: '270px', height: '270px',  }}>
@@ -77,18 +77,18 @@ const Featured = () => {
   />
 </div>
             <div className='p-[20px] space-y-[13px]'>
-            <p className='font-bold text-[20px]'>{feature.name}</p>
+            <p className='font-bold text-[14px] lg:text-[20px]'>{feature.name}</p>
             <div className='flex items-center space-x-3'>
                 <Image src={'/icons/calendarDark.svg'} width={20} height={20} alt='calendarIcon'/>
-                <p className='text-[14px]'>{feature.date}</p>
+                <p className='text-[12px] lg:text-[14px]'>{feature.date}</p>
             </div>
             <div className='flex items-center space-x-3'>
                 <Image src={'/icons/locationDark.svg'} width={20} height={20} alt='calendarIcon'/>
-                <p className='text-[14px]'>{feature.location}</p>
+                <p className='text-[12px] lg:text-[14px]'>{feature.location}</p>
             </div>
             <div className='flex items-center justify-between'>
-                <p>{feature.price}</p>
-                <Button variant="outline" className="hover:bg-[#FC6435] font-medium bg-[#FC6435] text-white p-[15px] hover:text-white active:scale-90 transition-all border-none">
+                <p className='text-[14px] lg:text-[16px]'>{feature.price}</p>
+                <Button variant="outline" className="hover:bg-[#FC6435] font-medium bg-[#FC6435] text-white p-[11px] lg:p-[15px] hover:text-white active:scale-90 transition-all border-none">
               Book Ticket
             </Button>
             </div>

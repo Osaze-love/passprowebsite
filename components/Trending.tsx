@@ -65,30 +65,40 @@ const Trending = () => {
   return (
     <div className="flex items-center flex-col w-full">
     
-      <section className='grid grid-cols-4 gap-[20px] '>
+      <section className='grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-[20px] '>
         {trendingData.map((feature: any) => (
-        <div className='shadown-sm border rounded-[10px]'>
-            <div style={{ position: 'relative', width: '270px', height: '270px',  }}>
+        <div className='shadown-sm flex lg:flex-col items-center p-[7px] lg:p-0 border rounded-[10px]'>
+            <div className='hidden lg:block' style={{ position: 'relative', width: '270px', height: '270px',  }}>
   <Image
     src={feature.image}
     fill
     className='object-cover rounded-t-[10px]'
     alt='image'
   />
+</div>     
+<div className='block lg:hidden' style={{ position: 'relative', width: '120px', height: '120px',  }}>
+  <Image
+    src={feature.image}
+    fill
+    className='object-cover rounded-[10px]'
+    alt='image'
+  />
 </div>
-            <div className='p-[20px] space-y-[13px]'>
-            <p className='font-bold text-[20px]'>{feature.name}</p>
+            <div className='p-[20px] space-y-[12px] '>
+            <p className='font-bold text-[14px] lg:text-[20px]'>{feature.name}</p>
             <div className='flex items-center space-x-3'>
-                <Image src={'/icons/calendarDark.svg'} width={20} height={20} alt='calendarIcon'/>
-                <p className='text-[14px]'>{feature.date}</p>
+                <Image className='hidden lg:block' src={'/icons/calendarDark.svg'} width={20} height={20} alt='calendarIcon'/>
+                <Image className='block lg:hidden' src={'/icons/calendarDark.svg'} width={11} height={11} alt='calendarIcon'/>
+                <p className='text-[12px] lg:text-[14px]'>{feature.date}</p>
             </div>
             <div className='flex items-center space-x-3'>
-                <Image src={'/icons/locationDark.svg'} width={20} height={20} alt='calendarIcon'/>
-                <p className='text-[14px]'>{feature.location}</p>
+                <Image className='hidden lg:block' src={'/icons/locationDark.svg'} width={20} height={20} alt='calendarIcon'/>
+                <Image className='block lg:hidden' src={'/icons/locationDark.svg'} width={11} height={11} alt='calendarIcon'/>
+                <p className='text-[12px] lg:text-[14px]'>{feature.location}</p>
             </div>
             <div className='flex items-center justify-between'>
-                <p>{feature.price}</p>
-                <Button variant="outline" className="hover:bg-[#FC6435] font-medium bg-[#FC6435] text-white p-[15px] hover:text-white active:scale-90 transition-all border-none">
+                <p className='text-[12px] lg:text-[16px] font-semibold'>{feature.price}</p>
+                <Button variant="outline" className="hover:bg-[#FC6435] font-medium bg-[#FC6435] text-white p-[8px] lg:p-[15px] hover:text-white active:scale-90 transition-all border-none text-[12px] lg:text-[14px]">
               Book Ticket
             </Button>
             </div>

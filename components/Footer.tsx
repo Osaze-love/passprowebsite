@@ -5,14 +5,14 @@ const Footer = () => {
   return (
 
     <div className='bg-[#164473]  '>
-    <section className='grid grid-cols-6 border-b border-b-white'>
-    <div className='space-y-[30px] p-[40px] col-span-2 '>
+    <section className='grid grid-cols-1 lg:grid-cols-6 border-b border-b-white'>
+    <div className='space-y-[30px] p-[20px] lg:p-[40px] col-span-2 '>
         <Image src={'/images/passprologowhite.svg'} width={200} height={50} alt='passprologo'/>
 
         <p className='text-[14px] text-[white]'>PassPro connects you to Africa's events. Book tickets for events, seminars conferences, movies, flights and lots more</p>
       </div>
       <section className='col-span-4 text-white'>
-      <div className='grid grid-cols-4 gap-[60px]'>
+      <div className='grid grid-cols-1 lg:grid-cols-4 gap-[0px] lg:gap-[60px]'>
       <div className='space-y-3 px-[20px] py-[40px]'>
       <p className='text-[#FC6435] font-semibold'>Quick Links</p>
      <p className='text-[14px]'>Buy Ticket</p>
@@ -49,7 +49,7 @@ const Footer = () => {
     
       </section>
     </section>
-     <section className='p-[40px]'>
+     <section className='p-[20px] lg:p-[40px]'>
         <p className='text-[14px] text-white'>© Copyright 2024 PASSPRO. all rights reserved</p>
      </section>
      

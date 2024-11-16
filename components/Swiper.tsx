@@ -54,7 +54,7 @@ export default function SwiperComponent() {
   return (
     <Swiper
     spaceBetween={50}
-    slidesPerView={3}
+    slidesPerView={2}
     // navigation ={true}
     loop={true}
     modules={[Pagination, Navigation]}
@@ -62,7 +62,7 @@ export default function SwiperComponent() {
 
     // onSlideChange={() => console.log('slide change')}
     // onSwiper={(swiper) => console.log(swiper)}
-      className="px-[40px] overflow-hidden max-w-5xl"
+      className="px-[40px] overflow-hidden max-w-sm lg:max-w-5xl"
     >
       {swiperData.map((data, index) => (
         <SwiperSlide key={index} className="flex justify-center">
