@@ -113,6 +113,17 @@ export default function Home() {
       </section>
             <Trending />
         </section>
+        <section className="py-[50px] px-[40px] lg:px-[50px]">
+        <p className="font-semibold text-center lg:font-bold text-[18px] lg:text-[40px] text-[#606060]">
+            Brands That <span className="text-[#FC6435]">Trust</span> Us
+        </p>
+        <div className="flex items-center justify-center w-full space-x-[32px] lg:space-x-[153px] py-[43px] lg:py-[64px]">
+          <Image className="hidden lg:block" src='/images/digitalgrowth.svg' width={400} height={135} alt="image"/>
+          <Image className="block lg:hidden" src='/images/digitalgrowth.svg' width={100} height={36} alt="image"/>
+          <Image className="hidden lg:block" src='/images/techx.svg' width={400} height={135} alt="image"/>
+          <Image className="block lg:hidden" src='/images/techx.svg' width={100} height={36} alt="image"/>
+        </div>
+        </section>
         </div>
       );
 }
