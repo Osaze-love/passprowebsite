@@ -76,12 +76,12 @@ const About = () => {
            
           </section>
 
-          <section className='bg-[#164473] rounded-[16px] mx-[40px] grid grid-cols-1 lg:grid-cols-6 gap-[10px] items-center text-white p-[40px] my-[40px]'>
+          <section className='bg-[#164473] rounded-[16px] mx-[20px] px-[40px] grid grid-cols-1 lg:grid-cols-6 gap-0 lg:gap-[10px] items-center text-white p-[40px] my-[40px]'>
           <div className='col-span-4 text-[14px] lg:text-[20px] text-center lg:text-left mb-[30px] lg:mb-0'>
           At PassPro, event ticketing meets simplicity and security. Launched in [Year], our platform is designed to transform the way you discover and attend events. Whether you’re booking tickets for concerts, conferences, sports events, or festivals, Passpro makes it easy for you to explore, select, and secure your spot at your favorite experiences.
           </div>
-          <div className='col-span-2 flex items-center justify-center w-full'>
-          <Button variant="outline" className=' font-medium bg-none text-white px-[56px] py-[18.5px] bg-transparent h-[60px] hover:bg-transparent hover:text-white active:scale-90 transition-all '>
+          <div className='col-span-2 flex justify-center w-full'>
+          <Button variant="outline" className=' font-medium text-white px-[56px] py-[18.5px] flex items-center justify-center w-full bg-transparent h-[60px] hover:bg-transparent hover:text-white active:scale-90 transition-all '>
         Get Started
       </Button>
           </div>
@@ -116,7 +116,7 @@ const About = () => {
   </p>
   <div className='w-[114px] h-[3px] lg:h-[5px] rounded-[5px] bg-[#FC6435] mt-1'></div>
 </div>
-      <p className='text-[#585757CC] text-[14px] w:full lg:w-3/4 lg:text-[20px]'>We believe in providing a seamless, secure, and transparent experience for both event-goers and organizers. Our values reflect our commitment to making ticketing effortless, building trust with our users, and fostering a vibrant community of shared experiences.</p>
+      <p className='text-[#585757CC] text-center lg:text-left text-[14px] w:full lg:w-3/4 lg:text-[20px]'>We believe in providing a seamless, secure, and transparent experience for both event-goers and organizers. Our values reflect our commitment to making ticketing effortless, building trust with our users, and fostering a vibrant community of shared experiences.</p>
             </div>
           
           </div>
@@ -187,7 +187,7 @@ const About = () => {
               backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/images/bannerImage2.jpeg')`, // Adjust opacity in rgba
               backgroundSize: "cover",
               backgroundPosition: "center",
-            }} className='my-[140px] h-[90vh] mx-[20px] lg:mx-[40px] rounded-[20px]'>
+            }} className='my-[140px] h-[450px] lg:h-[80vh]  mx-[20px] lg:mx-[40px] rounded-[20px]'>
                  <div className="flex w-full h-full flex-col items-center justify-center space-y-[30px] text-center">
          
           <p className="font-extrabold text-[white] text-[20px] lg:text-[60px] w-3/4">Explore, Discover, and Book Your Next Event with Ease</p>

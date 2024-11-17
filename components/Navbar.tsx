@@ -129,7 +129,85 @@ const Navbar = ({
             onClick={toggleMenu}
           />
         </div>
-      </div> : 
+      </div> :  
+      bgColor === 'bg-[#f6ece9]' ? <div
+        className={`flex items-center z-20 justify-between px-[20px] py-[34px] lg:px-[50px] lg:py-[34px] sticky top-0 bg-[#f6ece9]`}
+      > 
+       <div className="block lg:hidden">
+            <Image
+            src={"/images/passprologo.svg"}
+            width={151}
+            height={35}
+            alt="passprologo"
+            className="w-[151px] h-[35px]"
+          />
+           
+        
+        </div>
+        <div className="hidden lg:block">
+          {textColor === "text-white" ? (
+            <Image
+              src={"/images/passprologowhite.svg"}
+              width={240}
+              height={56}
+              alt="passprologo"
+              className="w-[240px] h-[56px]"
+            />
+          ) : (
+            <Image
+              src={"/images/passprologo.svg"}
+              width={240}
+              height={56}
+              alt="passprologo"
+              className="w-[240px] h-[56px]"
+            />
+          )}
+        </div>
+        
+        <div
+          className={`hidden lg:flex items-center space-x-[4px] xl:space-x-[20px] ${textColor}`}
+        >
+          {navItems.map((item) => (
+            <Button
+              key={item.name}
+              variant="ghost"
+              onClick={() => router.push(item.path)}
+              className={`${
+                item.path === "/"
+                  ? pathname === item.path
+                    ? activeStyles
+                    : `hover:bg-transparent hover:${textColor}`
+                  : pathname?.includes(item.path)
+                  ? activeStyles
+                  : `hover:bg-transparent hover:${textColor}`
+              } font-medium`}
+            >
+              {item.name}
+            </Button>
+          ))}
+          <Button
+            variant="outline"
+            className="bg-[#FC6435] hover:bg-[#FC6435] text-white font-medium px-[40px] xl:px-[56px] py-[18.5px] active:scale-90 transition-all border-none hover:text-white"
+          >
+            Get Started
+          </Button>
+        </div>
+        <div className="lg:hidden">
+          <Image
+            src={
+              bgMobile === "bg-black"
+                ? "/icons/hamburgerwhite.svg"
+                : "/icons/navbarIcon.svg"
+            }
+            height={22}
+            width={25}
+            alt="hamburger icon"
+            className="cursor-pointer transition-all active:scale-95"
+            onClick={toggleMenu}
+          />
+        </div>
+      </div>
+      :
     
     <div
         className={`flex items-center z-20 justify-between px-[20px] py-[40px] lg:px-[50px] lg:py-[34px] sticky top-0 ${bgColor}`}
@@ -247,8 +325,8 @@ const Navbar = ({
             {navItems.map((item) => (
               <p
                 key={item.name}
-                onClick={() => {
-                  router.push(item.path);
+                onClick={async() => {
+                  await router.push(item.path);
                   toggleMenu();
                 }}
                 className={`py-[21px] px-[14px] cursor-pointer border-b border-[#D9D9D9] ${
