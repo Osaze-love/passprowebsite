@@ -105,7 +105,7 @@ export default function Home() {
 </div>
         </section>
         <section className="py-[50px] px-[40px] lg:px-[50px]">
-        <section className="space-y- mb-[40px]">
+        <section className=" mb-[40px]">
         <p className="font-semibold lg:font-bold text-[18px] lg:text-[40px] text-[#606060]">
             Trending <span className="text-[#FC6435]">Events</span>
         </p>
