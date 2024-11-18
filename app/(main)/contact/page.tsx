@@ -17,7 +17,7 @@ const Contact = () => {
             <div className=" flex flex-col items-center justify-center space-y-[17px] lg:space-y-[30px] h-3/4">
             
           
-          <p className="font-extrabold text-[40px] mt-[70px] lg:mt-0 lg:text-[60px] text-[#343434]">Get In Touch</p>
+          <p className="font-extrabold text-[40px] mt-[200px] lg:mt-0 lg:text-[60px] text-[#343434]">Get In Touch</p>
           <p className=" text-[#606060] text-center w-3/4 text-[14px] lg:text-[20px]">
           We’re here to assist you with any questions, feedback, or support you may need. Whether you’re an event-goer, organizer, or just curious about our platform, our team is ready to help. 
           </p>
@@ -31,7 +31,7 @@ const Contact = () => {
                 <p className='text-[14px]'>+234 905783728</p>
              </div>
             </div>
-            <div className='w-full px-[38px] bg-white flex items-center space-x-[31px] lg:space-x-4 rounded-[8px]'>
+            <div className='w-full px-[38px] py-[40px] bg-white flex items-center space-x-[31px] lg:space-x-4 rounded-[8px]'>
              <Image src={'images/message.svg'} width={50} height={50} className='hidden lg:block' alt='logo'/>
              <Image src={'images/message.svg'} width={32} height={32} alt='logo' className='block lg:hidden'/>
              <div className='space-y-[10px]'>

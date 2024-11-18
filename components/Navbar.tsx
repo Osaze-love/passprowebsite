@@ -54,6 +54,9 @@ const Navbar = ({
             width={151}
             height={35}
             alt="passprologo"
+            onClick={() => {
+              router.push('/')
+            }}
             className="w-[151px] h-[35px]"
           />
            
@@ -63,6 +66,9 @@ const Navbar = ({
               width={151}
               height={35}
               alt="passprologo"
+              onClick={() => {
+                router.push('/')
+              }}
               className="w-[151px] h-[35px]"
             />
           )}
@@ -74,6 +80,9 @@ const Navbar = ({
               width={240}
               height={56}
               alt="passprologo"
+              onClick={() => {
+                router.push('/')
+              }}
               className="w-[240px] h-[56px]"
             />
           ) : (
@@ -82,6 +91,9 @@ const Navbar = ({
               width={240}
               height={56}
               alt="passprologo"
+              onClick={() => {
+                router.push('/')
+              }}
               className="w-[240px] h-[56px]"
             />
           )}
@@ -218,6 +230,9 @@ const Navbar = ({
             src={"/images/passprologo.svg"}
             width={151}
             height={35}
+            onClick={() => {
+              router.push('/')
+            }}
             alt="passprologo"
             className="w-[151px] h-[35px]"
           />
@@ -227,6 +242,9 @@ const Navbar = ({
               src={"/images/passprologowhite.svg"}
               width={151}
               height={35}
+              onClick={() => {
+                router.push('/')
+              }}
               alt="passprologo"
               className="w-[151px] h-[35px]"
             />
@@ -239,6 +257,9 @@ const Navbar = ({
               width={240}
               height={56}
               alt="passprologo"
+              onClick={() => {
+                router.push('/')
+              }}
               className="w-[240px] h-[56px]"
             />
           ) : (
@@ -247,6 +268,9 @@ const Navbar = ({
               width={240}
               height={56}
               alt="passprologo"
+              onClick={() => {
+                router.push('/')
+              }}
               className="w-[240px] h-[56px]"
             />
           )}
@@ -306,6 +330,9 @@ const Navbar = ({
           <div className="flex items-center justify-between p-[40px] w-full">
             <Image
               src={"/images/passprologo.svg"}
+              onClick={() => {
+                router.push('/')
+              }}
               width={151}
               height={35}
               alt="passprologo"

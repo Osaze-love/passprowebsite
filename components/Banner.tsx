@@ -1,7 +1,10 @@
+"use client"
 import React from 'react'
 import { Button } from './ui/button'
+import { useRouter } from 'next/navigation'
 
 const Banner = () => {
+  const router = useRouter();
     return (
         <div className="flex flex-col items-center justify-center space-y-3 text-center">
           <p className="text-white font-medium text-[16px] lg:text-[24px]">The Events and experience marketplace</p>
@@ -10,7 +13,11 @@ const Banner = () => {
             Find tickets to concerts, sports, festivals, and more. Easily browse, book, and share your favorite events with friends.
           </p>
           <div className="flex flex-col lg:flex-row items-center pt-[30px] lg:mt-0 space-y-3 space-x-3">
-            <Button variant="outline" className="hover:bg-[#FC6435] font-medium bg-[#FC6435] text-white w-[273px] lg:px-[56px] h-[50px] lg:h-[56px] py-[18.5px] hover:text-white active:scale-90 transition-all border-none">
+            <Button variant="outline" className="hover:bg-[#FC6435] font-medium bg-[#FC6435] text-white w-[273px] lg:px-[56px] h-[50px] lg:h-[56px] py-[18.5px] hover:text-white active:scale-90 transition-all border-none"
+            onClick={() => {
+              router.push('/booking')
+            }}
+            >
               Create Event
             </Button>
             <Button variant="outline" className="hover:bg-[white] font-medium bg-[white] text-[#FC6435] w-[273px] lg:px-[56px] h-[50px] lg:h-[56px] py-[18.5px] hover:text-[#FC6435] active:scale-90 transition-all border-[#FC6435]">
