@@ -1,7 +1,9 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { Toaster } from "@/components/ui/toaster";
 import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
+
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -22,6 +24,8 @@ export default function RootLayout({
         
         {children}
         <Footer />
+        <Toaster />
+
         </body>
     
   );

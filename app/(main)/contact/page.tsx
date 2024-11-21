@@ -1,14 +1,64 @@
+"use client"
 import Navbar from '@/components/Navbar'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
+import { useToast } from '@/hooks/use-toast'
+import useFetch from '@/hooks/useFetch'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
+import FadeLoader from 'react-spinners/FadeLoader'
+
 
 const Contact = () => {
+  const { toast } = useToast()
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
+  const {  contactPasspro, loading} = useFetch();
+
+
+  const handleSubmit = async(e: React.FormEvent) => {
+    e.preventDefault();
+    // toast({
+    //   title: 'Message Not Sent',
+    //   description: 'There was an error sending your message. Please try again later.',
+    // })
+    try {
+      console.log({ firstName, lastName, email, phone, message });
+      await contactPasspro(firstName, lastName, email, phone, message);
+    } catch (error) {
+      alert('error occured')
+      setTimeout(() => {
+        toast({
+          title: 'Message Not Sent',
+          description: error instanceof Error ? error.message : 'An unexpected error occurred.',
+          variant: 'destructive', // Optional, for error styling
+        });
+      }, 0);
+    }
+  
+  
+  //  setFirstName('');
+  //  setLastName(''),
+  //  setEmail('');
+  //  setPhone('');
+  //  setMessage('');
+  };
+
+  
   return (
     <div>
+      {/* {loading && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
+     
+        <FadeLoader color="#FC6435" />
+       
+    </div> 
+  )} */}
                   <Navbar textColor='text-black' bgColor='bg-[#f6ece9]' bg-Mobile='bg-[#f6ece9]'/>
 
       <section
@@ -51,41 +101,101 @@ const Contact = () => {
         </p>
         <div className="w-[114px] h-[3px] lg:h-[5px] rounded-[5px] bg-[#FC6435] mx-auto"></div>
       </div>
-      <div className='w-full px-[20px] lg:px-[40px] py-[30px] lg:py-[60px] space-y-[20px] lg:space-y-[60px]'>
-      <div className='flex flex-col lg:flex-row items-center space-y-[20px] lg:space-y-0 space-x-0 lg:space-x-[99px]'>
-        <div className='space-y-[9px] w-full'>
-        <Label className='text-[#343434] text-[14px]'>First Name<span className='text-[#FC6435]'>*</span></Label>
-        <Input type='text' placeholder='First Name' className='placeholder:text-[#8F8F8F] placeholder:text-[14px] lg:placeholder:text-[16px]  border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p:[16px] lg:p-[28px] w-full  mx-auto'/>
-        </div>
-     
-        <div className='space-y-[9px] w-full'>
-        <Label className='text-[#343434] text-[14px]'>Last Name<span className='text-[#FC6435]'>*</span></Label>
-        <Input type='text' placeholder='Last Name' className='placeholder:text-[#8F8F8F] placeholder:text-[14px] lg:placeholder:text-[16px]  border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p:[16px] lg:p-[28px] w-full  mx-auto'/>
-        </div>
-        </div>
-        <div className='flex flex-col lg:flex-row space-y-[20px] lg:space-y-0 items-center space-x-0 lg:space-x-[99px]'>
-        <div className='space-y-[9px] w-full'>
-        <Label className='text-[#343434] text-[14px]'>Email Address<span className='text-[#FC6435]'>*</span></Label>
-        <Input type='text' placeholder='Email Address' className='placeholder:text-[#8F8F8F] placeholder:text-[14px] lg:placeholder:text-[16px]  border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p:[16px] lg:p-[28px] w-full  mx-auto'/>
-        </div>
-        <div className='space-y-[9px] w-full'>
-        <Label className='text-[#343434] text-[14px]'>Phone Number<span className='text-[#FC6435]'>*</span></Label>
-        <Input type='text' placeholder='Phone Number' className='placeholder:text-[#8F8F8F] placeholder:text-[14px] lg:placeholder:text-[16px]  border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p:[16px] lg:p-[28px] w-full  mx-auto'/>
-        </div>
-        </div>
-        <div className='space-y-[9px] w-full'>
-        <Label className='text-[#343434] text-[14px]'>Message<span className='text-[#FC6435]'>*</span></Label>
-        <Textarea placeholder='Tell us how we can be of help' className='placeholder:text-[#8F8F8F] placeholder:text-[14px] lg:placeholder:text-[16px] border-[#D9D9D9] h-[300px] focus-visible:ring-0 focus-visible:ring-offset-0'/>
-        </div>
-       
-
-      </div>
-      <Button
-          variant="outline"
-          className="bg-[#FC6435] mx-[40px] justify-center lg:justify-start hover:bg-[#FC6435] text-white font-medium px-[56px] py-[26px] active:scale-90 transition-all hover:text-white mb-[40px] lg:self-start"
+      <div
+          className="w-full px-[20px] lg:px-[40px] py-[30px] lg:py-[60px] space-y-[20px] lg:space-y-[60px]"
         >
-          Send Message
-        </Button>
+          <div className="flex flex-col lg:flex-row items-center space-y-[20px] lg:space-y-0 space-x-0 lg:space-x-[99px]">
+            <div className="space-y-[9px] w-full">
+              <Label className="text-[#343434] text-[14px]">
+                First Name<span className="text-[#FC6435]">*</span>
+              </Label>
+              <Input
+                type="text"
+                placeholder="First Name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                className="placeholder:text-[#8F8F8F] placeholder:text-[14px] lg:placeholder:text-[16px] border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p:[16px] lg:p-[28px] w-full mx-auto"
+              />
+            </div>
+
+            <div className="space-y-[9px] w-full">
+              <Label className="text-[#343434] text-[14px]">
+                Last Name<span className="text-[#FC6435]">*</span>
+              </Label>
+              <Input
+                type="text"
+                placeholder="Last Name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                className="placeholder:text-[#8F8F8F] placeholder:text-[14px] lg:placeholder:text-[16px] border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p:[16px] lg:p-[28px] w-full mx-auto"
+              />
+            </div>
+          </div>
+          {/* Email and Phone */}
+          <div className="flex flex-col lg:flex-row space-y-[20px] lg:space-y-0 items-center space-x-0 lg:space-x-[99px]">
+            <div className="space-y-[9px] w-full">
+              <Label className="text-[#343434] text-[14px]">
+                Email Address<span className="text-[#FC6435]">*</span>
+              </Label>
+              <Input
+                type="text"
+                placeholder="Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="placeholder:text-[#8F8F8F] placeholder:text-[14px] lg:placeholder:text-[16px] border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p:[16px] lg:p-[28px] w-full mx-auto"
+              />
+            </div>
+            <div className="space-y-[9px] w-full">
+              <Label className="text-[#343434] text-[14px]">
+                Phone Number<span className="text-[#FC6435]">*</span>
+              </Label>
+              <Input
+                type="text"
+                placeholder="Phone Number"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                className="placeholder:text-[#8F8F8F] placeholder:text-[14px] lg:placeholder:text-[16px] border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p:[16px] lg:p-[28px] w-full mx-auto"
+              />
+            </div>
+          </div>
+          {/* Message */}
+          <div className="space-y-[9px] w-full">
+            <Label className="text-[#343434] text-[14px]">
+              Message<span className="text-[#FC6435]">*</span>
+            </Label>
+            <Textarea
+              placeholder="Tell us how we can be of help"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              className="placeholder:text-[#8F8F8F] placeholder:text-[14px] lg:placeholder:text-[16px] border-[#D9D9D9] h-[300px] focus-visible:ring-0 focus-visible:ring-offset-0"
+            />
+          </div>
+          <Button
+            type="submit"
+            variant="outline"
+            onClick={async() => {
+              // toast({
+              //   title: 'Message Not Sent',
+                
+              //   variant: 'destructive', // Optional, for error styling
+              // });
+              try {
+                console.log({ firstName, lastName, email, phone, message });
+                contactPasspro(firstName, lastName, email, phone, message);
+              } catch (error) {
+                alert('error occured')
+                  toast({
+                    title: 'Message Not Sent',
+                    
+                    variant: 'destructive', // Optional, for error styling
+                  });
+              }
+            }}
+            className="bg-[#FC6435] mx-[40px] justify-center lg:justify-start hover:bg-[#FC6435] text-white font-medium px-[56px] py-[26px] active:scale-90 transition-all hover:text-white mb-[40px] lg:self-start"
+          >
+            Send Message
+          </Button>
+        </div>
           </section>
     </div>
   )

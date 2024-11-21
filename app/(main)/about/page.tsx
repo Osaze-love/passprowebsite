@@ -9,7 +9,7 @@ const About = () => {
          <Navbar textColor='text-black' bgColor='bg-[white]' bgMobile='bg-white'/>
 
        <section
-            className="grid grid-cols-1 lg:grid-cols-2 items-center gap-[36px] lg:gap-[77px] px-[20px] lg:px-[50px] pb-[168px]"
+            className="grid grid-cols-1 lg:grid-cols-2 items-center gap-[36px] lg:gap-[77px] px-[20px] lg:px-[50px] pb-[90px] lg:pb-[168px]"
           >
           <div className='space-y-[18px] lg:space-y-[38px]'>
           <p className="font-bold lg:font-extrabold  text-[30px] lg:text-[50px]  text-[#343434]">Explore, Discover, and Book Your <span className='text-[#FC6435]'>Next Event</span> with Ease</p>
@@ -81,7 +81,7 @@ const About = () => {
           At PassPro, event ticketing meets simplicity and security. Launched in [Year], our platform is designed to transform the way you discover and attend events. Whether you’re booking tickets for concerts, conferences, sports events, or festivals, Passpro makes it easy for you to explore, select, and secure your spot at your favorite experiences.
           </div>
           <div className='col-span-2 flex justify-center w-full'>
-          <Button variant="outline" className=' font-medium text-white px-[56px] py-[18.5px] flex items-center justify-center w-full bg-transparent h-[60px] hover:bg-transparent hover:text-white active:scale-90 transition-all '>
+          <Button variant="outline" className=' font-medium text-white px-[56px] py-[18.5px] flex items-center justify-center w-full lg:w-max bg-transparent h-[60px] hover:bg-transparent hover:text-white active:scale-90 transition-all '>
         Get Started
       </Button>
           </div>
@@ -106,7 +106,7 @@ const About = () => {
     alt="image"
     width={300}
     height={322}
-    className="rounded-[64px] mx-auto h-[322px] object-cover relative block lg:hidden"
+    className="rounded-[28px] mx-auto h-[322px] object-cover relative block lg:hidden"
   />
           <div>
             <div className='my-[33px] lg:my-0'>
@@ -141,43 +141,43 @@ const About = () => {
         <Image src={'/images/olusolaimage.svg'} height={380} width={380} alt='meet' className='h-[380px] object-cover rounded-[8px] mb-[20px] hidden lg:block'/>
         <Image src={'/images/olusolaimage.svg'} height={170} width={170} alt='meet' className='h-[170px] mb-[13px] object-cover rounded-[8px] block lg:hidden'/>
         <p className='text-center text-[18px] lg:text-[28px] font-semibold'>Olusola Ademuimi</p>
-        <p className='text-[#8F8F8F] text-[14px] lg:text-[18px]'>Product Manager</p>
+        <p className='text-[#8F8F8F] text-[14px] lg:text-[18px] text-center'>Product Manager</p>
        </div>
        <div className='flex flex-col items-center'>
         <Image src={'/images/ajalaimage.svg'} height={380} width={380} alt='meet' className='h-[380px] object-cover rounded-[8px] mb-[20px] hidden lg:block'/>
         <Image src={'/images/ajalaimage.svg'} height={170} width={170} alt='meet' className='h-[170px] mb-[13px] object-cover rounded-[8px]  block lg:hidden'/>
         <p className='text-center text-[18px] lg:text-[28px] font-semibold'>Ajala Promise</p>
-        <p className='text-[#8F8F8F] text-[14px] lg:text-[18px]'>UI/UX Designer</p>
+        <p className='text-[#8F8F8F] text-[14px] lg:text-[18px] text-center'>UI/UX Designer</p>
        </div>
        <div className='flex flex-col items-center'>
         <Image src={'/images/gbadamosiimage.svg'} height={380} width={380} alt='meet' className='h-[380px] object-cover rounded-[8px] mb-[20px] hidden lg:block'/>
         <Image src={'/images/gbadamosiimage.svg'} height={170} width={170} alt='meet' className='h-[170px] mb-[13px] object-cover rounded-[8px]  block lg:hidden'/>
         <p className='text-center text-[18px] lg:text-[28px] font-semibold'>Gbadamosi Mujeedat</p>
-        <p className='text-[#8F8F8F] text-[14px] lg:text-[18px]'>Founder/CEO</p>
+        <p className='text-[#8F8F8F] text-[14px] lg:text-[18px] text-center'>Founder/CEO</p>
        </div>
        <div className='flex flex-col items-center'>
         <Image src={'/images/osazeimage.svg'} height={380} width={380} alt='meet' className='h-[380px] object-cover rounded-[8px] mb-[20px] hidden lg:block'/>
         <Image src={'/images/osazeimage.svg'} height={170} width={170} alt='meet' className='h-[170px] mb-[13px] object-cover rounded-[8px] block lg:hidden'/>
         <p className='text-center text-[18px] lg:text-[28px] font-semibold'>Osaze-Omobude Love</p>
-        <p className='text-[#8F8F8F] text-[14px] lg:text-[18px]'>Frontend Developer</p>
+        <p className='text-[#8F8F8F] text-[14px] lg:text-[18px] text-center'>Frontend Developer</p>
        </div>
        <div className='flex flex-col items-center'>
        <Image src={'/images/alaseimage.svg'} height={380} width={380} alt='meet' className='h-[380px] object-cover rounded-[8px] mb-[20px] hidden lg:block'/>
        <Image src={'/images/alaseimage.svg'} height={170} width={170} alt='meet' className='h-[170px] mb-[13px] object-cover rounded-[8px] block lg:hidden'/>
         <p className='text-center text-[18px] lg:text-[28px] font-semibold'>Alase Waris</p>
-        <p className='text-[#8F8F8F] text-[14px] lg:text-[18px]'>Backend Developer</p>
+        <p className='text-[#8F8F8F] text-[14px] lg:text-[18px] text-center'>Backend Developer</p>
        </div>
        <div className='flex flex-col items-center'>
        <Image src={'/images/idowuimage.svg'} height={380} width={380} alt='meet' className='h-[380px] object-cover rounded-[8px] mb-[20px] hidden lg:block'/>
        <Image src={'/images/idowuimage.svg'} height={170} width={170} alt='meet' className='h-[170px] mb-[13px] object-cover rounded-[8px]  block lg:hidden'/>
         <p className='text-center text-[18px] lg:text-[28px] font-semibold'>Idowu Olatunji</p>
-        <p className='text-[#8F8F8F] text-[14px] lg:text-[18px]'>Software Engineer</p>
+        <p className='text-[#8F8F8F] text-[14px] lg:text-[18px] text-center'>Software Engineer</p>
        </div>
        <div className='flex flex-col items-center'>
        <Image src={'/images/godwinimage.svg'} height={380} width={380} alt='meet' className='h-[380px] object-cover rounded-[8px] mb-[20px] hidden lg:block'/>
        <Image src={'/images/godwinimage.svg'} height={170} width={170} alt='meet' className='h-[170px] mb-[13px] object-cover rounded-[8px]  block lg:hidden'/>
         <p className='text-center text-[18px] lg:text-[28px] font-semibold'>Godwin</p>
-        <p className='text-[#8F8F8F] text-[14px] lg:text-[18px]'>Software Engineer</p>
+        <p className='text-[#8F8F8F] text-[14px] lg:text-[18px] text-center'>Software Engineer</p>
        </div>
       </div>
           </section>
@@ -188,7 +188,7 @@ const About = () => {
               backgroundSize: "cover",
               backgroundPosition: "center",
             }} className='my-[140px] h-[450px] lg:h-[80vh]  mx-[20px] lg:mx-[40px] rounded-[20px]'>
-                 <div className="flex w-full h-full flex-col items-center justify-center space-y-[30px] text-center">
+                 <div className="flex w-full h-full flex-col items-center justify-center space-y-[30px] text-center px-[10px]">
          
           <p className="font-extrabold text-[white] text-[20px] lg:text-[60px] w-3/4">Explore, Discover, and Book Your Next Event with Ease</p>
           <p className="text-[14px] lg:text-[20px] text-white w-full lg:w-2/4">

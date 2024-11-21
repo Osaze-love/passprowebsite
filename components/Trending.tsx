@@ -86,12 +86,12 @@ const Trending = () => {
 </div>
             <div className='p-[20px] space-y-[12px] '>
             <p className='font-bold text-[14px] lg:text-[20px]'>{feature.name}</p>
-            <div className='flex items-center space-x-3'>
+            <div className='flex items-center gap-3'>
                 <Image className='hidden lg:block' src={'/icons/calendarDark.svg'} width={20} height={20} alt='calendarIcon'/>
                 <Image className='block lg:hidden' src={'/icons/calendarDark.svg'} width={11} height={11} alt='calendarIcon'/>
                 <p className='text-[12px] lg:text-[14px]'>{feature.date}</p>
             </div>
-            <div className='flex items-center space-x-3'>
+            <div className='flex items-center gap-3'>
                 <Image className='hidden lg:block' src={'/icons/locationDark.svg'} width={20} height={20} alt='calendarIcon'/>
                 <Image className='block lg:hidden' src={'/icons/locationDark.svg'} width={11} height={11} alt='calendarIcon'/>
                 <p className='text-[12px] lg:text-[14px]'>{feature.location}</p>

@@ -5,6 +5,8 @@ import Featured from '@/components/Featured';
 import Trending from '@/components/Trending';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import Popular from '@/components/Popular';
+import Free from '@/components/Free';
 
 const page = () => {
   return (
@@ -121,7 +123,7 @@ const page = () => {
         </p>
         <div className="w-[50px] lg:w-[114px] h-[3px] lg:h-[5px] rounded-[5px] bg-[#FC6435]"></div>
       </section>
-        <Featured />
+        <Popular />
          <div className='flex items-center justify-center w-full'>
          <Button
           variant="outline"
@@ -157,7 +159,7 @@ const page = () => {
         </p>
         <div className="w-[50px] lg:w-[114px] h-[3px] lg:h-[5px] rounded-[5px] bg-[#FC6435]"></div>
       </section>
-        <Featured />
+        <Free />
         <div className='flex items-center justify-center w-full'>
          <Button
           variant="outline"

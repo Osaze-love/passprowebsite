@@ -2,16 +2,21 @@
 import Navbar from '@/components/Navbar'
 import Ticket from '@/components/Ticket'
 import { Button } from '@/components/ui/button'
+import { RootState } from '@/redux/store'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 const BookingPage = () => {
   const router = useRouter();
+  const {eventBook} = useSelector(
+    (state: RootState) => state.event
+  );
   return (
     <div>
               <Navbar textColor='text-[#343434]' bgColor='bg-white' bgMobile='bg-white'/>
-      <p className='text-[20px] lg:text-[64px] w-full text-center text-[#164473] font-semibold'>About Music Fest, 2024</p>
+      <p className='text-[20px] lg:text-[64px] w-full text-center text-[#164473] font-semibold'>About {eventBook?.event_name}</p>
 
       <section className='grid grid-cols-1 lg:grid-cols-2 gap-[63px] px-[20px] lg:px-[40px] py-[51px]'>
       <div className='hidden lg:block' style={{ position: 'relative', width: '100%', height: '100%' }}>
@@ -33,14 +38,14 @@ const BookingPage = () => {
   />
 </div>
    <div className='space-y-[20px] lg:space-y-[70px] rounded-[12px] shadow-none lg:shadow-md px-[20px] lg:px-[30px] py-[60px] border-none lg:border'>
-    <p className='text-[#606060] font-normal'>Get ready for an explosive celebration of Afrobeat, hip-hop, and everything in between at Chike’s Music Festival on April 5, 2025! Lagos is about to witness one of the most exciting live music events of the year, as Falz – one of Nigeria’s most innovative and energetic artists – takes the stage for an unforgettable night of music, fun, and pure energy.</p>
+    <p className='text-[#606060] font-normal'>{eventBook?.event_description}</p>
 
     <div>
         <p className='text-[#164473] text-[18px] lg:text-[24px] pb-[20px] lg:pb-[24px] font-semibold'>Event Details</p>
         <div className=' space-y-[13px]'>
             <div className='flex items-center space-x-3'>
                 <Image src={'/icons/calendarDark.svg'} width={24} height={24} alt='calendarIcon'/>
-                <p className='text-[14px] text-[#606060] '>Friday 4th April, 2025</p>
+                <p className='text-[14px] text-[#606060] '>{eventBook?.start_date}</p>
             </div>
             <div className='flex items-center space-x-3'>
                 <Image src={'/icons/timeIcon.svg'} width={24} height={24} alt='calendarIcon'/>
@@ -48,7 +53,7 @@ const BookingPage = () => {
             </div>
             <div className='flex items-center space-x-3'>
                 <Image src={'/icons/placeIcon.svg'} width={24} height={24} alt='calendarIcon'/>
-                <p className='text-[14px] text-[#606060]'>Landmark centre, Vitoria Island, Lagos</p>
+                <p className='text-[14px] text-[#606060]'>{eventBook?.event_location}</p>
             </div>
            
             </div>
