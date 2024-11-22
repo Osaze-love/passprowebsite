@@ -18,7 +18,7 @@ const Pricing = () => {
         </div>
           
         <section className='hidden lg:grid px-[8px] lg:px-[40px] grid-cols-1 lg:grid-cols-2 gap-[20px] items-center relative'>
-        <Image src={'/images/pricingImage.svg'} height={600} width={600} alt='image' className='hidden lg:block relative rounded-[10px] top-[150px]'/>
+        <Image src={'/images/pricingimage.svg'} height={600} width={600} alt='image' className='hidden lg:block relative rounded-[10px] top-[150px]'/>
          <div className='text-center text-white pb-[10px] w-full lg:w-3/4 mx-auto'>
             
                 <p className='mb-[10px] lg:mb-[20px] text-[14px] lg:text-[16px] font-medium lg:font-semibold'>Region:  Nigeria</p>
@@ -35,7 +35,7 @@ const Pricing = () => {
       </section>
       <section>
       <section className='flex lg:hidden flex-col items-center px-[20px] '>
-          <Image src={'/images/pricingImage.svg'} width={360} height={190} alt='image' className='relative rounded-[10px] -top-[40px]'/>
+          <Image src={'/images/pricingimage.svg'} width={360} height={190} alt='image' className='relative rounded-[10px] -top-[40px]'/>
           <div className='text-center border border-[#D9D9D9] text-[#FC6435] py-[40px] px-[80px] w-full mx-auto rounded-[10px]'>
             
               
