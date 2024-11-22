@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
-import { useToast } from '@/hooks/use-toast'
 import useFetch from '@/hooks/useFetch'
 import Image from 'next/image'
 import React, { useState } from 'react'
@@ -12,7 +11,6 @@ import FadeLoader from 'react-spinners/FadeLoader'
 
 
 const Contact = () => {
-  const { toast } = useToast()
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -20,45 +18,16 @@ const Contact = () => {
   const [message, setMessage] = useState('');
   const {  contactPasspro, loading} = useFetch();
 
-
-  const handleSubmit = async(e: React.FormEvent) => {
-    e.preventDefault();
-    // toast({
-    //   title: 'Message Not Sent',
-    //   description: 'There was an error sending your message. Please try again later.',
-    // })
-    try {
-      console.log({ firstName, lastName, email, phone, message });
-      await contactPasspro(firstName, lastName, email, phone, message);
-    } catch (error) {
-      alert('error occured')
-      setTimeout(() => {
-        toast({
-          title: 'Message Not Sent',
-          description: error instanceof Error ? error.message : 'An unexpected error occurred.',
-          variant: 'destructive', // Optional, for error styling
-        });
-      }, 0);
-    }
-  
-  
-  //  setFirstName('');
-  //  setLastName(''),
-  //  setEmail('');
-  //  setPhone('');
-  //  setMessage('');
-  };
-
   
   return (
     <div>
-      {/* {loading && (
+      {loading && (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
      
         <FadeLoader color="#FC6435" />
        
     </div> 
-  )} */}
+  )}
                   <Navbar textColor='text-black' bgColor='bg-[#f6ece9]' bg-Mobile='bg-[#f6ece9]'/>
 
       <section
@@ -171,25 +140,14 @@ const Contact = () => {
             />
           </div>
           <Button
-            type="submit"
             variant="outline"
-            onClick={async() => {
-              // toast({
-              //   title: 'Message Not Sent',
-                
-              //   variant: 'destructive', // Optional, for error styling
-              // });
-              try {
-                console.log({ firstName, lastName, email, phone, message });
-                contactPasspro(firstName, lastName, email, phone, message);
-              } catch (error) {
-                alert('error occured')
-                  toast({
-                    title: 'Message Not Sent',
-                    
-                    variant: 'destructive', // Optional, for error styling
-                  });
-              }
+            onClick={async() => {       
+              await contactPasspro(firstName, lastName, email, phone, message); 
+              setFirstName('');
+              setLastName('');
+              setEmail('');
+              setMessage('');
+              setPhone('');
             }}
             className="bg-[#FC6435] mx-[40px] justify-center lg:justify-start hover:bg-[#FC6435] text-white font-medium px-[56px] py-[26px] active:scale-90 transition-all hover:text-white mb-[40px] lg:self-start"
           >
