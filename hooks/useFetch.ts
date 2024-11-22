@@ -101,15 +101,14 @@ const useFetch= () => {
           },
         }
       );
-      console.log(response);
       toast({
         title: 'Message Sent', 
+        description: response?.data?.message || 'Message Sent Successfully', // Ensure it's a string
         variant: 'default', // Optional, for error styling
       });
   
       // Handle the response as needed
     } catch (error: any) {
-      console.log(error);
       toast({
         title: 'Message Not Sent',
         description: error.response?.data?.message || 'An unexpected error occurred.', // Ensure it's a string
