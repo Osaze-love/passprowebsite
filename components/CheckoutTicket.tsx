@@ -40,10 +40,7 @@ const CheckoutTicket = () => {
     
   };
 
-  useEffect(() => {
-    console.log(selectedTickets);
-
-  },[selectedTickets])
+  
   // Handle Continue button click
   const handleContinue = () => {
     dispatch(updateTickets(selectedTickets));
@@ -71,7 +68,7 @@ const CheckoutTicket = () => {
         </div>
         <hr className="flex-grow border-t border-[#FC6435] mx-4" />
         <div className="flex space-x-2 items-center">
-          <Image src="/icons/contacticon.svg" width={20} height={20} alt="image" />
+          <Image src="/icons/contactIcon.svg" width={20} height={20} alt="image" />
           <p>Contact</p>
         </div>
       </div>

@@ -92,7 +92,7 @@ const Ticket = () => {
            <hr className="flex-grow border-t border-[#FC6435] mx-4" /> {/* Horizontal line */}
 
            <div className='flex space-x-2 items-center'>
-           <Image src='/icons/ContactIcon.svg' width={34} height={34} alt='image'/>
+           <Image src='/icons/contactIcon.svg' width={34} height={34} alt='image'/>
            <p>Contact</p>
            </div>
         </div>
