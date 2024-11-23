@@ -14,9 +14,7 @@ const Banner = () => {
           </p>
           <div className="flex flex-col lg:flex-row items-center pt-[30px] lg:mt-0 space-y-3 lg:space-y-0 lg:space-x-3">
             <Button variant="outline" className="hover:bg-[#FC6435] font-medium bg-[#FC6435] text-white w-[273px] lg:px-[56px] h-[50px] lg:h-[56px] py-[18.5px] hover:text-white active:scale-90 transition-all border-none"
-            onClick={() => {
-              router.push('/booking')
-            }}
+           
             >
               Create Event
             </Button>
