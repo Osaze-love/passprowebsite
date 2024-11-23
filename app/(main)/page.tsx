@@ -197,7 +197,7 @@ export default function Home() {
   />
 </div>
         </section>
-        <section className="py-[50px] px-[40px] lg:px-[50px]">
+        {/* <section className="py-[50px] px-[40px] lg:px-[50px]">
         <section className=" mb-[40px]">
         <p className="font-semibold lg:font-bold text-[18px] lg:text-[40px] text-[#606060]">
             Trending <span className="text-[#FC6435]">Events</span>
@@ -205,7 +205,7 @@ export default function Home() {
         <div className="w-[50px] lg:w-[114px] h-[3px] lg:h-[5px] rounded-[5px] bg-[#FC6435]"></div>
       </section>
             <Trending />
-        </section>
+        </section> */}
         <section className="py-[50px] px-[40px] lg:px-[50px]">
         <p className="font-semibold text-center lg:font-bold text-[18px] lg:text-[40px] text-[#606060]">
             Brands That <span className="text-[#FC6435]">Trust</span> Us
