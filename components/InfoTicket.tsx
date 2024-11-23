@@ -68,7 +68,7 @@ const InfoTicket = () => {
         <hr className="flex-grow border-t border-[#FC6435] mx-4" />
         <div className="flex space-x-2 items-center">
           <Image
-            src="/icons/profileredicon.svg"
+            src="/icons/profileredIcon.svg"
             width={20}
             height={20}
             alt="image"

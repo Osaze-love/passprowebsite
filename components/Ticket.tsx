@@ -250,6 +250,12 @@ const Ticket = () => {
             <p className="text-[24px] text-[#343434]">{`₦${calculateTotal()}`}</p>
           </div>
         </div>
+        <div className='flex items-center justify-center w-full'>
+         <Button variant="outline" className="hover:bg-[#FC6435]  w-3/4 my-[48px] font-medium bg-[#FC6435] text-white py-[25px] hover:text-white active:scale-90 transition-all border-none text-[20px]" onClick={() => {
+          setIsChoosingTickets(!isChoosingTickets);
+         }}>
+         {isChoosingTickets ? "Continue" : "Buy Ticket"}            </Button>
+         </div>
       </section>
     </div>
   )
