@@ -53,8 +53,8 @@ const Footer = () => {
       </div> 
       <div className='space-y-3 px-[20px] py-[40px] flex flex-col items-left'>
       <p className='text-[#FC6435] font-semibold'>Follow Us</p>
-      <Link href={'https://www.instagram.com/passpro_africa?igsh=MXF1MHphZmdtYWQ3Yg%3D%3D&utm_source=qr'} target='_blank' className='text-[14px] cursor-pointer'>Facebook</Link>
-     <Link href={'https://www.facebook.com/share/19NFRSr7HR/?mibextid=LQQJ4d'} target='_blank' className='text-[14px] cursor-pointer'>Instagram</Link>
+      <Link href={'https://www.instagram.com/passpro_africa?igsh=MXF1MHphZmdtYWQ3Yg%3D%3D&utm_source=qr'} target='_blank' className='text-[14px] cursor-pointer'>Instagram</Link>
+     <Link href={'https://www.facebook.com/share/19NFRSr7HR/?mibextid=LQQJ4d'} target='_blank' className='text-[14px] cursor-pointer'>Facebook</Link>
     
 
       </div> 
