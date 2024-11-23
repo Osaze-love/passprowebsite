@@ -7,7 +7,7 @@ const Pricing = () => {
     <div>
               <Navbar textColor="text-white" bgMobile='bg-white' bgColor='bg-[#164473]' />
 
-<section className=" bg-[#164473] mx-[20px] lg:mx-0 relative space-y-[10px] lg:space-y-[82px] pt-[97px] pb-[97px] lg:pb-0 mb-[10px] lg:mb-[70px]">
+<section className=" bg-[#164473] mx-[20px] lg:mx-0 relative space-y-[10px] lg:space-y-[10px] pt-[97px] pb-[97px] lg:pb-0 mb-[10px] lg:mb-[70px]">
         <div className="flex items-center justify-center">
           <div className="flex flex-col items-center justify-center space-y-[14px] lg:space-y-6 text-center">
             <p className="font-bold lg:font-extrabold text-[24px] lg:text-[60px] text-white">The Cheapest Price Ever!</p>
@@ -48,10 +48,10 @@ const Pricing = () => {
 
   <section className='grid grid-cols-1 lg:grid-cols-3 my-[30px] lg:my-[250px] px-[40px] gap-[40px]'>
       <div className='bg-[#FFF6F2] relative rounded-[10px] p-[28px] border'>
-       <div className='bg-[#FFD8C8] rounded-[10px] w-full flex items-center justify-center space-x-[20px] py-[10px] '>
+       <div className='bg-[#FFD8C8] rounded-[10px] w-full flex items-center justify-center space-x-2 py-[10px] '>
         <Image src={'/icons/eventTypesIcon.svg'} width={60} height={60} alt='image' className='hidden lg:block'/>
         <Image src={'/icons/eventTypesIcon.svg'} width={32} height={32} alt='image' className='block lg:hidden'/>
-        <p className='text-[18px] lg:text-[24px] text-[#164473] font-semibold'>Event Types</p>
+        <p className='text-[18px] lg:text-[20px] text-[#164473] font-semibold'>Event Types</p>
        </div>
        <div className='w-full space-y-[19px]  mt-[40px] lg:mt-[74px] px-[40px]'>
        <div className='flex items-center space-x-[15px]'>
@@ -74,10 +74,13 @@ const Pricing = () => {
       
       </div>
       <div className='bg-[#FFF6F2] relative rounded-[10px] p-[28px] border'>
-       <div className='bg-[#FFD8C8] rounded-[10px] w-full flex items-center justify-center space-x-[20px] py-[10px]'>
-        <Image src={'/icons/promotionAndGrowthIcon.svg'} width={60} height={60} alt='image' className='hidden lg:block'/>
-        <Image src={'/icons/promotionAndGrowthIcon.svg'} width={32} height={32} alt='image' className='block lg:hidden'/>
-        <p className='text-[18px] lg:text-[24px] text-[#164473] font-semibold'>Promotion And Growth</p>
+       <div className='bg-[#FFD8C8] rounded-[10px] w-full flex items-center justify-center py-[10px] space-x-2'>
+        <div className=''>
+        <Image src={'/icons/promotionAndGrowthIcon.svg'} width={60} height={60} alt='image' className='hidden lg:flex'/>
+        <Image src={'/icons/promotionAndGrowthIcon.svg'} width={32} height={32} alt='image' className='flex lg:hidden'/>
+        </div>
+       
+        <p className='text-[18px] lg:text-[20px] text-center text-[#164473] font-semibold'>Promotion And Growth</p>
        </div>
        <div className='w-full space-y-[19px]  mt-[40px] lg:mt-[74px] px-[40px]'>
        <div className='flex items-center space-x-[15px]'>
@@ -100,10 +103,10 @@ const Pricing = () => {
       
       </div>
       <div className='bg-[#FFF6F2] relative rounded-[10px] p-[28px] border'>
-       <div className='bg-[#FFD8C8] rounded-[10px] w-full flex items-center justify-center space-x-[20px] py-[10px]'>
+       <div className='bg-[#FFD8C8] rounded-[10px] w-full flex items-center justify-center space-x-2 py-[10px]'>
         <Image src={'/icons/sellingTicketIcon.svg'} width={60} height={60} alt='image' className='hidden lg:block'/>
         <Image src={'/icons/sellingTicketIcon.svg'} width={32} height={32} alt='image' className='block lg:hidden'/>
-        <p className='text-[18px] lg:text-[24px] text-[#164473] font-semibold'>Selling Ticket</p>
+        <p className='text-[18px] lg:text-[20px] text-[#164473] font-semibold'>Selling Ticket</p>
        </div>
        <div className='w-full space-y-[19px]  mt-[40px] lg:mt-[74px] px-[40px]'>
        <div className='flex items-center space-x-[15px]'>
@@ -127,10 +130,10 @@ const Pricing = () => {
       </div>
 
       <div className='bg-[#FFF6F2] relative rounded-[10px] p-[28px] border'>
-       <div className='bg-[#FFD8C8] rounded-[10px] w-full flex items-center justify-center space-x-[20px] py-[10px]'>
+       <div className='bg-[#FFD8C8] rounded-[10px] w-full flex items-center justify-center space-x-2 py-[10px]'>
         <Image src={'/icons/paymentandSupportIcon.svg'} width={60} height={60} alt='image' className='hidden lg:block'/>
         <Image src={'/icons/paymentandSupportIcon.svg'} width={32} height={32} alt='image' className='block lg:hidden'/>
-        <p className='text-[18px] lg:text-[24px] text-[#164473] font-semibold'>Payment and Support</p>
+        <p className='text-[18px] lg:text-[20px] text-[#164473] font-semibold'>Payment and Support</p>
        </div>
        <div className='w-full space-y-[19px]  mt-[40px] lg:mt-[74px] px-[40px]'>
        <div className='flex items-center space-x-[15px]'>
@@ -154,10 +157,10 @@ const Pricing = () => {
       </div>
 
       <div className='bg-[#FFF6F2] relative rounded-[10px] p-[28px] border'>
-       <div className='bg-[#FFD8C8] rounded-[10px] w-full flex items-center justify-center space-x-[20px] py-[10px]'>
+       <div className='bg-[#FFD8C8] rounded-[10px] w-full flex items-center justify-center space-x-2 py-[10px]'>
         <Image src={'/icons/managementIcon.svg'} width={60} height={60} alt='image' className='hidden lg:block' />
         <Image src={'/icons/managementIcon.svg'} width={32} height={32} alt='image' className='block lg:hidden'/>
-        <p className='text-[18px] lg:text-[24px] text-[#164473] font-semibold'>Management</p>
+        <p className='text-[18px] lg:text-[20px] text-[#164473] font-semibold'>Management</p>
        </div>
        <div className='w-full space-y-[19px]  mt-[40px] lg:mt-[74px] px-[40px]'>
        <div className='flex items-center space-x-[15px]'>
@@ -181,10 +184,10 @@ const Pricing = () => {
       </div>
 
       <div className='bg-[#FFF6F2] relative rounded-[10px] p-[28px] border'>
-       <div className='bg-[#FFD8C8] rounded-[10px] w-full flex items-center justify-center space-x-[20px] py-[10px]'>
+       <div className='bg-[#FFD8C8] rounded-[10px] w-full flex items-center justify-center space-x-2 py-[10px]'>
         <Image src={'/icons/customizationIcon.svg'} width={60} height={60} alt='image' className='hidden lg:block'/>
         <Image src={'/icons/customizationIcon.svg'} width={32} height={32} alt='image' className='block lg:hidden'/>
-        <p className='text-[18px] lg:text-[24px] text-[#164473] font-semibold'>Customization</p>
+        <p className='text-[18px] lg:text-[20px] text-[#164473] font-semibold'>Customization</p>
        </div>
        <div className='w-full space-y-[19px]  mt-[40px] lg:mt-[74px] px-[40px]'>
        <div className='flex items-center space-x-[15px]'>

@@ -1,3 +1,4 @@
+"use client"
 import Navbar from '@/components/Navbar'
 import React from 'react'
 import Swiper from "@/components/Swiper";
@@ -7,8 +8,13 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Popular from '@/components/Popular';
 import Free from '@/components/Free';
+import useFetch from '@/hooks/useFetch';
+import { useRouter } from 'next/navigation';
 
 const page = () => {
+  const { getAllFreeEvents
+   } = useFetch();
+   const router = useRouter();
   return (
     <div>
       <Navbar textColor='black' bgColor='bg-white' bgMobile='bg-white'/>
@@ -128,13 +134,17 @@ const page = () => {
          <Button
           variant="outline"
           className="bg-transparennt hover:bg-transparent text-[#fc6435] font-medium px-[56px] py-[20px] text-[14px] lg:text-[18px] active:scale-90 transition-all border border-[#fc6435] hover:text-[#fc6435] h-[34px] lg:h-[56px]"
+          onClick={() => {
+            router.push('/allpopular')
+            // getAllPopularEvents();
+          }}
         >
           View All
         </Button>
         </div>
         
       </div>
-      <div className='bg-[#fff3ef] px-[40px] space-y-[40px] py-[40px]'>
+      {/* <div className='bg-[#fff3ef] px-[40px] space-y-[40px] py-[40px]'>
       <section className=" mb-[40px]">
         <p className="font-semibold lg:font-bold text-[18px] lg:text-[40px] text-[#606060]">
             Trending <span className="text-[#FC6435]">Events</span>
@@ -150,7 +160,7 @@ const page = () => {
           View All
         </Button>
         </div>
-      </div>
+      </div> */}
 
       <div className=' px-[40px] space-y-[40px] py-[40px]'>
       <section className=" mb-[40px]">
@@ -164,7 +174,10 @@ const page = () => {
          <Button
           variant="outline"
           className="bg-transparennt hover:bg-transparent text-[#fc6435] font-medium px-[56px] py-[20px] text-[14px] lg:text-[18px] active:scale-90 transition-all border border-[#fc6435] hover:text-[#fc6435] h-[34px] lg:h-[56px]"
-        >
+          onClick={() => {
+            router.push('/allfree')
+          }}
+       >
           View All
         </Button>
         </div>

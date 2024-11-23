@@ -143,11 +143,7 @@ const Contact = () => {
             variant="outline"
             onClick={async() => {       
               await contactPasspro(firstName, lastName, email, phone, message); 
-              setFirstName('');
-              setLastName('');
-              setEmail('');
-              setMessage('');
-              setPhone('');
+              
             }}
             className="bg-[#FC6435]  justify-center lg:justify-start hover:bg-[#FC6435] text-white font-medium px-[56px] py-[26px] active:scale-90 transition-all hover:text-white mb-[40px] lg:self-start"
           >

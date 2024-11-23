@@ -7,6 +7,10 @@ const initialState = {
   popularEvents: [] as any[],
   freeEvents: [] as any[],
   eventBook: {} as any,
+  allPopularEvents : [] as any[],
+  allFreeEvents : [] as any[],
+  allFeaturedEvents : [] as any[],
+
 };
 
 // Redux slice
@@ -17,14 +21,22 @@ export const eventslice = createSlice({
     updateFeaturedEvents: (state, action: PayloadAction<any[]>) => {
       state.featuredEvents = action.payload;
     },
-
+    updateAllFeaturedEvents: (state, action: PayloadAction<any[]>) => {
+      state.allFeaturedEvents = action.payload;
+    },
     updatePopularEvents: (state, action: PayloadAction<any[]>) => {
         state.popularEvents = action.payload;
+      },
+    updateAllPopularEvents: (state, action: PayloadAction<any[]>) => {
+        state.allPopularEvents = action.payload;
       },
     updateFreeEvents: (state, action: PayloadAction<any[]>) => {
         state.freeEvents = action.payload;
       },
-      updateEventBook: (state, action: PayloadAction<any[]>) => {
+      updateAllFreeEvents: (state, action: PayloadAction<any[]>) => {
+        state.allFreeEvents = action.payload;
+      },
+      updateEventBook: (state, action: PayloadAction<any>) => {
         state.eventBook = action.payload;
       },
     
@@ -36,7 +48,10 @@ export const {
   updateFeaturedEvents, 
   updateFreeEvents,
   updatePopularEvents,
-  updateEventBook
+  updateEventBook,
+  updateAllFeaturedEvents,
+  updateAllFreeEvents,
+  updateAllPopularEvents
 } = eventslice.actions;
 
 // Export the reducer

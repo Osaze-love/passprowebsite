@@ -29,7 +29,7 @@ export default function Home() {
           <Banner />
         </div>
           </section>
-        <section className="grid grid-cols-1 lg:grid-cols-4 items-center mx-auto bg-white rounded-[8px] max-w-[80%] shadow-md relative -top-16">
+        {/* <section className="grid grid-cols-1 lg:grid-cols-4 items-center mx-auto bg-white rounded-[8px] max-w-[80%] shadow-md relative -top-16">
           <div className="space-y-[20px] border-r-0 lg:border-r-1 p-[51px]  lg:p-[30px]">
             <p className="font-semibold text-[20px] text-[#343434]">Search by Category</p>
            <div className="flex items-center space-x-3">
@@ -56,7 +56,7 @@ export default function Home() {
               Search
             </Button>
           </div>
-        </section>
+        </section> */}
         <section className="flex py-[50px] items-center flex-col w-full">
         
       <section className="space-y-[30px]">

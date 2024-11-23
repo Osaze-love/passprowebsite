@@ -1,7 +1,11 @@
+"use client"
 import Image from 'next/image'
+import Link from 'next/link';
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
 const Footer = () => {
+  const router = useRouter();
   return (
 
     <div className='bg-[#164473]  '>
@@ -16,11 +20,21 @@ const Footer = () => {
       <div className='grid grid-cols-1 lg:grid-cols-4 gap-[0px] lg:gap-[60px]'>
       <div className='space-y-3 px-[20px] py-[40px]'>
       <p className='text-[#FC6435] font-semibold'>Quick Links</p>
-     <p className='text-[14px]'>Buy Ticket</p>
-     <p className='text-[14px]'>Explore</p>
-     <p className='text-[14px]'>Blog</p>
-     <p className='text-[14px]'>Contact Us</p>
-     <p className='text-[14px]'>About Us</p>
+      <p onClick={() => {
+      router.push('/')
+     }}  className='text-[14px] cursor-pointer'>Home</p>
+     <p onClick={() => {
+      router.push('/explore')
+     }} className='text-[14px] cursor-pointer'>Explore</p>
+      <p onClick={() => {
+      router.push('/pricing')
+     }}  className='text-[14px] cursor-pointer'>Pricing</p>
+     <p  onClick={() => {
+      router.push('/contact')
+     }} className='text-[14px] cursor-pointer'>Contact Us</p>
+     <p onClick={() => {
+      router.push('/about')
+     }}  className='text-[14px] cursor-pointer'>About Us</p>
 
       </div> 
       <div className='space-y-3 px-[20px] py-[40px]'>
@@ -32,17 +46,15 @@ const Footer = () => {
       </div> 
       <div className='space-y-3 px-[20px] py-[40px]'>
       <p className='text-[#FC6435] font-semibold'>Legal</p>
-     <p className='text-[14px]'>Privacy</p>
+     <p className='text-[14px]'>Privacy And Support Policy</p>
      <p className='text-[14px]'>Terms&Conditions</p>
-     <p className='text-[14px]'>Support Policy</p>
      
 
       </div> 
-      <div className='space-y-3 px-[20px] py-[40px]'>
+      <div className='space-y-3 px-[20px] py-[40px] flex flex-col items-left'>
       <p className='text-[#FC6435] font-semibold'>Follow Us</p>
-     <p className='text-[14px]'>Facebook</p>
-     <p className='text-[14px]'>Twitter</p>
-     <p className='text-[14px]'>Instagram</p>
+      <Link href={'https://www.instagram.com/passpro_africa?igsh=MXF1MHphZmdtYWQ3Yg%3D%3D&utm_source=qr'} target='_blank' className='text-[14px] cursor-pointer'>Facebook</Link>
+     <Link href={'https://www.facebook.com/share/19NFRSr7HR/?mibextid=LQQJ4d'} target='_blank' className='text-[14px] cursor-pointer'>Instagram</Link>
     
 
       </div> 

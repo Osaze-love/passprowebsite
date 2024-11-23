@@ -10,9 +10,11 @@ import {
   REGISTER,
 } from "redux-persist";
 import { eventslice } from "./slices/eventslice";
+import { paymentInfoslice } from "./slices/paymentInfoslice";
 
 const rootReducer = combineReducers({
-  event: eventslice.reducer
+  event: eventslice.reducer,
+  payment: paymentInfoslice.reducer,
 });
 
 const persistConfig = {
