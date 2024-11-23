@@ -31,7 +31,7 @@ const page = () => {
   return (
     <div>     
       <Navbar textColor='black' bgColor='bg-white' bgMobile='bg-white'/>
-        <div className='py-[50px] px-[40px] lg:px-[50px]'>
+        <div className='py-[50px] px-[20px] lg:px-[50px]'>
         <section className=" mb-[40px]">
         <p className="font-semibold lg:font-bold text-[18px] lg:text-[40px] text-[#606060]">
             Popular Events
@@ -49,7 +49,7 @@ const page = () => {
             //   style={{ fontSize: "30px" }} // Optional inline style for added assurance
 
             />
-            <Button variant="outline" className="hover:bg-[#FC6435] font-medium bg-[#FC6435] text-white px-[25px] lg:px-[56px] py-[18.5px] hover:text-white active:scale-90 transition-all border-none w-max"
+            <Button variant="outline" className="hover:bg-[#FC6435] font-medium bg-[#FC6435] text-white px-[15px] lg:px-[56px] py-[10px] lg:py-[19px] hover:text-white active:scale-90 transition-all border-none w-max"
             onClick={handleSearch}
             >
               Search
