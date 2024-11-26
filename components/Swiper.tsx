@@ -6,6 +6,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import Image from 'next/image';
+import '../app/css/custom-swiper-bullet.css';
 
 export default function SwiperComponent() {
   const swiperData = [
@@ -49,6 +50,9 @@ export default function SwiperComponent() {
       prevEl: '.custom-prev',
     }}
      loop={true}
+     pagination={{
+      dynamicBullets: true,
+    }}
     modules={[Pagination, Navigation, Parallax, Mousewheel]}
     breakpoints={{
       640: {
