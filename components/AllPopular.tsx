@@ -50,7 +50,7 @@ const AllPopular = () => {
                 <p className='text-[12px] lg:text-[14px]'>{feature?.event_location}</p>
             </div>
             <div className='flex items-center justify-between'>
-                <p className='text-[14px] lg:text-[16px]'>{feature?.price}</p>
+                <p className='text-[14px] text-[#FC6435] font-semibold lg:text-[16px]'>{feature?.price}</p>
                 <Button
                 onClick={async() => {
                     await getBookEvent(feature?.id);

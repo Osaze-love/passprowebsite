@@ -47,7 +47,7 @@ const Footer = () => {
       <div className='space-y-3 px-[20px] py-[40px]'>
       <p className='text-[#FC6435] font-semibold'>Legal</p>
      <p className='text-[14px]'>Privacy And Support Policy</p>
-     <p className='text-[14px]'>Terms&Conditions</p>
+     <p className='text-[14px]'>Terms & Conditions</p>
      
 
       </div> 
@@ -55,6 +55,7 @@ const Footer = () => {
       <p className='text-[#FC6435] font-semibold'>Follow Us</p>
       <Link href={'https://www.instagram.com/passpro_africa?igsh=MXF1MHphZmdtYWQ3Yg%3D%3D&utm_source=qr'} target='_blank' className='text-[14px] cursor-pointer'>Instagram</Link>
      <Link href={'https://www.facebook.com/share/19NFRSr7HR/?mibextid=LQQJ4d'} target='_blank' className='text-[14px] cursor-pointer'>Facebook</Link>
+     <Link href={'https://www.tiktok.com/@passpro.africa?_t=8rebsDGkptg&_r=1'} target='_blank' className='text-[14px] cursor-pointer'>TikTok</Link>
     
 
       </div> 

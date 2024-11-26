@@ -7,7 +7,7 @@ const Pricing = () => {
     <div>
               <Navbar textColor="text-white" bgMobile='bg-white' bgColor='bg-[#164473]' />
 
-<section className=" bg-[#164473] mx-[20px] lg:mx-0 relative space-y-[10px] lg:space-y-[10px] pt-[97px] pb-[97px] lg:pb-0 mb-[10px] lg:mb-[70px]">
+<section className=" bg-[#164473] mx-[20px] lg:mx-0 relative space-y-[10px] lg:space-y-[10px] pt-[0px] pb-[40px] max-h-[75vh] lg:pb-0 mb-[10px] lg:mb-[70px]">
         <div className="flex items-center justify-center">
           <div className="flex flex-col items-center justify-center space-y-[14px] lg:space-y-6 text-center">
             <p className="font-bold lg:font-extrabold text-[24px] lg:text-[60px] text-white">The Cheapest Price Ever!</p>
@@ -18,7 +18,7 @@ const Pricing = () => {
         </div>
           
         <section className='hidden lg:grid px-[8px] lg:px-[40px] grid-cols-1 lg:grid-cols-2 gap-[20px] items-center relative'>
-        <Image src={'/images/pricingimage.svg'} height={600} width={600} alt='image' className='hidden lg:block relative rounded-[10px] top-[150px]'/>
+        <Image src={'/images/pricingimage.svg'} height={200} width={450} alt='image' className='hidden lg:block relative rounded-[10px] top-[50px]'/>
          <div className='text-center text-white pb-[10px] w-full lg:w-3/4 mx-auto'>
             
                 <p className='mb-[10px] lg:mb-[20px] text-[14px] lg:text-[16px] font-medium lg:font-semibold'>Region:  Nigeria</p>
@@ -46,7 +46,7 @@ const Pricing = () => {
           </section>
       </section>
 
-  <section className='grid grid-cols-1 lg:grid-cols-3 my-[30px] lg:my-[250px] px-[40px] gap-[40px]'>
+  <section className='grid grid-cols-1 lg:grid-cols-3 my-[30px] lg:mt-[170px] lg:mb-[80px] px-[40px] gap-[40px]'>
       <div className='bg-[#FFF6F2] relative rounded-[10px] p-[28px] border'>
        <div className='bg-[#FFD8C8] rounded-[10px] w-full flex items-center justify-center space-x-2 py-[10px] '>
         <Image src={'/icons/eventTypesIcon.svg'} width={60} height={60} alt='image' className='hidden lg:block'/>

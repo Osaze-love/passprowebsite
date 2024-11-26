@@ -29,18 +29,22 @@ const Ticket = () => {
   const dispatch = useDispatch();
   const { eventBook } = useSelector((state: RootState) => state.event);
  
-  const calculateCharge = (price: number) => parseFloat((price * 0.04 + 100).toFixed(2));
+  const calculateCharge = (price: number) => {
+    if (price === 0) return 0; // No charge for free tickets
+    return parseFloat((price * 0.04 + 100).toFixed(2));
+  };
 
   // Track selected tickets
   const [selectedTickets, setSelectedTickets] = useState<{
     id: number;
+    ticket_name: string;
     ticket_quantity: number;
     ticket_price: number;
     ticket_category: string;
   }[]>([]);
 
   // Handle ticket selection
-  const handleSelect = (id: number, quantity: number, price: number, category: string) => {
+  const handleSelect = (id: number, quantity: number, price: number, category: string, name:string) => {
     // Ensure price is parsed as a number
     const cleanPrice = parseFloat(price.toString().replace(/\.00$/, ""));
     
@@ -61,7 +65,8 @@ const Ticket = () => {
       }
   
       // Add a new ticket
-      return [...prev, { id, ticket_quantity: quantity, ticket_price: cleanPrice, ticket_category: category }];
+      return [...prev, { id, ticket_quantity: quantity, ticket_price: cleanPrice, ticket_category: category, ticket_name: name, // Include ticket_name
+      }];
     });
   };
 
@@ -69,12 +74,13 @@ const Ticket = () => {
     const total = selectedTickets.reduce((sum, ticket) => {
       const charge = calculateCharge(ticket.ticket_price);
       const adjustedPrice = ticket.ticket_price + charge;
+  
       return sum + adjustedPrice * ticket.ticket_quantity;
     }, 0);
   
-    // Return the total formatted to two decimal places
     return total.toFixed(2);
   };
+  
 
   useEffect(() => {
     console.log(selectedTickets);
@@ -84,10 +90,10 @@ const Ticket = () => {
     return (
     <div className='grid grid-cols-2 items-center px-[40px] py-[51px] gap-[63px]'>
       <section>
-        <div className='flex items-center justify-between mb-[42px]'>
+        {isChoosingTickets ? <div className='flex items-center justify-between mb-[42px]'>
            <div className='flex space-x-2 items-center'>
             <Image src='/icons/TicketIcon.svg' width={34} height={34} alt='image'/>
-            <p>Tickets</p>
+            <p className='text-[#fc6435]'>Tickets</p>
            </div>
            <hr className="flex-grow border-t border-[#FC6435] mx-4" /> {/* Horizontal line */}
 
@@ -95,7 +101,21 @@ const Ticket = () => {
            <Image src='/icons/across.svg' width={34} height={34} alt='image'/>
            <p>Contact</p>
            </div>
+        </div> : 
+        <div className='flex items-center justify-between mb-[42px]'>
+        <div className='flex space-x-2 items-center'>
+         <Image src='/icons/viewTicket.svg' width={34} height={34} alt='image'/>
+         <p>Tickets</p>
         </div>
+        <hr className="flex-grow border-t border-[#FC6435] mx-4" /> {/* Horizontal line */}
+
+        <div className='flex space-x-2 items-center'>
+        <Image src='/icons/profileredIcon.svg' width={34} height={34} alt='image'/>
+        <p className='text-[#fc6435]'>Contact</p>
+        </div>
+     </div>
+        }
+        
         {isChoosingTickets ?  <div>
             <p className='text-[#343434] text-[24px] font-semibold mb-[26px]'>Choose Tickets</p>
             
@@ -115,15 +135,21 @@ const Ticket = () => {
                 <div className="space-y-[15px]">
                   <p className="text-[#343434] text-[20px] font-semibold">{ticket.ticket_name}</p>
                   <p className="text-[#606060] ">
-                    <span className="font-bold text-[#FC6435]">                      ₦{ticket.ticket_price} + ₦{charge}
-                    </span> 
+                  {ticket.ticket_price === '0.00' ? (
+            <span className="font-bold text-[#FC6435]">Free</span>
+          ) : (
+            <span className="font-bold text-[#FC6435]">
+              ₦{ticket.ticket_price} <span className='text-[#606060] font-normal'>+ ₦{charge}</span> 
+            </span>
+          )}
                   </p>
-                  <p className="text-[#343434] font-normal">{ticket.ticket_category}</p>
+                  <p className="text-[#343434] font-normal">{ticket.ticket_description}</p>
                 </div>
                 <Select
                   value={selectedTickets.find((item) => item.id === ticket.id)?.ticket_quantity.toString() || "0"}
                   onValueChange={(value) =>
-                    handleSelect(ticket.id, parseInt(value), ticket.ticket_price, ticket.ticket_category)
+                    handleSelect(ticket.id, parseInt(value), ticket.ticket_price, ticket.ticket_category, ticket.ticket_name 
+                  )
                   }
                    >
                   <SelectTrigger className="w-[100px] h-[40px] px-[17px] py-[15px] focus:ring-0 focus:ring-offset-0">
@@ -222,8 +248,12 @@ const Ticket = () => {
       </section>
       <section className='border rounded-[8px] px-[40px] py-[50px]'>
         <p className='font-semibold text-[32px] text-center text-[#164473]'>Reserve A Seat</p>
+
+        <p className="text-[20px] mt-[20px] text-[#343434] font-semibold w-3/4">
+                    {eventBook?.event_name}
+                  </p>
          
-         <div className='space-y-[14px] py-[38px]'>
+         <div className='space-y-[14px] py-[10px]'>
          {selectedTickets.map((ticket) => {
             const charge = calculateCharge(ticket.ticket_price);
             const adjustedPrice = ticket.ticket_price + charge;
@@ -234,8 +264,8 @@ const Ticket = () => {
                 className="flex items-center justify-between border border-[#D9D9D9] rounded-[4px] px-[20px] py-[20px]"
               >
                 <div>
-                  <p className="text-[20px] text-[#343434] font-semibold w-3/4">
-                    {eventBook?.event_name}
+                  <p className="text-[20px] text-[#343434] font-semibold w-4/4">
+                    {ticket?.ticket_name}
                   </p>
                   <p className="text-[#8F8F8F]">
                     {ticket.ticket_quantity} x {ticket.ticket_category}

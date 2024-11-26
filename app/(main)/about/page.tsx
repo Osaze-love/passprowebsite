@@ -1,9 +1,12 @@
+"use client"
 import Navbar from '@/components/Navbar'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 const name = 'bg-gradient-to-b from-[#FFF4F0] to-[#ffffff]'; 
 const About = () => {
+  const router = useRouter();
   return (
     <div>
          <Navbar textColor='text-black' bgColor='bg-[white]' bgMobile='bg-white'/>
@@ -78,7 +81,7 @@ const About = () => {
 
           <section className='bg-[#164473] rounded-[16px] mx-[20px] px-[40px] grid grid-cols-1 lg:grid-cols-6 gap-0 lg:gap-[10px] items-center text-white p-[40px] my-[40px]'>
           <div className='col-span-4 text-[14px] lg:text-[20px] text-center lg:text-left mb-[30px] lg:mb-0'>
-          At PassPro, event ticketing meets simplicity and security. Launched in [Year], our platform is designed to transform the way you discover and attend events. Whether you’re booking tickets for concerts, conferences, sports events, or festivals, Passpro makes it easy for you to explore, select, and secure your spot at your favorite experiences.
+          At PassPro, event ticketing meets simplicity and security. Our platform is designed to transform the way you discover and attend events. Whether you’re booking tickets for concerts, conferences, sports events, or festivals, Passpro makes it easy for you to explore, select, and secure your spot at your favorite experiences.
           </div>
           <div className='col-span-2 flex justify-center w-full'>
           <Button variant="outline" className=' font-medium text-white px-[56px] py-[18.5px] flex items-center justify-center w-full lg:w-max bg-transparent h-[60px] hover:bg-transparent hover:text-white active:scale-90 transition-all '>
@@ -153,7 +156,7 @@ const About = () => {
         <Image src={'/images/gbadamosiimage.svg'} height={380} width={380} alt='meet' className='h-[380px] object-cover rounded-[8px] mb-[20px] hidden lg:block'/>
         <Image src={'/images/gbadamosiimage.svg'} height={170} width={170} alt='meet' className='h-[170px] mb-[13px] object-cover rounded-[8px]  block lg:hidden'/>
         <p className='text-center text-[18px] lg:text-[28px] font-semibold'>Gbadamosi Mujeedat</p>
-        <p className='text-[#8F8F8F] text-[14px] lg:text-[18px] text-center'>Founder/CEO</p>
+        <p className='text-[#8F8F8F] text-[14px] lg:text-[18px] text-center'>UI/UX Designer</p>
        </div>
        <div className='flex flex-col items-center'>
         <Image src={'/images/osazeimage.svg'} height={380} width={380} alt='meet' className='h-[380px] object-cover rounded-[8px] mb-[20px] hidden lg:block'/>
@@ -194,8 +197,12 @@ const About = () => {
           <p className="text-[14px] lg:text-[20px] text-white w-full lg:w-2/4">
           With Passpro, booking tickets to your favorite events has never been easier. From concerts to conferences, we connect you to the experiences you love with just a few clicks. Ready to find your next event?
           </p>
-            <Button variant="outline" className="hover:bg-[#FC6435] font-medium bg-[#FC6435] text-white px-[56px] h-[54px] lg:h-[70px] py-[18.5px] hover:text-white active:scale-90 transition-all border-none">
-              Sign Up Now
+            <Button
+            onClick={() => {
+              router.push('/explore')
+            }}
+            variant="outline" className="bg-[#FC6435] hover:bg-[#FC6435] text-white font-medium px-[50px] xl:px-[70px] py-[25px] active:scale-90 transition-all border-none hover:text-white">
+              Explore Events
             </Button>
           
         </div>

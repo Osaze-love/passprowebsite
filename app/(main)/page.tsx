@@ -69,8 +69,9 @@ export default function Home() {
         <div className="w-full flex items-center justify-center">
         <p className="text-[14px] lg:text-[24px] text-[#757575] w-3/4 text-center">Discover What You Need Effortlessly Browse Our Diverse Categories to Find Exactly What You’re Looking For!</p>
         </div>
-       
-        <div className='grid grid-cols-2 lg:grid-cols-4 items-start gap-[50px] px-[20px] lg:px-[50px] py-[78px]'>
+         
+         <Swiper />
+        {/* <div className='grid grid-cols-2 lg:grid-cols-4 items-start gap-[50px] px-[20px] lg:px-[50px] py-[78px]'>
         <div className='hidden lg:block'  style={{ position: 'relative', width: '100%', height: '400px',  }}>
      <Image
     src={'https://s3-alpha-sig.figma.com/img/d493/94bf/b8aa1c48cb49b39a48f097243eaf3fe8?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=G9m-aMF5wPoNSIjUJ-b8ucnBpbSTcQm7LEDLsbvxXNArf2xYfzC23DdOSBLnYvrawGEVq~r12Pd7tNWLdPXcjkgDGoSPPZKHMCsOpWce74m28sz3MbrK2mHDmFUmIJ5ykKSGjaEw-CPBp0XjA6PsOuAc0clAM7riF2TRD8eJHuo~6YgOiD2Pk6KXbtDJKj~wjTBX824t6iPQPN99YaID~xUqm5OEM1KxdbQNSvo7F-LtTyUEZmpq62rwoyH8xJFY8QAd527asfy8s5uSS20A9FakqZrDho5d9ezXVSPUQ8EUMNtl-p8wbtJMyJ296DzbBlPETF6fxYXOjSF0~4wj6w__'}
@@ -160,7 +161,7 @@ export default function Home() {
   />
 </div>   
     </div>
-        </div>
+        </div> */}
       </section>
         </section>
 

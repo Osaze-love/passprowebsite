@@ -21,8 +21,8 @@ const page = () => {
       <section className='bg-gradient-to-b from-[#FFF3EF] to-[#ffffff] py-0 lg:py-[82px]'>
       <div className="flex items-center justify-center">
           <div className="flex flex-col items-center justify-center space-y-6 text-center">
-            <p className="font-bold text-[24px] lg:text-[60px] pt-[60px] lg:pt-0 text-center w-3/4 lg:w-2/4 text-[#343434]">Discover <span className='text-[#FC6435]'>Events</span> That Match Your <span className='text-[Events]'>Passion</span></p>
-            <p className="text-[#606060] w-3/4 lg:w-2/4 text-[14px] lg:text-[24px]" >
+            <p className="font-bold text-[24px] lg:text-[60px] pt-[60px] lg:pt-0 text-center w-3/4 text-[#343434]">Discover <span className='text-[#FC6435]'>Events</span> That Match Your <span className='text-[#fc6435]'>Passion</span></p>
+            <p className="text-[#606060] w-4/4 lg:w-4/4 mx-[20px] lg:mx-[40px] text-[14px] lg:text-[24px]" >
             From unforgettable concerts and thrilling sports to enlightening workshops and family fun, find the perfect event for every interest. Browse through our curated categories and start planning your next adventure!
             </p>
             <Button variant="outline" className="hover:bg-[#FC6435] font-medium bg-[#FC6435] text-white w-[273px] lg:px-[56px] h-[37px] lg:h-[56px] py-[18.5px] hover:text-white active:scale-90 transition-all border-none text-[14px] lg:text-[20px]">

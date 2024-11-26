@@ -21,7 +21,7 @@ const BookingPage = () => {
       <section className='grid grid-cols-1 lg:grid-cols-2 gap-[63px] px-[20px] lg:px-[40px] py-[51px]'>
       <div className='hidden lg:block' style={{ position: 'relative', width: '100%', height: '100%' }}>
   <Image 
-    src="https://s3-alpha-sig.figma.com/img/8c9d/f614/f23d4f00eb464823230a635879bbaecf?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=a4x29o6nx-kTNpBqdHSCU6g5b6EsMlnm1BZ8DpKkQ7vBVb6HMm0zkkQZvKde1RbXSOYGTSVwplr1kysMI2wzucTfKGGdWSH9z-Ov5ACRzFbECz65x0hwGLY2nGD3JNs04-~ZH07MbnT1p-BCJQnh14Of-qnNMknJV7ckNpjsxV3fl~NljWTZCbf8rugFN8NMEUiMPtcgivk57tjshP3q2YchrFdvm4t2euzANsG18cMsncRPIYbmhd13CHQtqS9ukJZsEenaS03RAXYdnZfyTUwM02DJNNhauZWSeuq3I0Ih-0KeYPw~HWRCr-pirprbOQhNT-rfNGgCSnniKk~Kjg__"
+    src={!eventBook.gallery || eventBook?.gallery === null ? "https://s3-alpha-sig.figma.com/img/1de3/953f/78d7e40f1dee846f632ea900bb1f2188?Expires=1731888000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Z~jefw4J~~WVpx9ehn0MJ9yOLGyemjyxuuGdDMZvSj1sQHX-xzUXsTzaYEj54Exgne8AeXTCsfT1klOC3jV67ryKBUWI39xUdJiGnAhvTNGFYr5w4hJHFFN5wtt60PctbWddWaDAgZ9tuw3LovbIU09jzuS69XOO1EBRGSfi8NYfQjK4eJmiYbpkpIA5e72-PTacKyU05Cx5IEdzbLFJCjac0gWeL-b9rhOH047L2QVp7i-nesDKDvxA1GGuk8DhlXuRfOSCQ1ibqd18AhkVB0C~H-kSm6MtHXLELcJAOcA3XH29fLYgrKR9N5ML8lMyYM7P70F~31xMMZCWre7c3Q__" : `https://sub.passpro.africa/storage/${eventBook?.gallery?.event_image}`}
     alt="image"
     fill
     className='rounded-[8px]'
@@ -30,7 +30,7 @@ const BookingPage = () => {
 </div>
 <div className='block lg:hidden' style={{ position: 'relative', width: '100%', height: '340px' }}>
   <Image 
-    src="https://s3-alpha-sig.figma.com/img/8c9d/f614/f23d4f00eb464823230a635879bbaecf?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=a4x29o6nx-kTNpBqdHSCU6g5b6EsMlnm1BZ8DpKkQ7vBVb6HMm0zkkQZvKde1RbXSOYGTSVwplr1kysMI2wzucTfKGGdWSH9z-Ov5ACRzFbECz65x0hwGLY2nGD3JNs04-~ZH07MbnT1p-BCJQnh14Of-qnNMknJV7ckNpjsxV3fl~NljWTZCbf8rugFN8NMEUiMPtcgivk57tjshP3q2YchrFdvm4t2euzANsG18cMsncRPIYbmhd13CHQtqS9ukJZsEenaS03RAXYdnZfyTUwM02DJNNhauZWSeuq3I0Ih-0KeYPw~HWRCr-pirprbOQhNT-rfNGgCSnniKk~Kjg__"
+   src={!eventBook.gallery || eventBook?.gallery === null ? "https://s3-alpha-sig.figma.com/img/1de3/953f/78d7e40f1dee846f632ea900bb1f2188?Expires=1731888000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Z~jefw4J~~WVpx9ehn0MJ9yOLGyemjyxuuGdDMZvSj1sQHX-xzUXsTzaYEj54Exgne8AeXTCsfT1klOC3jV67ryKBUWI39xUdJiGnAhvTNGFYr5w4hJHFFN5wtt60PctbWddWaDAgZ9tuw3LovbIU09jzuS69XOO1EBRGSfi8NYfQjK4eJmiYbpkpIA5e72-PTacKyU05Cx5IEdzbLFJCjac0gWeL-b9rhOH047L2QVp7i-nesDKDvxA1GGuk8DhlXuRfOSCQ1ibqd18AhkVB0C~H-kSm6MtHXLELcJAOcA3XH29fLYgrKR9N5ML8lMyYM7P70F~31xMMZCWre7c3Q__" : `https://sub.passpro.africa/storage/${eventBook?.gallery?.event_image}`}
     alt="image"
     fill
     className='rounded-[8px]'

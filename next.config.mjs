@@ -5,7 +5,12 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 's3-alpha-sig.figma.com',
-        pathname: '/img/**', // Adjust the path as needed or use '/**' for all paths
+        pathname: '/img/**', // Matches paths under /img
+      },
+      {
+        protocol: 'https',
+        hostname: 'sub.passpro.africa',
+        pathname: '/**', // Matches all paths
       },
     ],
   },
