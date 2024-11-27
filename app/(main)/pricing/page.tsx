@@ -7,11 +7,11 @@ const Pricing = () => {
     <div>
               <Navbar textColor="text-white" bgMobile='bg-white' bgColor='bg-[#164473]' />
 
-<section className=" bg-[#164473] mx-[20px] lg:mx-0 relative space-y-[10px] lg:space-y-[10px] pt-[0px] pb-[40px] max-h-[75vh] lg:pb-0 mb-[10px] lg:mb-[70px]">
+<section className=" bg-[#164473] mx-[20px] lg:mx-0 relative space-y-[10px] lg:space-y-[10px] pt-[30px] lg:pt-0 pb-[40px] max-h-[75vh] lg:pb-0 mb-[10px] lg:mb-[70px]">
         <div className="flex items-center justify-center">
           <div className="flex flex-col items-center justify-center space-y-[14px] lg:space-y-6 text-center">
-            <p className="font-bold lg:font-extrabold text-[24px] lg:text-[60px] text-white">The Cheapest Price Ever!</p>
-            <p className="text-[white] w-4/4 lg:w-3/4  text-[12px] lg:text-[20px]" >
+            <p className="font-bold lg:font-extrabold text-[32px] lg:text-[60px] text-white w-[90%] lg:w-full">The Cheapest Price Ever!</p>
+            <p className="text-[white] w-3/4 lg:w-3/4  text-[16px] lg:text-[20px]" >
               Getting started on Passpro is entirely FREE. No onboarding fee or hidden charges. That’s not all! All free events on passPro is not charged at all.
             </p>
           </div>
@@ -34,10 +34,10 @@ const Pricing = () => {
     
       </section>
       <section>
-      <section className='flex lg:hidden flex-col items-center px-[20px] '>
+      <section className='flex lg:hidden flex-col items-center pt-[20px] px-[20px] '>
           <Image src={'/images/pricingimage.svg'} width={360} height={190} alt='image' className='relative rounded-[10px] -top-[40px]'/>
           <div className='text-center border border-[#D9D9D9] text-[#FC6435] py-[40px] px-[80px] w-full mx-auto rounded-[10px]'>
-            
+              
               
                   <p className='text-[40px] font-extrabold'>4% + ₦100</p>
                   <p className='text-[14px] lg:text-[16px]'>On Every paid ticket on  PassPro</p>

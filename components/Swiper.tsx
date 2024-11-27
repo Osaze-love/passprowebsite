@@ -65,12 +65,7 @@ export default function SwiperComponent() {
         spaceBetween: 20,
       },
     }}
-   
-   
-
-    // onSlideChange={() => console.log('slide change')}
-    // onSwiper={(swiper) => console.log(swiper)}
-      className="px-[40px] overflow-hidden max-w-sm lg:max-w-5xl"
+      className="px-[40px] overflow-hidden max-w-sm lg:max-w-6xl"
     >
        <div className="custom-next swiper-button-next text-white"></div>
        <div className="custom-prev swiper-button-prev text-white"></div>
