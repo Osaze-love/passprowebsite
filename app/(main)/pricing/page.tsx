@@ -36,7 +36,7 @@ const Pricing = () => {
       <section>
       <section className='flex lg:hidden flex-col items-center pt-[20px] px-[20px] '>
           <Image src={'/images/pricingimage.svg'} width={360} height={190} alt='image' className='relative rounded-[10px] -top-[40px]'/>
-          <div className='text-center border border-[#D9D9D9] text-[#FC6435] py-[40px] px-[80px] w-full mx-auto rounded-[10px]'>
+          <div className='text-center border border-[#D9D9D9] text-[#FC6435] py-[40px] px-[60px] w-full mx-auto rounded-[10px]'>
               
               
                   <p className='text-[40px] font-extrabold'>4% + ₦100</p>
