@@ -10,16 +10,31 @@ import {
     SelectLabel,
     SelectTrigger,
     SelectValue,
-  } from "@/components/ui/select"
+  } from "@/components/ui/select";
+  import { updateFirstName,
+    updateLastName,
+    updateEmail,
+    updateConfirmEmail,
+    updatePhoneNumber,
+    toggleSendToDifferentEmail,
+    updateAttendeeFirstName,
+    updateAttendeeLastName,
+    updateAttendeeEmail,
+    updateAttendeeConfirmEmail, 
+    updateTickets} from "@/redux/slices/paymentInfoslice";
 import { Input } from './ui/input'
 import { Label } from './ui/label'
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
+import useFetch from '@/hooks/useFetch';
+import FadeLoader from 'react-spinners/FadeLoader';
 
 
 const Ticket = () => {
+  const { first_name, last_name, email, confirm_email, phone_number, attendee_first_name, attendee_last_name, attendee_email, attendee_confirm_email, send_to_different_email, tickets } = useSelector((state: RootState) => state.payment);
+  const { makePayment, loading } = useFetch();
     const [selectedValue, setSelectedValue] = useState("0"); // Default to "0"
     const [selectedCountryCode, setSelectedCountryCode] = useState("+234"); 
     const [showDifferentAddressFields, setShowDifferentAddressFields] = useState('No'); // New state for additional fields
@@ -33,6 +48,11 @@ const Ticket = () => {
     if (price === 0) return 0; // No charge for free tickets
     return parseFloat((price * 0.04 + 100).toFixed(2));
   };
+
+  useEffect(() => {
+    const sendToDifferentEmail = showDifferentAddressFields === "Yes";
+    dispatch(toggleSendToDifferentEmail(sendToDifferentEmail));
+  },[showDifferentAddressFields])
 
   // Track selected tickets
   const [selectedTickets, setSelectedTickets] = useState<{
@@ -89,6 +109,13 @@ const Ticket = () => {
 
     return (
     <div className='grid grid-cols-2 items-center px-[40px] py-[51px] gap-[63px]'>
+            {loading && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-85">
+     
+        <FadeLoader color="#FC6435" />
+       
+    </div> 
+  )}
       <section>
         {isChoosingTickets ? <div className='flex items-center justify-between mb-[42px]'>
            <div className='flex space-x-2 items-center'>
@@ -175,36 +202,54 @@ const Ticket = () => {
         <div className='space-y-[30px]'>
         <div className='space-y-[11px]'>
         <Label className='text-[#343434]'>First Name <span className='text-[#FC6435]'>*</span></Label>
-        <Input type='text' placeholder='Enter First Name' className='placeholder:text-[#8F8F8F] border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p-[16px] '/>
+        <Input type='text' placeholder='Enter First Name' className='placeholder:text-[#8F8F8F] border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p-[16px] '
+        onChange={(e) => dispatch(updateFirstName(e.target.value))}
+
+        />
         </div>
         <div className='space-y-[11px]'>
         <Label className='text-[#343434]'>Last Name <span className='text-[#FC6435]'>*</span></Label>
-        <Input type='text' placeholder='Enter Last Name' className='placeholder:text-[#8F8F8F] border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p-[16px] '/>
+        <Input type='text' placeholder='Enter Last Name' className='placeholder:text-[#8F8F8F] border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p-[16px] '
+         onChange={(e) => dispatch(updateLastName(e.target.value))}
+
+        />
         </div>
         <div className='space-y-[11px]'>
         <Label className='text-[#343434]'>Email <span className='text-[#FC6435]'>*</span></Label>
-        <Input type='text' placeholder='Enter A Valid Email Address' className='placeholder:text-[#8F8F8F] border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p-[16px] '/>
+        <Input type='text' placeholder='Enter A Valid Email Address' className='placeholder:text-[#8F8F8F] border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p-[16px] '
+        onChange={(e) => dispatch(updateEmail(e.target.value))}
+
+        />
         </div>
         <div className='space-y-[11px]'>
         <Label className='text-[#343434]'>Confirm Email <span className='text-[#FC6435]'>*</span></Label>
-        <Input type='text' placeholder='Confirm Email Address' className='placeholder:text-[#8F8F8F] border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p-[16px] '/>
+        <Input type='text' placeholder='Confirm Email Address' className='placeholder:text-[#8F8F8F] border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p-[16px] '
+        onChange={(e) => dispatch(updateConfirmEmail(e.target.value))}
+
+        />
         </div>
         <div className='space-y-[11px]'>
         <Label className='text-[#343434]'>Phone Number <span className='text-[#FC6435]'>*</span></Label>
         <div className='flex items-center space-x-2'>
-        <Select value={selectedCountryCode} onValueChange={(value) => setSelectedCountryCode(value)} >
+        <Select onValueChange={(value) => setSelectedCountryCode(value)}
+              defaultValue={selectedCountryCode} >
         <SelectTrigger className="w-[74px] px-[7px] py-[14px] focus:ring-0 focus:ring-offset-0 text-[#8F8F8F] border-[#D9D9D9]">
     <SelectValue  />
   </SelectTrigger>
   <SelectContent>
     <SelectGroup>
-      <SelectItem value="+234">+234</SelectItem>
-     
-
+    <SelectLabel>Country Code</SelectLabel>
+                  <SelectItem value="+234">+234</SelectItem>
+                  <SelectItem value="+1">+1</SelectItem>
+                  <SelectItem value="+44">+44</SelectItem>
     </SelectGroup>
   </SelectContent>
 </Select>
-<Input type='text' placeholder='Enter Phone Number' className='placeholder:text-[#8F8F8F] border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p-[16px] '/>
+<Input type='text' placeholder='Enter Phone Number' className='placeholder:text-[#8F8F8F] border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p-[16px] '
+onChange={(e) => {
+  dispatch(updatePhoneNumber(`${selectedCountryCode}${e.target.value}`));
+}}
+/>
         </div>
         
         </div>
@@ -215,8 +260,17 @@ const Ticket = () => {
           <p className='text-[#8F8F8F]'>Tickets will only be sent to the email address you provide here</p>         
         </div>
         <RadioGroup 
-        value={showDifferentAddressFields}
-         onValueChange={(value) => setShowDifferentAddressFields(value)}
+      value={showDifferentAddressFields}
+      onValueChange={(value) => {
+        setShowDifferentAddressFields(value);
+        if (value === "No") {
+          // Clear all attendee-related states immediately
+          dispatch(updateAttendeeFirstName(""));
+          dispatch(updateAttendeeLastName(""));
+          dispatch(updateAttendeeEmail(""));
+          dispatch(updateAttendeeConfirmEmail(""));
+        }
+      }} 
         className='flex items-center space-x-[22px]'>
      <div className="flex items-center space-x-2">
     <RadioGroupItem className='text-[#FC6435] border-transparent border-black' value="Yes" />
@@ -233,11 +287,27 @@ const Ticket = () => {
         <>
           <div className='space-y-[11px]'>
             <Label className='text-[#343434]'>First Name <span className='text-[#FC6435]'>*</span></Label>
-            <Input type='text' placeholder='Enter First Name' className='placeholder:text-[#8F8F8F] border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p-[16px]' />
+            <Input type='text' placeholder='Enter First Name' className='placeholder:text-[#8F8F8F] border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p-[16px]' 
+            onChange={(e) => dispatch(updateAttendeeFirstName(e.target.value))}
+            />
+          </div>
+          <div className='space-y-[11px]'>
+            <Label className='text-[#343434]'>Last Name <span className='text-[#FC6435]'>*</span></Label>
+            <Input type='text' placeholder='Enter First Name' className='placeholder:text-[#8F8F8F] border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p-[16px]' 
+            onChange={(e) => dispatch(updateAttendeeLastName(e.target.value))}
+            />
           </div>
           <div className='space-y-[11px]'>
             <Label className='text-[#343434]'>Email <span className='text-[#FC6435]'>*</span></Label>
-            <Input type='text' placeholder='Enter A Valid Email Address' className='placeholder:text-[#8F8F8F] border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p-[16px]' />
+            <Input type='text' placeholder='Enter A Valid Email Address' className='placeholder:text-[#8F8F8F] border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p-[16px]' 
+             onChange={(e) => dispatch(updateAttendeeEmail(e.target.value))}
+            />
+          </div>
+          <div className='space-y-[11px]'>
+            <Label className='text-[#343434]'>Email <span className='text-[#FC6435]'>*</span></Label>
+            <Input type='text' placeholder='Confirm Email Address' className='placeholder:text-[#8F8F8F] border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p-[16px]' 
+              onChange={(e) => dispatch(updateAttendeeConfirmEmail(e.target.value))}
+            />
           </div>
         </>
       )}
@@ -281,10 +351,49 @@ const Ticket = () => {
           </div>
         </div>
         <div className='flex items-center justify-center w-full'>
-         <Button variant="outline" className="hover:bg-[#FC6435]  w-3/4 my-[48px] font-medium bg-[#FC6435] text-white py-[25px] hover:text-white active:scale-90 transition-all border-none text-[20px]" onClick={() => {
-          setIsChoosingTickets(!isChoosingTickets);
-         }}>
-         {isChoosingTickets ? "Continue" : "Buy Ticket"}            </Button>
+        {isChoosingTickets ? (
+    <Button
+      onClick={() => {
+        setIsChoosingTickets(false) ;   
+        dispatch(updateTickets(selectedTickets));
+      }
+
+      }
+      disabled={selectedTickets.length === 0} // Disable when no tickets are selected
+      className={`px-6 py-[19px] text-[24px] font-bold w-[450px] ${selectedTickets.length === 0 ? 'bg-gray-300 text-gray-500' : 'bg-[#FC6435] hover:bg-[#fc6435] text-white'}`} // Disabled styling
+    >
+      Continue
+    </Button>
+  ) : (
+   <Button
+  onClick={() => {
+     makePayment();
+  }}
+  disabled={
+    // Check if required fields are filled
+    !first_name ||
+    !last_name ||
+    !email ||
+    !confirm_email ||
+    !phone_number ||
+    (send_to_different_email &&
+      (!attendee_first_name || !attendee_last_name || !attendee_email || !attendee_confirm_email))
+  }
+  className={`px-6 py-[19px] text-[24px] font-bold w-[450px] ${
+    !first_name ||
+    !last_name ||
+    !email ||
+    !confirm_email ||
+    !phone_number ||
+    (send_to_different_email &&
+      (!attendee_first_name || !attendee_last_name || !attendee_email || !attendee_confirm_email))
+      ? 'bg-gray-300 text-gray-500'
+      : 'bg-[#FC6435] hover:bg-[#fc6435] text-white hover:text-white'
+  }`} // Disabled styling
+>
+  Buy Ticket
+</Button>
+  )}
          </div>
       </section>
     </div>

@@ -5,8 +5,18 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useToast } from "./use-toast";
-import Cookies from 'js-cookie';
-
+import { updateFirstName,
+  updateLastName,
+  updateEmail,
+  updateConfirmEmail,
+  updatePhoneNumber,
+  toggleSendToDifferentEmail,
+  updateAttendeeFirstName,
+  updateAttendeeLastName,
+  updateAttendeeEmail,
+  updateAttendeeConfirmEmail, 
+  updateTickets,
+  revertState} from "@/redux/slices/paymentInfoslice";
 
 const useFetch= () => {
   const base_url = process.env.NEXT_PUBLIC_BASE_URL;
@@ -145,6 +155,25 @@ const useFetch= () => {
     }   
   }
 
+  const getCategories = async () => {
+    setLoading(true)
+    try {        
+      
+      const response = await axios.get(
+        `${base_url}/v1/landing-page-categories`
+      );
+      
+      console.log(response);
+      
+    //  dispatch(updatePopularEvents(response?.data))
+    
+    } catch (error) {
+      console.log(error);
+    }finally{
+      setLoading(false)
+    }
+  }
+
   const contactPasspro = async (
     firstName: string, 
     lastName: string, 
@@ -190,6 +219,8 @@ const useFetch= () => {
   
       // Handle the response as needed
     } catch (error: any) {
+      console.log(error);
+      
       toast({
         title: 'Message Not Sent',
         description: error.response?.data?.message || 'An unexpected error occurred.', // Ensure it's a string
@@ -203,16 +234,16 @@ const useFetch= () => {
 
   const makePayment = async () => {
     setLoading(true);
-    
+  
     try {
-      // Prepare the payload by mapping tickets array to replace id with ticket_id
+      // Prepare the tickets array by mapping to replace id with ticket_id
       const formattedTickets = tickets.map(({ id, ticket_quantity }) => ({
         ticket_id: id,
         ticket_quantity,
       }));
   
-      // Create the payload
-      const payload = {
+      // Dynamically create the payload
+      const payload: any = {
         tickets: formattedTickets,
         first_name,
         last_name,
@@ -220,33 +251,35 @@ const useFetch= () => {
         confirm_email,
         phone_number,
         send_to_different_email,
-        attendee_first_name,
-        attendee_last_name,
-        attendee_email,
-        attendee_confirm_email,
       };
-      console.log(payload);
-      
+  
+      // Only add attendee details if send_to_different_email is true
+      if (send_to_different_email) {
+        payload.attendee_first_name = attendee_first_name;
+        payload.attendee_last_name = attendee_last_name;
+        payload.attendee_email = attendee_email;
+        payload.attendee_confirm_email = attendee_confirm_email;
+      }
+  
   
       // Make the API call
       const response = await axios.post(`${base_url}/v1/order/checkout`, payload);
+  
+      dispatch(revertState())
 
-      console.log(response);
-      
-  
-      // Handle success (e.g., redirect, show toast, etc.)
-      
-  
-      // Redirect to confirmation page if necessary
+
+      const paymentUrl = response.data.payment_url;
+    window.location.href = paymentUrl;
+
       // router.push("/confirmation");
     } catch (error: any) {
       // Handle error
       console.log(error);
-      
     } finally {
       setLoading(false);
     }
   };
+  
   
   
 
@@ -256,7 +289,8 @@ const useFetch= () => {
     getFreeEvents,
     getBookEvent,
     loading,
-    contactPasspro, makePayment, getAllFeaturedEvents, getAllFreeEvents, getAllPopularEvents
+    contactPasspro, makePayment, getAllFeaturedEvents, getAllFreeEvents, getAllPopularEvents,
+    getCategories
   }
 
 }

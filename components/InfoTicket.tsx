@@ -28,13 +28,14 @@ import { updateFirstName,
   updateAttendeeConfirmEmail } from "@/redux/slices/paymentInfoslice";
 import useFetch from "@/hooks/useFetch";
 import { RootState } from "@/redux/store";
+import FadeLoader from "react-spinners/FadeLoader";
 
 
 const InfoTicket = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { first_name, last_name, email, confirm_email, phone_number, attendee_first_name, attendee_last_name, attendee_email, attendee_confirm_email, send_to_different_email, tickets } = useSelector((state: RootState) => state.payment);
-  const { makePayment } = useFetch();
+  const { makePayment,loading } = useFetch();
   const [selectedCountryCode, setSelectedCountryCode] = useState("+234");
   const [showDifferentAddressFields, setShowDifferentAddressFields] = useState(
     "No"
@@ -55,6 +56,13 @@ const InfoTicket = () => {
 
   return (
     <div className="px-[20px] py-[31px]">
+         {loading && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-85">
+     
+        <FadeLoader color="#FC6435" />
+       
+    </div> 
+  )}
       <div className="flex items-center justify-between mb-[42px]">
         <div className="flex space-x-2 items-center">
           <Image
@@ -246,8 +254,28 @@ const InfoTicket = () => {
         )}
         <div className="flex items-center justify-center">
         <Button
+         disabled={
+          // Check if required fields are filled
+          !first_name ||
+          !last_name ||
+          !email ||
+          !confirm_email ||
+          !phone_number ||
+          (send_to_different_email &&
+            (!attendee_first_name || !attendee_last_name || !attendee_email || !attendee_confirm_email))
+        }
           variant="outline"
-          className="bg-[#FC6435] hover:bg-[#FC6435] hover:text-white w-[191px] text-white "
+          className={`px-6 py-[19px] font-bold w-full ${
+            !first_name ||
+            !last_name ||
+            !email ||
+            !confirm_email ||
+            !phone_number ||
+            (send_to_different_email &&
+              (!attendee_first_name || !attendee_last_name || !attendee_email || !attendee_confirm_email))
+              ? 'bg-gray-300 text-gray-500'
+              : 'bg-[#FC6435] hover:bg-[#fc6435] text-white hover:text-white'
+          }`}
           onClick={handleSubmit}
         >
           Buy Ticket

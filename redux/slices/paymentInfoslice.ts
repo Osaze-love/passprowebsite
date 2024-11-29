@@ -73,6 +73,21 @@ export const paymentInfoslice = createSlice({
     updateAttendeeConfirmEmail: (state, action: PayloadAction<string>) => {
       state.attendee_confirm_email = action.payload;
     },
+    revertState: (state) => {
+      return {
+        tickets: [],
+        first_name: "",
+        last_name: "",
+        email: "",
+        confirm_email: "",
+        phone_number: "",
+        send_to_different_email: false,
+        attendee_first_name: "",
+        attendee_last_name: "",
+        attendee_email: "",
+        attendee_confirm_email: "",
+      };
+    },
   },
 });
 
@@ -89,6 +104,7 @@ export const {
   updateAttendeeLastName,
   updateAttendeeEmail,
   updateAttendeeConfirmEmail,
+  revertState
 } = paymentInfoslice.actions;
 
 // Export the reducer

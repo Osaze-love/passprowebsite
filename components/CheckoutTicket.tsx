@@ -63,10 +63,6 @@ const CheckoutTicket = () => {
     router.push("/info");
   };
 
-  useEffect(() => {
-    console.log(selectedTickets);
-
-  },[selectedTickets])
 
   return (
     <div className="px-[20px] py-[31px]">
@@ -148,7 +144,12 @@ const CheckoutTicket = () => {
             <p className="text-[20px] text-white">Buy Ticket</p>
             <Button
               variant="outline"
-              className="bg-white w-max flex lg:hidden justify-center hover:bg-white text-[#FC6435] font-medium px-[15px] py-[7px] active:scale-90 transition-all hover:text-[#FC6435]"
+              disabled={selectedTickets.length === 0} // Disable when no tickets are selected
+              className={`w-max flex justify-center font-medium px-[15px] py-[7px] active:scale-90 transition-all ${
+                selectedTickets.length === 0
+                  ? 'bg-gray-300 text-gray-500'
+                  : 'bg-white hover:bg-white text-[#FC6435] hover:text-[#FC6435]'
+              }`}
               onClick={handleContinue}
             >
               Continue

@@ -12,7 +12,10 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 export default function Home() {
-   
+   const { getCategories } = useFetch();
+   useEffect(() => {
+     getCategories()
+   },[])
     return (
         <div>
           <Navbar textColor="text-white" bgColor='bg-black' bgMobile="bg-black" />
