@@ -174,7 +174,6 @@ const useFetch= () => {
           
       const response = await axios.get(endpoint);
       dispatch(updateCategoryEvents(response?.data?.events?.data))
-      console.log(response);
      
     } catch (error) {
       console.log(error);
