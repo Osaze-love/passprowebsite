@@ -87,7 +87,7 @@ const page = () => {
                 <p className='text-[12px] lg:text-[14px]'>{feature?.event_location}</p>
             </div>
             <div className='flex items-center justify-between'>
-                <p className='text-[14px] lg:text-[16px] text-[#FC6435] font-semibold'>{feature?.price}</p>
+                <p className='text-[14px] lg:text-[16px] text-[#FC6435] font-semibold'>{feature?.price === '0.00' || feature?.price === '0' ? 'Free' : feature?.price}</p>
                 <Button
                 onClick={async() => {
                     await getBookEvent(feature?.id);

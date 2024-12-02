@@ -50,7 +50,7 @@ const Free = () => {
                 <p className='text-[12px] lg:text-[14px]'>{feature?.event_location}</p>
             </div>
             <div className='flex items-center justify-between'>
-                <p className='text-[14px] lg:text-[16px] text-[#FC6435] font-semibold'>{feature?.price}</p>
+                <p className='text-[14px] lg:text-[16px] text-[#FC6435] font-semibold'>{feature?.price === '0.00' || feature?.price === '0' ? 'Free' : feature?.price}</p>
                 <Button variant="outline" className="hover:bg-[#FC6435] font-medium bg-[#FC6435] text-white p-[11px] lg:p-[15px] hover:text-white active:scale-90 transition-all border-none"
                  onClick={async() => {
                   await getBookEvent(feature?.id);
