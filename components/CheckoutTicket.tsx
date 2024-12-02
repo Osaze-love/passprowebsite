@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateTickets } from "@/redux/slices/paymentInfoslice";
+import { revertState, updateTickets } from "@/redux/slices/paymentInfoslice";
 
 const CheckoutTicket = () => {
   const router = useRouter();
@@ -15,8 +15,8 @@ const CheckoutTicket = () => {
   const { eventBook } = useSelector((state: RootState) => state.event);
 
   // Track selected tickets
-  const calculateCharge = (price: number) => {
-    if (price === 0) return 0; // No charge for free tickets
+  const calculateCharge = (price: number, transfersFeesToGuest: number) => {
+    if (price === 0 || transfersFeesToGuest === 0) return 0; // No charge for free tickets or if fee transfer is disabled
     return parseFloat((price * 0.04 + 100).toFixed(2));
   };
 
@@ -27,38 +27,51 @@ const CheckoutTicket = () => {
     ticket_quantity: number;
     ticket_price: number;
     ticket_category: string;
+    transfers_fees_to_guest: number;
   }[]>([]);
 
   // Handle ticket selection
-  const handleSelect = (id: number, quantity: number, price: number, category: string, name:string) => {
-    // Ensure price is parsed as a number
+  const handleSelect = (id: number, quantity: number, price: number, category: string, name: string, transfersFeesToGuest: number) => {
     const cleanPrice = parseFloat(price.toString().replace(/\.00$/, ""));
-    
+  
     setSelectedTickets((prev) => {
       if (quantity === 0) {
-        // Remove the ticket if quantity is 0
         return prev.filter((item) => item.id !== id);
       }
   
       const existing = prev.find((item) => item.id === id);
       if (existing) {
-        // Update ticket details
         return prev.map((item) =>
           item.id === id
-            ? { ...item, ticket_quantity: quantity, ticket_price: cleanPrice, ticket_category: category }
+            ? {
+                ...item,
+                ticket_quantity: quantity,
+                ticket_price: cleanPrice,
+                ticket_category: category,
+                transfers_fees_to_guest: transfersFeesToGuest,
+              }
             : item
         );
       }
   
-      // Add a new ticket
-      return [...prev, { id, ticket_quantity: quantity, ticket_price: cleanPrice, ticket_category: category, ticket_name: name, // Include ticket_name
-      }];
+      return [
+        ...prev,
+        {
+          id,
+          ticket_quantity: quantity,
+          ticket_price: cleanPrice,
+          ticket_category: category,
+          ticket_name: name,
+          transfers_fees_to_guest: transfersFeesToGuest,
+        },
+      ];
     });
   };
 
   
   // Handle Continue button click
   const handleContinue = () => {
+    dispatch(revertState());
     dispatch(updateTickets(selectedTickets));
     router.push("/info");
   };
@@ -99,7 +112,7 @@ const CheckoutTicket = () => {
               ? Math.min(ticket.ticket_purchase_limit, ticket.ticket_quantity)
               : ticket.ticket_purchase_limit;
 
-              const charge = calculateCharge(ticket.ticket_price);
+              const charge = calculateCharge(ticket.ticket_price, ticket.transfers_fees_to_guest);
           const adjustedPrice = ticket.ticket_price + charge;
 
             return (
@@ -120,7 +133,7 @@ const CheckoutTicket = () => {
                 <Select
                    value={selectedTickets.find((item) => item.id === ticket.id)?.ticket_quantity.toString() || "0"}
                    onValueChange={(value) =>
-                     handleSelect(ticket.id, parseInt(value), ticket.ticket_price, ticket.ticket_category, ticket.ticket_name 
+                     handleSelect(ticket.id, parseInt(value), ticket.ticket_price, ticket.ticket_category, ticket.ticket_name,             ticket.transfers_fees_to_guest
                    )
                    }
                 >

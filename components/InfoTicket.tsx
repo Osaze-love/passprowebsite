@@ -35,7 +35,7 @@ const InfoTicket = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { first_name, last_name, email, confirm_email, phone_number, attendee_first_name, attendee_last_name, attendee_email, attendee_confirm_email, send_to_different_email, tickets } = useSelector((state: RootState) => state.payment);
-  const { makePayment,loading } = useFetch();
+  const { makePayment,loading, makeFreePayment } = useFetch();
   const [selectedCountryCode, setSelectedCountryCode] = useState("+234");
   const [showDifferentAddressFields, setShowDifferentAddressFields] = useState(
     "No"
@@ -45,11 +45,31 @@ const InfoTicket = () => {
     const sendToDifferentEmail = showDifferentAddressFields === "Yes";
     dispatch(toggleSendToDifferentEmail(sendToDifferentEmail));
   },[showDifferentAddressFields])
+
+  const calculateCharge = (price: number, transfersFeesToGuest: number) => {
+    if (price === 0 || transfersFeesToGuest === 0) return 0; // No charge for free tickets or if fee transfer is disabled
+    return parseFloat((price * 0.04 + 100).toFixed(2));
+  };
+
+  const calculateTotal = () => {
+    const total = tickets.reduce((sum, ticket) => {
+      const charge = calculateCharge(ticket.ticket_price, ticket.transfers_fees_to_guest);
+      const adjustedPrice = ticket.ticket_price + charge;
+  
+      return sum + adjustedPrice * ticket.ticket_quantity;
+    }, 0);
+  
+    return total.toFixed(2);
+  };
   
 
   const handleSubmit = () => {
-    // Call your `makePayment` function here
-    makePayment();
+   const total = parseFloat(calculateTotal()); // Convert total to a number
+    if (total === 0.00) {
+      makeFreePayment();
+    } else {
+      makePayment();
+    }
   };
 
  

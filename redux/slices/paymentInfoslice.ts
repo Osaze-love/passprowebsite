@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 // Define the interface for the state
-interface Ticket {
-  id: number;
-  ticket_quantity: number;
-}
+// interface Ticket {
+//   id: number;
+//   ticket_quantity: number;
+// }
 
 interface PaymentInfoState {
-  tickets: Ticket[];
+  tickets: any[];
   first_name: string;
   last_name: string;
   email: string;
@@ -18,6 +18,7 @@ interface PaymentInfoState {
   attendee_last_name: string;
   attendee_email: string;
   attendee_confirm_email: string;
+  ticketEmail: string;
 }
 
 // Initial state
@@ -33,6 +34,7 @@ const initialState: PaymentInfoState = {
   attendee_last_name: "",
   attendee_email: "",
   attendee_confirm_email: "",
+  ticketEmail: "",
 };
 
 // Redux slice
@@ -40,7 +42,7 @@ export const paymentInfoslice = createSlice({
   name: "payment",
   initialState,
   reducers: {
-    updateTickets: (state, action: PayloadAction<Ticket[]>) => {
+    updateTickets: (state, action: PayloadAction<any[]>) => {
       state.tickets = action.payload;
     },
     updateFirstName: (state, action: PayloadAction<string>) => {
@@ -75,6 +77,7 @@ export const paymentInfoslice = createSlice({
     },
     revertState: (state) => {
       return {
+        ...state,
         tickets: [],
         first_name: "",
         last_name: "",
@@ -87,6 +90,9 @@ export const paymentInfoslice = createSlice({
         attendee_email: "",
         attendee_confirm_email: "",
       };
+    },
+    updateTicketEmail: (state, action: PayloadAction<string>) => {
+      state.ticketEmail = action.payload;
     },
   },
 });
@@ -104,7 +110,8 @@ export const {
   updateAttendeeLastName,
   updateAttendeeEmail,
   updateAttendeeConfirmEmail,
-  revertState
+  revertState,
+  updateTicketEmail
 } = paymentInfoslice.actions;
 
 // Export the reducer

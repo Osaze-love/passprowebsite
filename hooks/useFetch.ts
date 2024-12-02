@@ -1,21 +1,12 @@
-import { updateAllFreeEvents, updateAllPopularEvents, updateEventBook, updateFeaturedEvents, updateFreeEvents, updatePopularEvents } from "@/redux/slices/eventslice";
+import { updateAllFreeEvents, updateAllPopularEvents, updateCategories, updateCategoryEvents, updateEventBook, updateFeaturedEvents, updateFreeEvents, updatePopularEvents } from "@/redux/slices/eventslice";
 import { AppDispatch, RootState } from "@/redux/store";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useToast } from "./use-toast";
-import { updateFirstName,
-  updateLastName,
-  updateEmail,
-  updateConfirmEmail,
-  updatePhoneNumber,
-  toggleSendToDifferentEmail,
-  updateAttendeeFirstName,
-  updateAttendeeLastName,
-  updateAttendeeEmail,
-  updateAttendeeConfirmEmail, 
-  updateTickets,
+import { 
+  updateTicketEmail,
   revertState} from "@/redux/slices/paymentInfoslice";
 
 const useFetch= () => {
@@ -24,6 +15,8 @@ const useFetch= () => {
 
 
   const { first_name, last_name, email, confirm_email, phone_number, attendee_first_name, attendee_last_name, attendee_email, attendee_confirm_email, send_to_different_email, tickets } = useSelector((state: RootState) => state.payment);
+
+  const {categoryId} = useSelector((state: RootState) => state.event)
 
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
@@ -162,10 +155,8 @@ const useFetch= () => {
       const response = await axios.get(
         `${base_url}/v1/landing-page-categories`
       );
-      
-      console.log(response);
-      
-    //  dispatch(updatePopularEvents(response?.data))
+            
+     dispatch(updateCategories(response?.data))
     
     } catch (error) {
       console.log(error);
@@ -173,6 +164,24 @@ const useFetch= () => {
       setLoading(false)
     }
   }
+
+  const getCategoryEvents = async (search = "") => {
+    setLoading(true);
+    try {
+      const endpoint = search
+        ? `${base_url}/v1/categories/${categoryId}/events?search=${search}`
+        : `${base_url}/v1/categories/${categoryId}/events`;
+          
+      const response = await axios.get(endpoint);
+      dispatch(updateCategoryEvents(response?.data?.events?.data))
+      console.log(response);
+     
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const contactPasspro = async (
     firstName: string, 
@@ -183,14 +192,9 @@ const useFetch= () => {
   ) => {
     setLoading(true);  
     try {
-      await axios.get('https://sub.passpro.africa/sanctum/csrf-cookie', {
-        withCredentials: true,
-      });
-      // console.log(Cookies.get('XSRF-TOKEN'));
-      // console.log(document.cookie);
-
-      
-
+      // await axios.get('https://sub.passpro.africa/sanctum/csrf-cookie', {
+      //   withCredentials: true,
+      // });
       const response =  await axios.post(
         'https://sub.passpro.africa/api/v1/contact',
         {
@@ -200,16 +204,8 @@ const useFetch= () => {
           message: message,
           email: email
         },
-        // {
-        //   headers: {
-        //     accept: 'application/json',
-        //     'X-XSRF-TOKEN': Cookies.get('XSRF-TOKEN')
-        //   },
-        //     withCredentials: true,
-         
-        // }
+      
       );
-      console.log(response);
       
       toast({
         title: 'Message Sent', 
@@ -264,6 +260,9 @@ const useFetch= () => {
   
       // Make the API call
       const response = await axios.post(`${base_url}/v1/order/checkout`, payload);
+
+      const ticketEmail = send_to_different_email ? attendee_email : email;
+      dispatch(updateTicketEmail(ticketEmail));
   
       dispatch(revertState())
 
@@ -272,6 +271,53 @@ const useFetch= () => {
     window.location.href = paymentUrl;
 
       // router.push("/confirmation");
+    } catch (error: any) {
+      // Handle error
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const makeFreePayment = async () => {
+    setLoading(true);
+  
+    try {
+      
+     
+      const formattedTickets = tickets.map(({ id, ticket_quantity }) => ({
+        ticket_id: id,
+        ticket_quantity,
+      }));
+  
+      const payload: any = {
+        tickets: formattedTickets,
+        first_name,
+        last_name,
+        email,
+        confirm_email,
+        phone_number,
+        send_to_different_email,
+      };
+  
+      
+      if (send_to_different_email) {
+        payload.attendee_first_name = attendee_first_name;
+        payload.attendee_last_name = attendee_last_name;
+        payload.attendee_email = attendee_email;
+        payload.attendee_confirm_email = attendee_confirm_email;
+      }
+  
+  
+      const response = await axios.post(`${base_url}/v1/order/checkout`, payload);
+
+      const ticketEmail = send_to_different_email ? attendee_email : email;
+      dispatch(updateTicketEmail(ticketEmail));
+      dispatch(revertState());
+      router.push('/payment/callback')
+       
+
+     
     } catch (error: any) {
       // Handle error
       console.log(error);
@@ -290,7 +336,9 @@ const useFetch= () => {
     getBookEvent,
     loading,
     contactPasspro, makePayment, getAllFeaturedEvents, getAllFreeEvents, getAllPopularEvents,
-    getCategories
+    getCategories,
+    getCategoryEvents, 
+    makeFreePayment
   }
 
 }

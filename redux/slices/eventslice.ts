@@ -11,6 +11,9 @@ const initialState = {
   allFreeEvents : [] as any[],
   allFeaturedEvents : [] as any[],
   categories: [] as any[],
+  categoryEvents: [] as any[],
+  categoryName: '' as string,
+  categoryId: 0 as number,
 };
 
 // Redux slice
@@ -42,7 +45,13 @@ export const eventslice = createSlice({
       updateCategories: (state, action: PayloadAction<any[]>) => {
         state.categories = action.payload;
       },
-
+      updateCategoryEvents: (state, action: PayloadAction<any[]>) => {
+        state.categoryEvents = action.payload;
+      },
+      updateActiveCategory: (state, action: PayloadAction<any>) => {
+        state.categoryName = action.payload.categoryName;
+        state.categoryId = action.payload.id
+      },
     
   },
 });
@@ -56,7 +65,9 @@ export const {
   updateAllFeaturedEvents,
   updateAllFreeEvents,
   updateAllPopularEvents,
-  updateCategories
+  updateCategories,
+  updateCategoryEvents,
+  updateActiveCategory
 } = eventslice.actions;
 
 // Export the reducer

@@ -21,7 +21,8 @@ import {
     updateAttendeeLastName,
     updateAttendeeEmail,
     updateAttendeeConfirmEmail, 
-    updateTickets} from "@/redux/slices/paymentInfoslice";
+    updateTickets,
+    revertState} from "@/redux/slices/paymentInfoslice";
 import { Input } from './ui/input'
 import { Label } from './ui/label'
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
@@ -34,7 +35,7 @@ import FadeLoader from 'react-spinners/FadeLoader';
 
 const Ticket = () => {
   const { first_name, last_name, email, confirm_email, phone_number, attendee_first_name, attendee_last_name, attendee_email, attendee_confirm_email, send_to_different_email, tickets } = useSelector((state: RootState) => state.payment);
-  const { makePayment, loading } = useFetch();
+  const { makePayment, loading, makeFreePayment } = useFetch();
     const [selectedValue, setSelectedValue] = useState("0"); // Default to "0"
     const [selectedCountryCode, setSelectedCountryCode] = useState("+234"); 
     const [showDifferentAddressFields, setShowDifferentAddressFields] = useState('No'); // New state for additional fields
@@ -43,12 +44,10 @@ const Ticket = () => {
     const router = useRouter();
   const dispatch = useDispatch();
   const { eventBook } = useSelector((state: RootState) => state.event);
- 
-  const calculateCharge = (price: number) => {
-    if (price === 0) return 0; // No charge for free tickets
+  const calculateCharge = (price: number, transfersFeesToGuest: number) => {
+    if (price === 0 || transfersFeesToGuest === 0) return 0; // No charge for free tickets or if fee transfer is disabled
     return parseFloat((price * 0.04 + 100).toFixed(2));
   };
-
   useEffect(() => {
     const sendToDifferentEmail = showDifferentAddressFields === "Yes";
     dispatch(toggleSendToDifferentEmail(sendToDifferentEmail));
@@ -61,38 +60,51 @@ const Ticket = () => {
     ticket_quantity: number;
     ticket_price: number;
     ticket_category: string;
+    transfers_fees_to_guest: number;
   }[]>([]);
 
   // Handle ticket selection
-  const handleSelect = (id: number, quantity: number, price: number, category: string, name:string) => {
-    // Ensure price is parsed as a number
+  const handleSelect = (id: number, quantity: number, price: number, category: string, name: string, transfersFeesToGuest: number) => {
     const cleanPrice = parseFloat(price.toString().replace(/\.00$/, ""));
-    
+  
     setSelectedTickets((prev) => {
       if (quantity === 0) {
-        // Remove the ticket if quantity is 0
         return prev.filter((item) => item.id !== id);
       }
   
       const existing = prev.find((item) => item.id === id);
       if (existing) {
-        // Update ticket details
         return prev.map((item) =>
           item.id === id
-            ? { ...item, ticket_quantity: quantity, ticket_price: cleanPrice, ticket_category: category }
+            ? {
+                ...item,
+                ticket_quantity: quantity,
+                ticket_price: cleanPrice,
+                ticket_category: category,
+                transfers_fees_to_guest: transfersFeesToGuest,
+              }
             : item
         );
       }
   
-      // Add a new ticket
-      return [...prev, { id, ticket_quantity: quantity, ticket_price: cleanPrice, ticket_category: category, ticket_name: name, // Include ticket_name
-      }];
+      return [
+        ...prev,
+        {
+          id,
+          ticket_quantity: quantity,
+          ticket_price: cleanPrice,
+          ticket_category: category,
+          ticket_name: name,
+          transfers_fees_to_guest: transfersFeesToGuest,
+        },
+      ];
     });
   };
+  
 
   const calculateTotal = () => {
     const total = selectedTickets.reduce((sum, ticket) => {
-      const charge = calculateCharge(ticket.ticket_price);
+      const charge = calculateCharge(ticket.ticket_price, ticket.transfers_fees_to_guest);
       const adjustedPrice = ticket.ticket_price + charge;
   
       return sum + adjustedPrice * ticket.ticket_quantity;
@@ -101,11 +113,6 @@ const Ticket = () => {
     return total.toFixed(2);
   };
   
-
-  useEffect(() => {
-    console.log(selectedTickets);
-
-  },[selectedTickets])
 
     return (
     <div className='grid grid-cols-2 items-center px-[40px] py-[51px] gap-[63px]'>
@@ -154,7 +161,7 @@ const Ticket = () => {
                 ? Math.min(ticket.ticket_purchase_limit, ticket.ticket_quantity)
                 : ticket.ticket_purchase_limit;
 
-                const charge = calculateCharge(ticket.ticket_price);
+                const charge = calculateCharge(ticket.ticket_price, ticket.transfers_fees_to_guest);
             const adjustedPrice = ticket.ticket_price + charge;
 
             return (
@@ -175,7 +182,8 @@ const Ticket = () => {
                 <Select
                   value={selectedTickets.find((item) => item.id === ticket.id)?.ticket_quantity.toString() || "0"}
                   onValueChange={(value) =>
-                    handleSelect(ticket.id, parseInt(value), ticket.ticket_price, ticket.ticket_category, ticket.ticket_name 
+                    handleSelect(ticket.id, parseInt(value), ticket.ticket_price, ticket.ticket_category, ticket.ticket_name,             ticket.transfers_fees_to_guest // Pass this here
+ 
                   )
                   }
                    >
@@ -325,7 +333,7 @@ onChange={(e) => {
          
          <div className='space-y-[14px] py-[10px]'>
          {selectedTickets.map((ticket) => {
-            const charge = calculateCharge(ticket.ticket_price);
+            const charge = calculateCharge(ticket.ticket_price, ticket.transfers_fees_to_guest);
             const adjustedPrice = ticket.ticket_price + charge;
 
             return (
@@ -354,6 +362,7 @@ onChange={(e) => {
         {isChoosingTickets ? (
     <Button
       onClick={() => {
+        dispatch(revertState())
         setIsChoosingTickets(false) ;   
         dispatch(updateTickets(selectedTickets));
       }
@@ -366,8 +375,13 @@ onChange={(e) => {
     </Button>
   ) : (
    <Button
-  onClick={() => {
-     makePayment();
+   onClick={() => {
+    const total = parseFloat(calculateTotal()); // Convert total to a number
+    if (total === 0.00) {
+      makeFreePayment();
+    } else {
+      makePayment();
+    }
   }}
   disabled={
     // Check if required fields are filled
