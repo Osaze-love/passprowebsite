@@ -5,7 +5,7 @@ import { RootState } from '@/redux/store'
 import axios from 'axios'
 import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
-import React, { useEffect } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 const SuccessPage = () => {
@@ -13,25 +13,29 @@ const SuccessPage = () => {
     const ticketEmail = useSelector((state: RootState) => state.payment.ticketEmail);
     const base_url = process.env.NEXT_PUBLIC_BASE_URL;
     const router = useRouter();
+    // Wrap the part where useSearchParams is used
+  const SearchParamsComponent = () => {
     const searchParams = useSearchParams();
     const reference = searchParams.get('reference');
-  
+
     useEffect(() => {
       if (reference) {        
         verifyPayment(reference); // Call the backend to verify the payment
       }
     }, [reference]);
-  
-    const verifyPayment = async (reference: any) => {
+
+    const verifyPayment = async (reference: string) => {
       try {
         const response = await axios.get(`${base_url}/v1/payment/callback?reference=${reference}`);
-
-          
       } catch (error) {
         alert('Error occurred during payment verification');
         console.error(error);
       }
     };
+
+    return null; // No UI output here
+  };
+
   return (
     <div>
     <Navbar textColor='text-[#343434]' bgColor='bg-white' bgMobile='bg-white'/>
@@ -54,7 +58,9 @@ const SuccessPage = () => {
         </div>
      </div>
 
-      
+     <Suspense fallback={<p>Loading...</p>}>
+        <SearchParamsComponent />
+      </Suspense>
     </div>
   )
 }
