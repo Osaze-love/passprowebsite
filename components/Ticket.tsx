@@ -115,7 +115,7 @@ const Ticket = () => {
   
 
     return (
-    <div className='grid grid-cols-2 items-center px-[40px] py-[51px] gap-[63px]'>
+    <div className='grid grid-cols-2 items-start px-[40px] py-[51px] gap-[63px]'>
             {loading && (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-85">
      
@@ -369,7 +369,7 @@ onChange={(e) => {
 
       }
       disabled={selectedTickets.length === 0} // Disable when no tickets are selected
-      className={`px-6 py-[19px] text-[24px] font-bold w-[450px] ${selectedTickets.length === 0 ? 'bg-gray-300 text-gray-500' : 'bg-[#FC6435] hover:bg-[#fc6435] text-white'}`} // Disabled styling
+      className={`px-6 py-[19px] text-[18px] font-medium w-[450px] ${selectedTickets.length === 0 ? 'bg-gray-300 text-gray-500' : 'bg-[#FC6435] hover:bg-[#fc6435] text-white'}`} // Disabled styling
     >
       Continue
     </Button>
@@ -393,7 +393,7 @@ onChange={(e) => {
     (send_to_different_email &&
       (!attendee_first_name || !attendee_last_name || !attendee_email || !attendee_confirm_email))
   }
-  className={`px-6 py-[19px] text-[24px] font-bold w-[450px] ${
+  className={`px-6 py-[19px] text-[18px] font-medium w-[450px] ${
     !first_name ||
     !last_name ||
     !email ||

@@ -25,12 +25,11 @@ const page = () => {
             <p className="text-[#606060] w-4/4 lg:w-4/4 mx-[20px] lg:mx-[40px] text-[14px] lg:text-[24px]" >
             From unforgettable concerts and thrilling sports to enlightening workshops and family fun, find the perfect event for every interest. Browse through our curated categories and start planning your next adventure!
             </p>
-            <Button variant="outline" className="hover:bg-[#FC6435] font-medium bg-[#FC6435] text-white w-[273px] lg:px-[56px] h-[37px] lg:h-[56px] py-[18.5px] hover:text-white active:scale-90 transition-all border-none text-[14px] lg:text-[20px]">
-              Browse Categories
-            </Button>
+            
           </div>
         </div>
         <div className='my-[50px] lg:my-[78px]'>
+         <p className='flex items-center w-full text-[20px] lg:text-[40px] justify-center my-[20px] font-medium text-[#164473]'>Explore Events Categories</p>
         <Swiper />
 
         </div>

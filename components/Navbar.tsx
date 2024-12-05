@@ -49,53 +49,53 @@ const Navbar = ({
       > 
        <div className="block lg:hidden">
           {bgMobile === "bg-white" ? (
+            <div style={{ position: 'relative', width: '200px', height: '35px',  }}>
             <Image
             src={"/images/passprologo.svg"}
-            width={151}
-            height={35}
+            fill
             alt="passprologo"
             onClick={() => {
               router.push('/')
             }}
-            className="w-[151px] h-[35px]"
           />
+           </div>
            
           ) : (
-             <Image
-              src={"/images/passprologowhite.svg"}
-              width={151}
-              height={35}
-              alt="passprologo"
-              onClick={() => {
-                router.push('/')
-              }}
-              className="w-[151px] h-[35px]"
-            />
+            <div style={{ position: 'relative', width: '200px', height: '35px',  }}>
+            <Image
+            src={"/images/passprologowhite.svg"}
+            fill
+            alt="passprologo"
+            onClick={() => {
+              router.push('/')
+            }}
+          />
+           </div>
           )}
         </div>
         <div className="hidden lg:block">
           {textColor === "text-white" ? (
+            <div style={{ position: 'relative', width: '200px', height: '35px',  }}>
             <Image
-              src={"/images/passprologowhite.svg"}
-              width={240}
-              height={56}
-              alt="passprologo"
-              onClick={() => {
-                router.push('/')
-              }}
-              className="w-[240px] h-[56px]"
-            />
+            src={"/images/passprologowhite.svg"}
+            fill
+            alt="passprologo"
+            onClick={() => {
+              router.push('/')
+            }}
+          />
+           </div>
           ) : (
+            <div style={{ position: 'relative', width: '200px', height: '35px',  }}>
             <Image
-              src={"/images/passprologo.svg"}
-              width={240}
-              height={56}
-              alt="passprologo"
-              onClick={() => {
-                router.push('/')
-              }}
-              className="w-[240px] h-[56px]"
-            />
+            src={"/images/passprologo.svg"}
+            fill
+            alt="passprologo"
+            onClick={() => {
+              router.push('/')
+            }}
+          />
+           </div>
           )}
         </div>
         
@@ -120,12 +120,19 @@ const Navbar = ({
               {item.name}
             </Button>
           ))}
-          <Button
-            variant="outline"
-            className="bg-[#FC6435] hover:bg-[#FC6435] text-white font-medium px-[40px] xl:px-[56px] py-[18.5px] active:scale-90 transition-all border-none hover:text-white"
-          >
-            Get Started
-          </Button>
+         <a
+  href="https://verify.passpro.africa/"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <Button
+    variant="outline"
+    className="bg-[#FC6435] hover:bg-[#FC6435] text-white font-medium px-[40px] xl:px-[56px] py-[18.5px] active:scale-90 transition-all border-none hover:text-white"
+  >
+    Verify Ticket
+  </Button>
+</a>
+
         </div>
         <div className="lg:hidden">
           <Image
@@ -146,42 +153,42 @@ const Navbar = ({
         className={`flex items-center z-20 justify-between px-[20px] py-[34px] lg:px-[50px] lg:py-[34px] sticky top-0 bg-[#f6ece9]`}
       > 
        <div className="block lg:hidden">
+       <div style={{ position: 'relative', width: '200px', height: '35px',  }}>
             <Image
             src={"/images/passprologo.svg"}
-            width={151}
-            height={35}
+            fill
             alt="passprologo"
             onClick={() => {
               router.push('/')
             }}
-            className="w-[151px] h-[35px]"
           />
+           </div>
            
         
         </div>
         <div className="hidden lg:block">
           {textColor === "text-white" ? (
+            <div style={{ position: 'relative', width: '200px', height: '35px',  }}>
             <Image
-              src={"/images/passprologowhite.svg"}
-              width={240}
-              height={56}
-              alt="passprologo"
-              onClick={() => {
-                router.push('/')
-              }}
-              className="w-[240px] h-[56px]"
-            />
+            src={"/images/passprologowhite.svg"}
+            fill
+            alt="passprologo"
+            onClick={() => {
+              router.push('/')
+            }}
+          />
+           </div>
           ) : (
+            <div style={{ position: 'relative', width: '200px', height: '35px',  }}>
             <Image
-              src={"/images/passprologo.svg"}
-              width={240}
-              height={56}
-              alt="passprologo"
-              onClick={() => {
-                router.push('/')
-              }}
-              className="w-[240px] h-[56px]"
-            />
+            src={"/images/passprologo.svg"}
+            fill
+            alt="passprologo"
+            onClick={() => {
+              router.push('/')
+            }}
+          />
+           </div>
           )}
         </div>
         
@@ -206,12 +213,19 @@ const Navbar = ({
               {item.name}
             </Button>
           ))}
-          <Button
-            variant="outline"
-            className="bg-[#FC6435] hover:bg-[#FC6435] text-white font-medium px-[40px] xl:px-[56px] py-[18.5px] active:scale-90 transition-all border-none hover:text-white"
-          >
-            Get Started
-          </Button>
+         <a
+  href="https://verify.passpro.africa/"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <Button
+    variant="outline"
+    className="bg-[#FC6435] hover:bg-[#FC6435] text-white font-medium px-[40px] xl:px-[56px] py-[18.5px] active:scale-90 transition-all border-none hover:text-white"
+  >
+    Verify Ticket
+  </Button>
+</a>
+
         </div>
         <div className="lg:hidden">
           <Image
@@ -235,53 +249,53 @@ const Navbar = ({
       > 
        <div className="block lg:hidden">
           {bgMobile === "bg-white" ? (
+             <div style={{ position: 'relative', width: '200px', height: '35px',  }}>
+             <Image
+             src={"/images/passprologo.svg"}
+             fill
+             alt="passprologo"
+             onClick={() => {
+               router.push('/')
+             }}
+           />
+            </div>
+           
+          ) : (
+            <div style={{ position: 'relative', width: '200px', height: '35px',  }}>
             <Image
-            src={"/images/passprologo.svg"}
-            width={151}
-            height={35}
+            src={"/images/passprologowhite.svg"}
+            fill
+            alt="passprologo"
             onClick={() => {
               router.push('/')
             }}
-            alt="passprologo"
-            className="w-[151px] h-[35px]"
           />
-           
-          ) : (
-             <Image
-              src={"/images/passprologowhite.svg"}
-              width={151}
-              height={35}
-              onClick={() => {
-                router.push('/')
-              }}
-              alt="passprologo"
-              className="w-[151px] h-[35px]"
-            />
+           </div>
           )}
         </div>
         <div className="hidden lg:block">
           {textColor === "text-white" ? (
+            <div style={{ position: 'relative', width: '200px', height: '35px',  }}>
             <Image
-              src={"/images/passprologowhite.svg"}
-              width={240}
-              height={56}
-              alt="passprologo"
-              onClick={() => {
-                router.push('/')
-              }}
-              className="w-[240px] h-[56px]"
-            />
+            src={"/images/passprologowhite.svg"}
+            fill
+            alt="passprologo"
+            onClick={() => {
+              router.push('/')
+            }}
+          />
+           </div>
           ) : (
+            <div style={{ position: 'relative', width: '200px', height: '35px',  }}>
             <Image
-              src={"/images/passprologo.svg"}
-              width={240}
-              height={56}
-              alt="passprologo"
-              onClick={() => {
-                router.push('/')
-              }}
-              className="w-[240px] h-[56px]"
-            />
+            src={"/images/passprologo.svg"}
+            fill
+            alt="passprologo"
+            onClick={() => {
+              router.push('/')
+            }}
+          />
+           </div>
           )}
         </div>
         
@@ -306,12 +320,19 @@ const Navbar = ({
               {item.name}
             </Button>
           ))}
-          <Button
-            variant="outline"
-            className="bg-[#FC6435] hover:bg-[#FC6435] text-white font-medium px-[40px] xl:px-[56px] py-[18.5px] active:scale-90 transition-all border-none hover:text-white"
-          >
-            Get Started
-          </Button>
+           <a
+  href="https://verify.passpro.africa/"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <Button
+    variant="outline"
+    className="bg-[#FC6435] hover:bg-[#FC6435] text-white font-medium px-[40px] xl:px-[56px] py-[18.5px] active:scale-90 transition-all border-none hover:text-white"
+  >
+    Verify Ticket
+  </Button>
+</a>
+
         </div>
         <div className="lg:hidden">
           <Image
@@ -337,16 +358,16 @@ const Navbar = ({
           className={`fixed top-0 left-0 w-full h-full bg-white z-50 flex flex-col items-center overflow-y-auto scrollbar-hide py-[40px]`}
         >
           <div className="flex items-center justify-between p-[40px] w-full">
+          <div style={{ position: 'relative', width: '200px', height: '35px',  }}>
             <Image
-              src={"/images/passprologo.svg"}
-              onClick={() => {
-                router.push('/')
-              }}
-              width={151}
-              height={35}
-              alt="passprologo"
-              className="w-[151px] h-[35px]"
-            />
+            src={"/images/passprologo.svg"}
+            fill
+            alt="passprologo"
+            onClick={() => {
+              router.push('/')
+            }}
+          />
+           </div>
             <Image
               src={"/icons/closeIcon.svg"}
               width={21}
@@ -372,12 +393,19 @@ const Navbar = ({
                 {item.name}
               </p>
             ))}
-            <Button
-              variant="outline"
-              className="bg-[#FC6435] hover:bg-[#FC6435] text-white font-medium px-[40px] xl:px-[56px] py-[18.5px] active:scale-90 transition-all border-none hover:text-white w-full"
-            >
-              Get Started
-            </Button>
+           <a
+  href="https://verify.passpro.africa/"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <Button
+    variant="outline"
+    className="bg-[#FC6435] hover:bg-[#FC6435] text-white font-medium px-[40px] xl:px-[56px] py-[18.5px] active:scale-90 transition-all border-none hover:text-white"
+  >
+    Verify Ticket
+  </Button>
+</a>
+
           </div>
         </div>
       )}

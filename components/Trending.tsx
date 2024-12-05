@@ -85,7 +85,11 @@ const Trending = () => {
   />
 </div>
             <div className='p-[20px] space-y-[12px] '>
-            <p className='font-bold text-[14px] lg:text-[20px]'>{feature.name}</p>
+            <p className='font-bold text-[14px] lg:text-[20px]'>
+  {feature?.event_name?.length > 14 
+    ? feature.event_name.slice(0, 18) + '...' 
+    : feature?.event_name}
+</p>
             <div className='flex items-center gap-3'>
                 <Image className='hidden lg:block' src={'/icons/calendarDark.svg'} width={20} height={20} alt='calendarIcon'/>
                 <Image className='block lg:hidden' src={'/icons/calendarDark.svg'} width={11} height={11} alt='calendarIcon'/>
@@ -97,8 +101,11 @@ const Trending = () => {
                 <p className='text-[12px] lg:text-[14px]'>{feature.location}</p>
             </div>
             <div className='flex items-center justify-between'>
-            <p className='text-[14px] lg:text-[16px] text-[#FC6435] font-semibold'>  {feature?.price === '0.00' || feature?.price === '0' ? 'Free' : feature?.price}
-          </p>
+            <p className='text-[14px] lg:text-[16px] text-[#FC6435] font-semibold'>
+  {feature?.price === '0.00' || feature?.price === '0'
+    ? 'Free'
+    : `₦${new Intl.NumberFormat('en-NG').format(parseFloat(feature?.price))}`}
+</p>
                 <Button variant="outline" className="hover:bg-[#FC6435] font-medium bg-[#FC6435] text-white p-[8px] lg:p-[15px] hover:text-white active:scale-90 transition-all border-none text-[12px] lg:text-[14px]">
               Book Ticket
             </Button>

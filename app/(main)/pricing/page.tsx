@@ -7,7 +7,7 @@ const Pricing = () => {
     <div>
               <Navbar textColor="text-white" bgMobile='bg-white' bgColor='bg-[#164473]' />
 
-<section className=" bg-[#164473] mx-[20px] lg:mx-0 relative space-y-[10px] lg:space-y-[10px] pt-[30px] lg:pt-0 pb-[40px] max-h-[75vh] lg:pb-0 mb-[10px] lg:mb-[70px]">
+<section className=" bg-[#164473] mx-[20px] lg:mx-0 relative space-y-[10px] lg:space-y-[10px] pt-[30px] lg:pt-0 pb-[40px] max-h-[100vh] lg:pb-0 mb-[10px] lg:mb-[70px]">
         <div className="flex items-center justify-center">
           <div className="flex flex-col items-center justify-center space-y-[14px] lg:space-y-6 text-center">
             <p className="font-bold lg:font-extrabold text-[32px] lg:text-[60px] text-white w-[90%] lg:w-full">The Cheapest Price Ever!</p>

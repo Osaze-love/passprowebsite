@@ -98,7 +98,11 @@ const Featured = () => {
   />
 </div>
             <div className='p-[20px] space-y-[13px]'>
-            <p className='font-bold text-[14px] lg:text-[20px]'>{feature?.event_name}</p>
+            <p className='font-bold text-[14px] lg:text-[20px]'>
+  {feature?.event_name?.length > 14 
+    ? feature.event_name.slice(0, 18) + '...' 
+    : feature?.event_name}
+</p>
             <div className='flex items-center space-x-3'>
                 <Image src={'/icons/calendarDark.svg'} width={20} height={20} alt='calendarIcon'/>
                 <p className='text-[12px] lg:text-[14px]'>{feature?.start_date}</p>
@@ -108,7 +112,10 @@ const Featured = () => {
                 <p className='text-[12px] lg:text-[14px]'>{feature?.event_location}</p>
             </div>
             <div className='flex items-center justify-between'>
-            <p className='text-[14px] lg:text-[16px] text-[#FC6435] font-semibold'>{feature?.price === '0.00' || feature?.price === '0' ? 'Free' : feature?.price}
+            <p className='text-[14px] lg:text-[16px] text-[#FC6435] font-semibold'>
+  {feature?.price === '0.00' || feature?.price === '0'
+    ? 'Free'
+    : `₦${new Intl.NumberFormat('en-NG').format(parseFloat(feature?.price))}`}
 </p>
                 <Button variant="outline" className="hover:bg-[#FC6435] font-medium bg-[#FC6435] text-white p-[11px] lg:p-[15px] hover:text-white active:scale-90 transition-all border-none"
                 onClick={async() => {

@@ -37,7 +37,7 @@ const BookingPage = () => {
     style={{ objectFit: 'cover' }} 
   />
 </div>
-   <div className='space-y-[20px] lg:space-y-[70px] rounded-[12px] shadow-none lg:shadow-md px-[20px] lg:px-[30px] py-[60px] border-none lg:border'>
+   <div className='space-y-[20px] lg:space-y-[20px] rounded-[12px] shadow-none lg:shadow-md px-[20px] lg:px-[30px] py-[30px] border-none lg:border'>
     <p className='text-[#606060] font-normal'>{eventBook?.event_description}</p>
 
     <div>
@@ -60,18 +60,98 @@ const BookingPage = () => {
     </div>
     <div>
     <p className='text-[#164473] text-[18px] lg:text-[24px] pb-[24px] font-semibold'>Share Event</p>
-     <div className='flex items-center gap-[20px] lg:space-x-[20px]'>
-        <Image src={'/icons/what.svg'} alt='icon' width={32} height={32} className='hidden lg:block'/>
-        <Image src={'/icons/what.svg'} alt='icon' width={24} height={24} className='block lg:hidden'/>
-        <Image src={'/icons/ig.svg'} alt='icon' width={32} height={32} className='hidden lg:block'/>
-        <Image src={'/icons/ig.svg'} alt='icon' width={24} height={24} className='block lg:hidden'/>
-        <Image src={'/icons/fb.svg'} alt='icon' width={32} height={32} className='hidden lg:block'/>
-        <Image src={'/icons/fb.svg'} alt='icon' width={24} height={24} className='block lg:hidden'/>
-        <Image src={'/icons/x.svg'} alt='icon' width={32} height={32} className='hidden lg:block'/>
-        <Image src={'/icons/x.svg'} alt='icon' width={24} height={24} className='block lg:hidden'/>
+    <div className="flex items-center gap-[20px] lg:space-x-[20px]">
+  {/* WhatsApp */}
+  <a
+    href={`https://wa.me/`}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Image
+      src={'/icons/what.svg'}
+      alt="WhatsApp"
+      width={32}
+      height={32}
+      className="hidden lg:block"
+    />
+    <Image
+      src={'/icons/what.svg'}
+      alt="WhatsApp"
+      width={24}
+      height={24}
+      className="block lg:hidden"
+    />
+  </a>
 
-     </div>
+  {/* Instagram */}
+  <a
+    href="https://www.instagram.com/create/select/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Image
+      src={'/icons/ig.svg'}
+      alt="Instagram"
+      width={32}
+      height={32}
+      className="hidden lg:block"
+    />
+    <Image
+      src={'/icons/ig.svg'}
+      alt="Instagram"
+      width={24}
+      height={24}
+      className="block lg:hidden"
+    />
+  </a>
+
+  {/* Facebook */}
+  <a
+    href="https://www.facebook.com/sharer/sharer.php"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Image
+      src={'/icons/fb.svg'}
+      alt="Facebook"
+      width={32}
+      height={32}
+      className="hidden lg:block"
+    />
+    <Image
+      src={'/icons/fb.svg'}
+      alt="Facebook"
+      width={24}
+      height={24}
+      className="block lg:hidden"
+    />
+  </a>
+
+  {/* X (Twitter) */}
+  <a
+    href="https://x.com/compose/tweet"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Image
+      src={'/icons/x.svg'}
+      alt="X (formerly Twitter)"
+      width={32}
+      height={32}
+      className="hidden lg:block"
+    />
+    <Image
+      src={'/icons/x.svg'}
+      alt="X (formerly Twitter)"
+      width={24}
+      height={24}
+      className="block lg:hidden"
+    />
+  </a>
+</div>
+
     </div>
+    <div>
     <Button
           variant="outline"
           className="bg-[#FC6435] w-full flex lg:hidden justify-center hover:bg-[#FC6435] text-white font-medium px-[56px] py-[26px] active:scale-90 transition-all hover:text-white my-[40px]"
@@ -81,6 +161,8 @@ const BookingPage = () => {
         >
           Get A Ticket
         </Button>
+    </div>
+   
    </div>
       </section>
 

@@ -45,7 +45,7 @@ const page = () => {
             <Input placeholder='Search For Popular Events' 
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className='placeholder:text-[14px] lg:placeholder:text-[30px] focus-visible:ring-0 focus-visible:ring-offset-0 border-0 ring-0 ring-offset-0 text-[14px] lg:text-[30px] shadow-none'
+            className='placeholder:text-[8F8F8F] placeholder:text-[14px] lg:placeholder:text-[20px] focus-visible:ring-0 focus-visible:ring-offset-0 border-0 ring-0 ring-offset-0 text-[14px] lg:text-[20px] shadow-none'
             //   style={{ fontSize: "30px" }} // Optional inline style for added assurance
 
             />
@@ -77,7 +77,11 @@ const page = () => {
   />
 </div>
             <div className='p-[20px] space-y-[13px]'>
-            <p className='font-bold text-[14px] lg:text-[20px]'>{feature?.event_name}</p>
+            <p className='font-bold text-[14px] lg:text-[20px]'>
+  {feature?.event_name?.length > 14 
+    ? feature.event_name.slice(0, 18) + '...' 
+    : feature?.event_name}
+</p>
             <div className='flex items-center space-x-3'>
                 <Image src={'/icons/calendarDark.svg'} width={20} height={20} alt='calendarIcon'/>
                 <p className='text-[12px] lg:text-[14px]'>{feature?.start_date}</p>
@@ -87,8 +91,11 @@ const page = () => {
                 <p className='text-[12px] lg:text-[14px]'>{feature?.event_location}</p>
             </div>
             <div className='flex items-center justify-between'>
-            <p className='text-[14px] lg:text-[16px] text-[#FC6435] font-semibold'>  {feature?.price === '0.00' || feature?.price === '0' ? 'Free' : feature?.price}
-            </p>
+            <p className='text-[14px] lg:text-[16px] text-[#FC6435] font-semibold'>
+  {feature?.price === '0.00' || feature?.price === '0'
+    ? 'Free'
+    : `₦${new Intl.NumberFormat('en-NG').format(parseFloat(feature?.price))}`}
+</p>
                 <Button
                 onClick={async() => {
                     await getBookEvent(feature?.id);

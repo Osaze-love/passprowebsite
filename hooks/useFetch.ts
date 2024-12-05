@@ -47,7 +47,6 @@ const useFetch= () => {
       const endpoint = search
         ? `${base_url}/v1/all/featured-events?search=${search}`
         : `${base_url}/v1/all/featured-events`;
-       console.log(endpoint);
        
       const response = await axios.get(endpoint);
   
@@ -82,6 +81,7 @@ const useFetch= () => {
       const endpoint = search
         ? `${base_url}/v1/all/event/free?search=${search}`
         : `${base_url}/v1/all/event/free`;
+        
   
       const response = await axios.get(endpoint);
        
@@ -119,9 +119,7 @@ const useFetch= () => {
     try {
       const endpoint = search
         ? `${base_url}/v1/all/event/popular?search=${search}`
-        : `${base_url}/v1/all/event/popular`;
-        console.log(endpoint);
-        
+        : `${base_url}/v1/all/event/popular`;        
   
       const response = await axios.get(endpoint);
       dispatch(updateAllPopularEvents(response?.data?.data))

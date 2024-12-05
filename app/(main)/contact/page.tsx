@@ -31,9 +31,9 @@ const Contact = () => {
                   <Navbar textColor='text-black' bgColor='bg-[#f6ece9]' bg-Mobile='bg-[#f6ece9]'/>
 
       <section
-            className="h-[100vh] bg-gradient-to-b from-[#f6ece9] p-0 to-[#ffffff]"
+            className="h-[100vh] lg:h-[60vh] bg-gradient-to-b from-[#f6ece9] p-0 to-[#ffffff] pt-0 lg:pt-[90px]"
           >
-            <div className=" flex flex-col items-center justify-center space-y-[17px] lg:space-y-[30px] h-3/4">
+            <div className=" flex flex-col items-center justify-center space-y-[17px] lg:space-y-[30px] h-3/4 lg:h-4/4">
             
           
           <p className="font-extrabold text-[40px] mt-[200px] lg:mt-0 lg:text-[60px] text-[#343434]">Get In Touch</p>
@@ -63,7 +63,7 @@ const Contact = () => {
      
         </div>
           </section>`
-          <section className='flex flex-col items-center w-full'>
+          <section className='flex flex-col items-center w-full mt-[20px] lg:mt-[40px]'>
           <div className="space-y-1 mb-4">
         <p className="font-bold text-[24px] lg:text-[40px] pt-[40px]">
           Reach <span className="text-[#FC6435]">Out</span> To <span className="text-[#FC6435]">Us</span> Now

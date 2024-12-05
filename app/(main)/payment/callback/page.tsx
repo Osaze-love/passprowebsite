@@ -49,7 +49,14 @@ const SuccessPage = () => {
             <p className='text-[#343434] text-[16px] lg:text-[24px] font-semibold lg:font-bold'>Ticket Booked Successfully</p>
             <p className='text-[#606060] text-[14px] lg:text-[20px] font-medium lg:font-semibold text-center'>Your ticket has been successfully booked. You now have access to the event</p>
             <p className='text-[#343434] text-[14px] lg:text-[16px] font-semibold text-center'>Your order was successful. we’ve also sent a copy to your email address <span className='text-[#FC6435]'>{ticketEmail}</span></p>
-            <p className='text-[#343434]  text-[14px] lg:text-[16px] font-semibold text-center'>if you do not recieve your ticket from us, please email us at <span className='text-[#FC6435]'>@supportpasspro.ng</span></p>
+            <p className='text-[#343434] text-[14px] lg:text-[16px] font-semibold text-center'>
+  If you do not receive your ticket from us, please email us at{' '}
+  <a 
+    href="mailto:support@passpro.africa" 
+    className='text-[#FC6435]'>
+    support@passpro.africa
+  </a>.
+</p>
             <div className="flex flex-col lg:flex-row items-center space-x-0 space-y-[34px] lg:space-y-0  lg:space-x-3 w-full">
            
           </div>

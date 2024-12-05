@@ -84,13 +84,20 @@ const About = () => {
           At PassPro, event ticketing meets simplicity and security. Our platform is designed to transform the way you discover and attend events. Whether you’re booking tickets for concerts, conferences, sports events, or festivals, Passpro makes it easy for you to explore, select, and secure your spot at your favorite experiences.
           </div>
           <div className='col-span-2 flex justify-center w-full'>
-          <Button variant="outline" className=' font-medium text-white px-[56px] py-[18.5px] flex items-center justify-center w-full lg:w-max bg-transparent h-[60px] hover:bg-transparent hover:text-white active:scale-90 transition-all '>
+          <a
+  href="https://organizer.passpro.africa/"
+  target="_blank"
+  rel="noopener noreferrer"
+> 
+<Button variant="outline" className=' font-medium text-white px-[56px] py-[18.5px] flex items-center justify-center w-full lg:w-max bg-transparent h-[60px] hover:bg-transparent hover:text-white active:scale-90 transition-all '>
         Get Started
       </Button>
+</a>
+          
           </div>
           </section>
 
-          <section className=' rounded-[48px]  grid grid-cols-1 lg:grid-cols-2 items-center mx-[40px] my-[100px] lg:my-[200px]'>
+          <section className=' rounded-[48px]  grid grid-cols-1 lg:grid-cols-2 items-center mx-[40px] my-[50px] lg:my-[200px]'>
           <div 
     className="hidden lg:absolute w-[520px] h-[420px] bg-[#FFF1EC] rounded-[64px] transform -rotate-[8.46deg] "
     style={{ left: '30px',  }} /* Adjusted position to move the box left */
@@ -125,7 +132,7 @@ const About = () => {
           </div>
           </section>
 
-          <section className='bg-[#FFF1EC] flex flex-col items-center w-full'>
+          {/* <section className='bg-[#FFF1EC] flex flex-col items-center w-full'>
           <div className="space-y-1 mb-4">
         <p className="text-[20px] lg:text-[40px] font-bold text-[#343434] pt-[40px]">
           Meet <span className="text-[#FC6435]">The</span> Team
@@ -183,14 +190,14 @@ const About = () => {
         <p className='text-[#8F8F8F] text-[14px] lg:text-[18px] text-center'>Software Engineer</p>
        </div>
       </div>
-          </section>
+          </section> */}
 
           <section       
                 style={{
               backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/images/bannerImage2.jpeg')`, // Adjust opacity in rgba
               backgroundSize: "cover",
               backgroundPosition: "center",
-            }} className='my-[140px] h-[450px] lg:h-[80vh]  mx-[20px] lg:mx-[40px] rounded-[20px]'>
+            }} className='my-[40px] h-[450px] lg:h-[80vh]  mx-[20px] lg:mx-[40px] rounded-[20px]'>
                  <div className="flex w-full h-full flex-col items-center justify-center space-y-[30px] text-center px-[10px]">
          
           <p className="font-extrabold text-[white] text-[20px] lg:text-[60px] w-3/4">Explore, Discover, and Book Your Next Event with Ease</p>
