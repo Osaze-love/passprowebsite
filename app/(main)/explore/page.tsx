@@ -29,7 +29,7 @@ const page = () => {
           </div>
         </div>
         <div className='my-[50px] lg:my-[78px]'>
-         <p className='flex items-center w-full text-[20px] lg:text-[40px] justify-center my-[20px] font-medium text-[#164473]'>Explore Events Categories</p>
+         <p className='flex items-center w-full text-[20px] lg:text-[40px] justify-center my-[20px] font-bold text-[#164473]'>Explore Events Categories</p>
         <Swiper />
 
         </div>
