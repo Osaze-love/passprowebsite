@@ -130,7 +130,7 @@ const CheckoutTicket = () => {
             </span>
           )}
                   </p>
-                  <p className="text-[#343434] font-normal text-[14px]">{ticket?.ticket_description}</p>
+                  <p className="text-[#343434] font-normal w-[85%] text-[14px]">{ticket?.ticket_description}</p>
                 </div>
                 <Select
                    value={selectedTickets.find((item) => item.id === ticket.id)?.ticket_quantity.toString() || "0"}

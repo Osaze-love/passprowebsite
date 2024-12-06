@@ -49,11 +49,12 @@ const Navbar = ({
       > 
        <div className="block lg:hidden">
           {bgMobile === "bg-white" ? (
-            <div style={{ position: 'relative', width: '200px', height: '35px',  }}>
+            <div style={{ position: 'relative', width: '150px', height: '35px',   }}>
             <Image
             src={"/images/passprologo.svg"}
             fill
             alt="passprologo"
+            className="object-cover cursor-pointer"
             onClick={() => {
               router.push('/')
             }}
@@ -65,6 +66,7 @@ const Navbar = ({
             <Image
             src={"/images/passprologowhite.svg"}
             fill
+            className="object-cover cursor-pointer"
             alt="passprologo"
             onClick={() => {
               router.push('/')
@@ -75,10 +77,11 @@ const Navbar = ({
         </div>
         <div className="hidden lg:block">
           {textColor === "text-white" ? (
-            <div style={{ position: 'relative', width: '200px', height: '35px',  }}>
+            <div style={{ position: 'relative', width: '150px', height: '35px',  }}>
             <Image
             src={"/images/passprologowhite.svg"}
             fill
+            className="object-cover cursor-pointer"
             alt="passprologo"
             onClick={() => {
               router.push('/')
@@ -153,10 +156,11 @@ const Navbar = ({
         className={`flex items-center z-20 justify-between px-[20px] py-[34px] lg:px-[50px] lg:py-[34px] sticky top-0 bg-[#f6ece9]`}
       > 
        <div className="block lg:hidden">
-       <div style={{ position: 'relative', width: '200px', height: '35px',  }}>
+       <div style={{ position: 'relative', width: '150px', height: '35px',  }}>
             <Image
             src={"/images/passprologo.svg"}
             fill
+            className="object-cover cursor-pointer"
             alt="passprologo"
             onClick={() => {
               router.push('/')
@@ -168,10 +172,11 @@ const Navbar = ({
         </div>
         <div className="hidden lg:block">
           {textColor === "text-white" ? (
-            <div style={{ position: 'relative', width: '200px', height: '35px',  }}>
+            <div style={{ position: 'relative', width: '150px', height: '35px',  }}>
             <Image
             src={"/images/passprologowhite.svg"}
             fill
+            className="object-cover cursor-pointer"
             alt="passprologo"
             onClick={() => {
               router.push('/')
@@ -179,10 +184,11 @@ const Navbar = ({
           />
            </div>
           ) : (
-            <div style={{ position: 'relative', width: '200px', height: '35px',  }}>
+            <div style={{ position: 'relative', width: '150px', height: '35px',  }}>
             <Image
             src={"/images/passprologo.svg"}
             fill
+            className="object-cover cursor-pointer"
             alt="passprologo"
             onClick={() => {
               router.push('/')
@@ -249,10 +255,11 @@ const Navbar = ({
       > 
        <div className="block lg:hidden">
           {bgMobile === "bg-white" ? (
-             <div style={{ position: 'relative', width: '200px', height: '35px',  }}>
+             <div style={{ position: 'relative', width: '150px', height: '35px',  }}>
              <Image
              src={"/images/passprologo.svg"}
              fill
+             className="object-cover cursor-pointer"
              alt="passprologo"
              onClick={() => {
                router.push('/')
@@ -261,10 +268,11 @@ const Navbar = ({
             </div>
            
           ) : (
-            <div style={{ position: 'relative', width: '200px', height: '35px',  }}>
+            <div style={{ position: 'relative', width: '150px', height: '35px',  }}>
             <Image
             src={"/images/passprologowhite.svg"}
             fill
+            className="object-cover cursor-pointer"
             alt="passprologo"
             onClick={() => {
               router.push('/')
@@ -275,10 +283,11 @@ const Navbar = ({
         </div>
         <div className="hidden lg:block">
           {textColor === "text-white" ? (
-            <div style={{ position: 'relative', width: '200px', height: '35px',  }}>
+            <div style={{ position: 'relative', width: '150px', height: '35px',  }}>
             <Image
             src={"/images/passprologowhite.svg"}
             fill
+            className="object-cover cursor-pointer"
             alt="passprologo"
             onClick={() => {
               router.push('/')
@@ -286,10 +295,11 @@ const Navbar = ({
           />
            </div>
           ) : (
-            <div style={{ position: 'relative', width: '200px', height: '35px',  }}>
+            <div style={{ position: 'relative', width: '150px', height: '35px',  }}>
             <Image
             src={"/images/passprologo.svg"}
             fill
+            className="object-cover cursor-pointer"
             alt="passprologo"
             onClick={() => {
               router.push('/')
@@ -358,10 +368,11 @@ const Navbar = ({
           className={`fixed top-0 left-0 w-full h-full bg-white z-50 flex flex-col items-center overflow-y-auto scrollbar-hide py-[40px]`}
         >
           <div className="flex items-center justify-between p-[40px] w-full">
-          <div style={{ position: 'relative', width: '200px', height: '35px',  }}>
+          <div style={{ position: 'relative', width: '150px', height: '35px',  }}>
             <Image
             src={"/images/passprologo.svg"}
             fill
+            className="object-cover cursor-pointer"
             alt="passprologo"
             onClick={() => {
               router.push('/')
@@ -397,10 +408,11 @@ const Navbar = ({
   href="https://verify.passpro.africa/"
   target="_blank"
   rel="noopener noreferrer"
+  className=""
 >
   <Button
     variant="outline"
-    className="bg-[#FC6435] hover:bg-[#FC6435] text-white font-medium px-[40px] xl:px-[56px] py-[18.5px] active:scale-90 transition-all border-none hover:text-white"
+    className="bg-[#FC6435] mt-[23px] hover:bg-[#FC6435] text-white font-medium w-full py-[18.5px] active:scale-90 transition-all border-none hover:text-white"
   >
     Verify Ticket
   </Button>

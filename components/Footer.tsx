@@ -11,7 +11,7 @@ const Footer = () => {
     <div className='bg-[#164473]  '>
     <section className='grid grid-cols-1 lg:grid-cols-6 border-b border-b-white'>
     <div className='space-y-[30px] p-[20px] lg:p-[40px] col-span-2 '>
-        <Image src={'/images/passprologowhite.svg'} width={200} height={50} alt='passprologo' className='hidden lg:block'/>
+        <Image src={'/images/passprologowhite.svg'} width={150} height={50} alt='passprologo' className='hidden lg:block'/>
         <Image src={'/images/passprologowhite.svg'} width={151} height={35} alt='passprologo' className='block lg:hidden'/>
 
         <p className='text-[14px] text-[white]'>PassPro connects you to Africa's events. Book tickets for events, seminars conferences, movies, flights and lots more</p>
