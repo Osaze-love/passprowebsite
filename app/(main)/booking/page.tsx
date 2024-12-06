@@ -5,14 +5,17 @@ import { Button } from '@/components/ui/button'
 import { RootState } from '@/redux/store'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { FacebookShareButton, WhatsappShareButton, InstapaperShareButton , TwitterShareButton } from 'react-share'
 
 const BookingPage = () => {
   const router = useRouter();
-  const currentUrl = window.location.href;
-  const {eventBook} = useSelector(
+  const [currentUrl, setCurrentUrl] = useState<string>('');
+
+  useEffect(() => {
+    setCurrentUrl(window.location.href);
+  }, []);  const {eventBook} = useSelector(
     (state: RootState) => state.event
   );
   return (
