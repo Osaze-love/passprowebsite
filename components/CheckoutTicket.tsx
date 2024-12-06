@@ -124,7 +124,9 @@ const CheckoutTicket = () => {
             <span className="font-bold text-[#FC6435]">Free</span>
           ) : (
             <span className="font-bold text-[#FC6435]">
-              ₦{ticket.ticket_price} <span className='text-[#606060] font-normal'>+ ₦{charge}</span> 
+            ₦{new Intl.NumberFormat('en-NG').format(parseFloat(ticket.ticket_price))} <span className="text-[#606060] font-normal">
+  + ₦{new Intl.NumberFormat('en-NG').format(charge)} Fee
+</span>
             </span>
           )}
                   </p>

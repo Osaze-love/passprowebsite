@@ -29,6 +29,7 @@ import { updateFirstName,
 import useFetch from "@/hooks/useFetch";
 import { RootState } from "@/redux/store";
 import FadeLoader from "react-spinners/FadeLoader";
+import { toast } from "@/hooks/use-toast";
 
 
 const InfoTicket = () => {
@@ -66,8 +67,38 @@ const InfoTicket = () => {
   const handleSubmit = () => {
    const total = parseFloat(calculateTotal()); // Convert total to a number
     if (total === 0.00) {
+      if (email !== confirm_email) {
+        toast({
+          description: 'Email Mismatch', // Ensure it's a string
+          variant: 'destructive', // Optional, for error styling
+        });
+        return;
+      }
+    
+      if (send_to_different_email && attendee_email !== attendee_confirm_email) {
+        toast({
+          description: 'Email Mismatch', // Ensure it's a string
+          variant: 'destructive', // Optional, for error styling
+        });
+        return;
+      }
       makeFreePayment();
     } else {
+      if (email !== confirm_email) {
+        toast({
+          description: 'Email Mismatch', // Ensure it's a string
+          variant: 'destructive', // Optional, for error styling
+        });
+        return;
+      }
+    
+      if (send_to_different_email && attendee_email !== attendee_confirm_email) {
+        toast({
+          description: 'Email Mismatch', // Ensure it's a string
+          variant: 'destructive', // Optional, for error styling
+        });
+        return;
+      }
       makePayment();
     }
   };
@@ -188,6 +219,7 @@ const InfoTicket = () => {
             {/* Input for Phone Number */}
             <Input
               type="text"
+              maxLength={11}
               placeholder="Enter Phone Number"
               className="placeholder:text-[12px] text-[12px] placeholder:text-[#8F8F8F]"
               onChange={(e) => {

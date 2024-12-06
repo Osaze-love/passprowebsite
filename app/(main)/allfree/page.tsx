@@ -17,7 +17,7 @@ const page = () => {
   const { allFreeEvents} = useSelector(
     (state: RootState) => state.event
   );
-  const [searchTerm, setSearchTerm] = useState(""); // Track search input
+  const [searchTerm, setSearchTerm] = useState(""); 
 
   useEffect(() => {
       getAllFreeEvents();

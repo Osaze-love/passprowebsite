@@ -5,6 +5,11 @@ import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 
 
+export const metadata: Metadata = {
+  title: "PassPro",
+  description: "List, manage and purchase event tickets seamlessly on PassPro",
+};
+
 const raleway = Raleway({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],

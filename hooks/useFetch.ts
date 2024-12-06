@@ -76,16 +76,15 @@ const useFetch= () => {
   }
 
   const getAllFreeEvents = async (search = "") => {
-    setLoading(true);
+    setLoading(true);    
     try {
       const endpoint = search
         ? `${base_url}/v1/all/event/free?search=${search}`
         : `${base_url}/v1/all/event/free`;
-        
-  
+    
       const response = await axios.get(endpoint);
-       
-      dispatch(updateAllFreeEvents(response?.data?.data))
+
+      dispatch(updateAllFreeEvents(response?.data))
       // Update Redux or state with the fetched events
       // dispatch(updateFeaturedEvents(response?.data?.events));
     } catch (error) {

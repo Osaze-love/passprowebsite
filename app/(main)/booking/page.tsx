@@ -7,9 +7,11 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { FacebookShareButton, WhatsappShareButton, InstapaperShareButton , TwitterShareButton } from 'react-share'
 
 const BookingPage = () => {
   const router = useRouter();
+  const currentUrl = window.location.href;
   const {eventBook} = useSelector(
     (state: RootState) => state.event
   );
@@ -62,12 +64,12 @@ const BookingPage = () => {
     <p className='text-[#164473] text-[18px] lg:text-[24px] pb-[24px] font-semibold'>Share Event</p>
     <div className="flex items-center gap-[20px] lg:space-x-[20px]">
   {/* WhatsApp */}
-  <a
+  {/* <a
     href={`https://wa.me/`}
     target="_blank"
     rel="noopener noreferrer"
-  >
-    <Image
+  > */}
+    <WhatsappShareButton url={currentUrl}> <Image
       src={'/icons/what.svg'}
       alt="WhatsApp"
       width={32}
@@ -80,59 +82,67 @@ const BookingPage = () => {
       width={24}
       height={24}
       className="block lg:hidden"
-    />
-  </a>
+    /></WhatsappShareButton>
+   
+  {/* </a> */}
 
   {/* Instagram */}
-  <a
+  {/* <InstapaperShareButton url={currentUrl}>
+  <Image
+      src={'/icons/ig.svg'}
+      alt="Instagram"
+      width={32}
+      height={32}
+      className="hidden lg:block"
+    />
+    <Image
+      src={'/icons/ig.svg'}
+      alt="Instagram"
+      width={24}
+      height={24}
+      className="block lg:hidden"
+    />
+  </InstapaperShareButton> */}
+  {/* <a
     href="https://www.instagram.com/create/select/"
     target="_blank"
     rel="noopener noreferrer"
   >
-    <Image
-      src={'/icons/ig.svg'}
-      alt="Instagram"
+   
+  </a> */}
+
+  {/* Facebook */}
+  <FacebookShareButton url={currentUrl}>
+  <Image
+      src={'/icons/fb.svg'}
+      alt="Facebook"
       width={32}
       height={32}
       className="hidden lg:block"
     />
     <Image
-      src={'/icons/ig.svg'}
-      alt="Instagram"
+      src={'/icons/fb.svg'}
+      alt="Facebook"
       width={24}
       height={24}
       className="block lg:hidden"
     />
-  </a>
-
-  {/* Facebook */}
-  <a
+  </FacebookShareButton>
+  {/* <a
     href="https://www.facebook.com/sharer/sharer.php"
     target="_blank"
     rel="noopener noreferrer"
   >
-    <Image
-      src={'/icons/fb.svg'}
-      alt="Facebook"
-      width={32}
-      height={32}
-      className="hidden lg:block"
-    />
-    <Image
-      src={'/icons/fb.svg'}
-      alt="Facebook"
-      width={24}
-      height={24}
-      className="block lg:hidden"
-    />
-  </a>
+   
+  </a> */}
 
   {/* X (Twitter) */}
-  <a
+  {/* <a
     href="https://x.com/compose/tweet"
     target="_blank"
     rel="noopener noreferrer"
-  >
+  > */}
+    <TwitterShareButton url={currentUrl}>
     <Image
       src={'/icons/x.svg'}
       alt="X (formerly Twitter)"
@@ -147,7 +157,9 @@ const BookingPage = () => {
       height={24}
       className="block lg:hidden"
     />
-  </a>
+    </TwitterShareButton>
+   
+  {/* </a> */}
 </div>
 
     </div>

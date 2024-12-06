@@ -31,6 +31,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
 import useFetch from '@/hooks/useFetch';
 import FadeLoader from 'react-spinners/FadeLoader';
+import { toast } from '@/hooks/use-toast';
 
 
 const Ticket = () => {
@@ -104,14 +105,15 @@ const Ticket = () => {
 
   const calculateTotal = () => {
     const total = selectedTickets.reduce((sum, ticket) => {
-      const charge = calculateCharge(ticket.ticket_price, ticket.transfers_fees_to_guest);
-      const adjustedPrice = ticket.ticket_price + charge;
-  
-      return sum + adjustedPrice * ticket.ticket_quantity;
+        const charge = calculateCharge(ticket.ticket_price, ticket.transfers_fees_to_guest);
+        const adjustedPrice = ticket.ticket_price + charge;
+        return sum + adjustedPrice * ticket.ticket_quantity;
     }, 0);
-  
-    return total.toFixed(2);
-  };
+
+    const value = total.toFixed(2);
+    return `${new Intl.NumberFormat('en-NG').format(parseFloat(value))}`;
+};
+
   
 
     return (
@@ -173,7 +175,9 @@ const Ticket = () => {
             <span className="font-bold text-[#FC6435]">Free</span>
           ) : (
             <span className="font-bold text-[#FC6435]">
-              ₦{ticket.ticket_price} <span className='text-[#606060] font-normal'>+ ₦{charge}</span> 
+            ₦{new Intl.NumberFormat('en-NG').format(parseFloat(ticket.ticket_price))} <span className="text-[#606060] font-normal">
+  + ₦{new Intl.NumberFormat('en-NG').format(charge)} Fee
+</span>
             </span>
           )}
                   </p>
@@ -253,7 +257,8 @@ const Ticket = () => {
     </SelectGroup>
   </SelectContent>
 </Select>
-<Input type='text' placeholder='Enter Phone Number' className='placeholder:text-[#8F8F8F] border-[#D9D9D9] focus-visible:ring-0 focus-visible:ring-offset-0 p-[16px] '
+<Input type='text'   maxLength={11}
+ placeholder='Enter Phone Number' className='placeholder:text-[#8F8F8F] border-[#D9D9D9]  focus-visible:ring-0 focus-visible:ring-offset-0 p-[16px] '
 onChange={(e) => {
   dispatch(updatePhoneNumber(`${selectedCountryCode}${e.target.value}`));
 }}
@@ -349,7 +354,9 @@ onChange={(e) => {
                     {ticket.ticket_quantity} x {ticket.ticket_category}
                   </p>
                 </div>
-                <p className="font-semibold">₦{adjustedPrice * ticket.ticket_quantity}</p>
+                <p className="font-semibold">
+  ₦{new Intl.NumberFormat('en-NG').format(adjustedPrice * ticket.ticket_quantity)}
+</p>
               </div>
             );
           })}
@@ -378,8 +385,38 @@ onChange={(e) => {
    onClick={() => {
     const total = parseFloat(calculateTotal()); // Convert total to a number
     if (total === 0.00) {
+      if (email !== confirm_email) {
+        toast({
+          description: 'Email Mismatch', // Ensure it's a string
+          variant: 'destructive', // Optional, for error styling
+        });
+        return;
+      }
+    
+      if (send_to_different_email && attendee_email !== attendee_confirm_email) {
+        toast({
+          description: 'Email Mismatch', // Ensure it's a string
+          variant: 'destructive', // Optional, for error styling
+        });
+        return;
+      }
       makeFreePayment();
     } else {
+      if (email !== confirm_email) {
+        toast({
+          description: 'Email Mismatch', // Ensure it's a string
+          variant: 'destructive', // Optional, for error styling
+        });
+                return;
+      }
+    
+      if (send_to_different_email && attendee_email !== attendee_confirm_email) {
+        toast({
+          description: 'Email Mismatch', // Ensure it's a string
+          variant: 'destructive', // Optional, for error styling
+        });
+                return;
+      }
       makePayment();
     }
   }}
