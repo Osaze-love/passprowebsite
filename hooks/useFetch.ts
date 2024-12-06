@@ -34,7 +34,7 @@ const useFetch= () => {
      dispatch(updateFeaturedEvents(response?.data?.events))
     
     } catch (error) {
-      console.log(error);
+      // console.log(error);
      
     }finally{
       setLoading(false)
@@ -53,7 +53,7 @@ const useFetch= () => {
       // Update Redux or state with the fetched events
       // dispatch(updateFeaturedEvents(response?.data?.events));
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     } finally {
       setLoading(false);
     }
@@ -69,7 +69,7 @@ const useFetch= () => {
      dispatch(updateFreeEvents(response?.data))
     
     } catch (error) {
-      console.log(error);
+      (error);
     }finally{
       setLoading(false)
     }
@@ -88,7 +88,7 @@ const useFetch= () => {
       // Update Redux or state with the fetched events
       // dispatch(updateFeaturedEvents(response?.data?.events));
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     } finally {
       setLoading(false);
     }
@@ -107,7 +107,7 @@ const useFetch= () => {
      dispatch(updatePopularEvents(response?.data))
     
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }finally{
       setLoading(false)
     }
@@ -126,7 +126,7 @@ const useFetch= () => {
       // Update Redux or state with the fetched events
       // dispatch(updateFeaturedEvents(response?.data?.events));
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     } finally {
       setLoading(false);
     }
@@ -139,7 +139,7 @@ const useFetch= () => {
     dispatch(updateEventBook(response?.data));
     router.push('/booking')
     } catch (error) {
-      console.log(error);   
+      // console.log(error);   
     }finally{
       setLoading(false)
     }   
@@ -156,7 +156,7 @@ const useFetch= () => {
      dispatch(updateCategories(response?.data))
     
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }finally{
       setLoading(false)
     }
@@ -173,7 +173,7 @@ const useFetch= () => {
       dispatch(updateCategoryEvents(response?.data?.events?.data))
      
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     } finally {
       setLoading(false);
     }
@@ -211,7 +211,7 @@ const useFetch= () => {
   
       // Handle the response as needed
     } catch (error: any) {
-      console.log(error);
+      // console.log(error);
       
       toast({
         title: 'Message Not Sent',
@@ -269,7 +269,7 @@ const useFetch= () => {
       // router.push("/confirmation");
     } catch (error: any) {
       // Handle error
-      console.log(error);
+      // console.log(error);
     } finally {
       setLoading(false);
     }
@@ -316,7 +316,7 @@ const useFetch= () => {
      
     } catch (error: any) {
       // Handle error
-      console.log(error);
+      // console.log(error);
     } finally {
       setLoading(false);
     }
