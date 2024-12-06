@@ -72,7 +72,7 @@ export default function SwiperComponent() {
         spaceBetween: 20,
       },
     }}
-      className="px-[40px] overflow-hidden max-w-sm lg:max-w-6xl"
+      className="px-[40px] overflow-hidden max-w-xs lg:max-w-6xl"
     >
        <div className="custom-next swiper-button-next text-white"></div>
        <div className="custom-prev swiper-button-prev text-white"></div>
