@@ -2,18 +2,25 @@
 import Navbar from '@/components/Navbar'
 import Ticket from '@/components/Ticket'
 import { Button } from '@/components/ui/button'
+import useFetch from '@/hooks/useFetch'
 import { RootState } from '@/redux/store'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { FacebookShareButton, WhatsappShareButton, InstapaperShareButton , TwitterShareButton } from 'react-share'
 
 const BookingPage = () => {
   const router = useRouter();
+  const { getBookEvent } = useFetch()
   const [currentUrl, setCurrentUrl] = useState<string>('');
+  const params = useParams();
+  const { eventname, eventId } = params || {};
 
   useEffect(() => {
+    if (eventname && eventId) {
+      getBookEvent(eventId, eventname);     
+    }
     setCurrentUrl(window.location.href);
   }, []);  
   

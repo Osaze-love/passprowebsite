@@ -132,12 +132,14 @@ const useFetch= () => {
     }
   };
 
-  const getBookEvent = async (eventId: number) => {
+  const getBookEvent = async (eventId: any, eventName: any) => {
     setLoading(true)
     try {
-      const response = await axios.get(`${base_url}/v1/event/${eventId}/view`);
+      
+      const response = await axios.get(`${base_url}/v1/event/${eventId}/view`);      
+      
     dispatch(updateEventBook(response?.data));
-    router.push('/booking')
+    router.push(`/booking/${eventName}/${eventId}`)
     } catch (error) {
       // console.log(error);   
     }finally{

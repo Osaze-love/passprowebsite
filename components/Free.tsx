@@ -61,8 +61,7 @@ const Free = () => {
 </p>
                 <Button variant="outline" className="hover:bg-[#FC6435] font-medium bg-[#FC6435] text-white p-[11px] lg:p-[15px] hover:text-white active:scale-90 transition-all border-none"
                  onClick={async() => {
-                  await getBookEvent(feature?.id);
-
+                  await getBookEvent(feature?.id, feature?.event_name);
               }}
                 >
               Book Ticket

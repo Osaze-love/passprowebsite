@@ -53,8 +53,7 @@ const AllPopular = () => {
                 <p className='text-[14px] text-[#FC6435] font-semibold lg:text-[16px]'>{feature?.price}</p>
                 <Button
                 onClick={async() => {
-                    await getBookEvent(feature?.id);
-                    router.push('/booking')
+                  await getBookEvent(feature?.id, feature?.event_name);                    router.push('/booking')
 
                 }}
                 variant="outline" className="hover:bg-[#FC6435] font-medium bg-[#FC6435] text-white p-[11px] lg:p-[15px] hover:text-white active:scale-90 transition-all border-none">
