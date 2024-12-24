@@ -25,7 +25,11 @@ const Banner = () => {
             </Button>
             </a>
 
-            <Button variant="outline" className="hover:bg-[white] font-medium bg-[white] text-[#FC6435] w-[273px] lg:px-[56px] h-[50px] lg:h-[56px] py-[18.5px] hover:text-[#FC6435] active:scale-90 transition-all border-[#FC6435]">
+            <Button
+             onClick={() => {
+              router.push('/explore')
+             }}
+            variant="outline" className="hover:bg-[white] font-medium bg-[white] text-[#FC6435] w-[273px] lg:px-[56px] h-[50px] lg:h-[56px] py-[18.5px] hover:text-[#FC6435] active:scale-90 transition-all border-[#FC6435]">
               Find events around you
             </Button>
             

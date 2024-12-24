@@ -13,6 +13,7 @@ const CheckoutTicket = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { eventBook } = useSelector((state: RootState) => state.event);
+  const { event_name, id } = useSelector((state: RootState) => state.event.eventBook);
 
   // Track selected tickets
   const calculateCharge = (price: number, transfersFeesToGuest: number) => {
@@ -83,7 +84,7 @@ const CheckoutTicket = () => {
         <p className="text-[20px] text-[#606060] font-medium">Checkout</p>
         <Image
           onClick={() => {
-            router.push("/booking");
+            router.push(`/booking/${event_name}/${id}`);
           }}
           src="/icons/closeIcon.svg"
           width={14}
