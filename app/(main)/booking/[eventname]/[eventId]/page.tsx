@@ -44,14 +44,14 @@ const BookingPage = () => {
               <Navbar textColor='text-[#343434]' bgColor='bg-white' bgMobile='bg-white'/>
       <p className='text-[20px] lg:text-[64px] w-full text-center text-[#164473] font-semibold'>About {eventBook?.event_name}</p>
 
-      <section className='grid grid-cols-1 lg:grid-cols-2 gap-[63px] px-[20px] lg:px-[40px] py-[51px]'>
+      <section className='grid grid-cols-1 lg:grid-cols-2 gap-[63px] px-[20px] lg:px-[40px] py-[51px] '>
       <div className='hidden lg:block' style={{ position: 'relative', width: '100%', height: '100%' }}>
   <Image 
     src={!eventBook.gallery || eventBook?.gallery === null ? "https://s3-alpha-sig.figma.com/img/1de3/953f/78d7e40f1dee846f632ea900bb1f2188?Expires=1731888000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Z~jefw4J~~WVpx9ehn0MJ9yOLGyemjyxuuGdDMZvSj1sQHX-xzUXsTzaYEj54Exgne8AeXTCsfT1klOC3jV67ryKBUWI39xUdJiGnAhvTNGFYr5w4hJHFFN5wtt60PctbWddWaDAgZ9tuw3LovbIU09jzuS69XOO1EBRGSfi8NYfQjK4eJmiYbpkpIA5e72-PTacKyU05Cx5IEdzbLFJCjac0gWeL-b9rhOH047L2QVp7i-nesDKDvxA1GGuk8DhlXuRfOSCQ1ibqd18AhkVB0C~H-kSm6MtHXLELcJAOcA3XH29fLYgrKR9N5ML8lMyYM7P70F~31xMMZCWre7c3Q__" : `https://sub.passpro.africa/storage/${eventBook?.gallery?.event_image}`}
     alt="image"
     fill
     className='rounded-[8px]'
-    style={{ objectFit: 'cover' }} 
+    style={{ objectFit: 'contain', objectPosition: 'top' }} 
   />
 </div>
 <div className='block lg:hidden' style={{ position: 'relative', width: '100%', height: '340px' }}>

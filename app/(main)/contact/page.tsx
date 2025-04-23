@@ -46,8 +46,8 @@ const Contact = () => {
              <Image src={'images/phone-call.svg'} width={32} height={32} alt='logo' className='block lg:hidden'/>
              <div className='space-y-[10px]'>
                 <p className='text-[20px]'>Phone Number</p>
-                <p className='text-[14px]'>+234 905783728</p>
-                <p className='text-[14px]'>+234 905783728</p>
+                <p className='text-[14px]'>+234-912-886-8892</p>
+                <p className='text-[14px]'>+234-907-168-2117</p>
              </div>
             </div>
             <div className='w-full px-[38px] py-[40px] bg-white flex items-center space-x-[31px] lg:space-x-4 rounded-[8px]'>
