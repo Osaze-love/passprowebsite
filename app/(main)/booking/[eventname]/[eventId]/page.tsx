@@ -10,6 +10,18 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { FacebookShareButton, WhatsappShareButton, InstapaperShareButton , TwitterShareButton } from 'react-share'
 
+const formatTime = (timeString: string) => {
+    const [hours, minutes] = timeString.split(':');
+    const date = new Date();
+    date.setHours(parseInt(hours));
+    date.setMinutes(parseInt(minutes));
+    return date.toLocaleTimeString('en-US', { 
+        hour: 'numeric', 
+        minute: '2-digit',
+        hour12: true 
+    });
+};
+
 const BookingPage = () => {
   const router = useRouter();
   const { getBookEvent } = useFetch()
@@ -63,7 +75,7 @@ const BookingPage = () => {
             </div>
             <div className='flex items-center space-x-3'>
                 <Image src={'/icons/timeIcon.svg'} width={24} height={24} alt='calendarIcon'/>
-                <p className='text-[14px] text-[#606060]'> 5:00PM - 12 AM</p>
+                <p className='text-[14px] text-[#606060]'>{formatTime(eventBook?.start_date_time)} - {formatTime(eventBook?.end_date_time)}</p>
             </div>
             <div className='flex items-center space-x-3'>
                 <Image src={'/icons/placeIcon.svg'} width={24} height={24} alt='calendarIcon'/>
