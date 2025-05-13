@@ -39,13 +39,13 @@ const page = () => {
         <div className="w-[50px] lg:w-[114px] h-[3px] lg:h-[5px] rounded-[5px] bg-[#FC6435]"></div>
       </section>
 
-      <section className='flex items-center w-full justify-center mb-[20px] lg:mb-[100px]'>
-          <div className='border rounded-[17px] w-[900px] flex items-center py-[10px] lg:py-[25px] px-[20px] lg:px-[50px]'> 
-            <Image src={'/icons/searchIcon.svg'} height={40} width={40} alt='icon'/>
+      <section className='flex items-center w-full justify-center mb-[20px] lg:mb-[70px]'>
+          <div className='border rounded-[17px] w-[900px] flex items-center py-[10px] lg:py-[15px] px-[20px] lg:px-[30px]'> 
+            <Image src={'/icons/searchIcon.svg'} height={30} width={30} alt='icon'/>
             <Input placeholder='Search For Free Events' 
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className='placeholder:text-[8F8F8F] placeholder:text-[14px] lg:placeholder:text-[20px] focus-visible:ring-0 focus-visible:ring-offset-0 border-0 ring-0 ring-offset-0 text-[14px] lg:text-[20px] shadow-none'
+            className='placeholder:text-[8F8F8F] placeholder:text-[14px] lg:placeholder:text-[18px] focus-visible:ring-0 focus-visible:ring-offset-0 border-0 ring-0 ring-offset-0 text-[14px] lg:text-[20px] shadow-none'
             //   style={{ fontSize: "30px" }} // Optional inline style for added assurance
 
             />
@@ -65,9 +65,9 @@ const page = () => {
        
     </div> 
   )}
-      <section className='grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-[20px] '>
+      <section className='grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-[20px] w-full'>
         {allFreeEvents?.map((feature: any) => (
-        <div key={feature?.id} className='shadow-sm border rounded-[10px] bg-white'>
+        <div key={feature?.id} className='shadow-sm border rounded-[10px] bg-white w-full'>
             <div style={{ position: 'relative', width: '100%', height: '270px',  }}>
   <Image
     src={!feature.gallery || feature?.gallery === null ? "https://s3-alpha-sig.figma.com/img/1de3/953f/78d7e40f1dee846f632ea900bb1f2188?Expires=1731888000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Z~jefw4J~~WVpx9ehn0MJ9yOLGyemjyxuuGdDMZvSj1sQHX-xzUXsTzaYEj54Exgne8AeXTCsfT1klOC3jV67ryKBUWI39xUdJiGnAhvTNGFYr5w4hJHFFN5wtt60PctbWddWaDAgZ9tuw3LovbIU09jzuS69XOO1EBRGSfi8NYfQjK4eJmiYbpkpIA5e72-PTacKyU05Cx5IEdzbLFJCjac0gWeL-b9rhOH047L2QVp7i-nesDKDvxA1GGuk8DhlXuRfOSCQ1ibqd18AhkVB0C~H-kSm6MtHXLELcJAOcA3XH29fLYgrKR9N5ML8lMyYM7P70F~31xMMZCWre7c3Q__" : `https://sub.passpro.africa/storage/${feature?.gallery?.event_image}`}
