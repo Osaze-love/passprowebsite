@@ -11,11 +11,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import { updateActiveCategory } from '@/redux/slices/eventslice';
 import { useRouter } from 'next/navigation';
+import { useEffect, useRef } from 'react';
+import { Swiper as SwiperType } from 'swiper';
 
 export default function SwiperComponent() {
   const { categories, categoryName } = useSelector((state: RootState) => state.event);
   const router = useRouter();
   const dispatch = useDispatch();
+  const swiperRef = useRef<SwiperType>();
+
+  useEffect(() => {
+    return () => {
+      if (swiperRef.current) {
+        swiperRef.current.destroy(true, true);
+      }
+    };
+  }, []);
+
   const swiperData = [
     {
         image: 'https://s3-alpha-sig.figma.com/img/6791/0011/d500b8400d4148c7f8e44bcec72eff24?Expires=1732492800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ipIRZAf5hZMREXbUfLU2F2hVuaLRSlWIrpRVlDLC4vib907CGQbnFHCR~RyqYgZxhu1usx-l4Tk5NQN1vZLREiKNifxdlK-Qy2ltF~TrTkcoz6E1CPpsufZb44xGk55y17oiQViAmY39qFb7grTJcg8eF0VDb7ZwL5NHxirxV4el70x9yh0A8IzyyQglHK5X9dKQchlnIjf0UvCSLgfkLgJ6Nm9stbsKLzwYx5TSP1Q80e624H-v7GDGZs1nEjgEoHH7jTJRYPJAulc7Lap7KEZSn9jgfMXi4JEHVtHXa5GDeCt9-sYkBBvXBFWx3nvTXH9ROepqg3qkrzYSYt9xbg__',
@@ -50,64 +62,67 @@ export default function SwiperComponent() {
 
   return (
     <Swiper
-    spaceBetween={10}
-    slidesPerView={2}
-    navigation={{
-      nextEl: '.custom-next',
-      prevEl: '.custom-prev',
-    }}
-     loop={true}
-     pagination={{
-      dynamicBullets: true,
-    }}
-    modules={[Pagination, Navigation, Parallax, Mousewheel]}
-    breakpoints={{
-      640: {
-        slidesPerView: 2,
-        spaceBetween: 20,
-      },
-     
-      1024: {
-        slidesPerView: 4,
-        spaceBetween: 20,
-      },
-    }}
-      className="px-[40px] overflow-hidden max-w-xs lg:max-w-6xl"
-    >
-       <div className="custom-next swiper-button-next text-white"></div>
-       <div className="custom-prev swiper-button-prev text-white"></div>
-      {categories?.map((data, index) => (
-        <SwiperSlide onClick={() => {          
-          dispatch(updateActiveCategory({
-            categoryName: data?.category_name,
-            id: data.id
-          }))
-         router.push(`/category/${categoryName}`)
-        }} key={index} className="flex justify-center cursor-pointer">
-          <div className='relative block '>
-    <div className="absolute bottom-2 w-full text-center z-10">
-    <p className='text-[14px] lg:text-[18px] font-bold text-white'>{data.category_name}</p>
-  </div>
-    <div  className='hidden lg:block'  style={{ position: 'relative', width: '100%', height: '400px',  }}>
-     <Image
-    src={`https://sub.passpro.africa/storage/${data.image}`}
-    fill
-   className=' object-cover rounded-[12px] '
-   alt='image'
-  />
-</div>  
-
-<div  className='block lg:hidden'  style={{ position: 'relative', width: '100%', height: '200px',  }}>
-     <Image
-    src={`https://sub.passpro.africa/storage/${data.image}`}
-    fill
-   className=' object-cover rounded-[5px] '
-   alt='image'
-  />
-</div>  
+      onSwiper={(swiper) => {
+        swiperRef.current = swiper;
+      }}
+      spaceBetween={10}
+      slidesPerView={2}
+      navigation={{
+        nextEl: '.custom-next',
+        prevEl: '.custom-prev',
+      }}
+       loop={true}
+       pagination={{
+        dynamicBullets: true,
+      }}
+      modules={[Pagination, Navigation, Parallax, Mousewheel]}
+      breakpoints={{
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+       
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 20,
+        },
+      }}
+        className="px-[40px] overflow-hidden max-w-xs lg:max-w-6xl"
+      >
+         <div className="custom-next swiper-button-next text-white"></div>
+         <div className="custom-prev swiper-button-prev text-white"></div>
+        {categories?.map((data, index) => (
+          <SwiperSlide onClick={async () => {          
+            await dispatch(updateActiveCategory({
+              categoryName: data?.category_name,
+              id: data.id
+            }))
+            router.push(`/category/${data.category_name}`)
+          }} key={index} className="flex justify-center cursor-pointer">
+            <div className='relative block '>
+      <div className="absolute bottom-2 w-full text-center z-10">
+      <p className='text-[14px] lg:text-[18px] font-bold text-white'>{data.category_name}</p>
     </div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
-  );
+      <div  className='hidden lg:block'  style={{ position: 'relative', width: '100%', height: '400px',  }}>
+       <Image
+      src={`https://sub.passpro.africa/storage/${data.image}`}
+      fill
+     className=' object-cover rounded-[12px] '
+     alt='image'
+    />
+  </div>  
+
+  <div  className='block lg:hidden'  style={{ position: 'relative', width: '100%', height: '200px',  }}>
+       <Image
+      src={`https://sub.passpro.africa/storage/${data.image}`}
+      fill
+     className=' object-cover rounded-[5px] '
+     alt='image'
+    />
+  </div>  
+      </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    );
 }

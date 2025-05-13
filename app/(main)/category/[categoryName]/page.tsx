@@ -40,16 +40,16 @@ const page = () => {
       </section>
 
       <section className='flex items-center w-full justify-center mb-[20px] lg:mb-[100px]'>
-          <div className='border rounded-[17px] w-[900px] flex items-center py-[10px] lg:py-[25px] px-[20px] lg:px-[50px]'> 
+          <div className='border rounded-[17px] w-[900px] flex items-center py-[10px] lg:py-[15px] px-[20px] lg:px-[30px]'> 
             <Image src={'/icons/searchIcon.svg'} height={40} width={40} alt='icon'/>
             <Input placeholder='Search For Category Events' 
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className='placeholder:text-[8F8F8F] placeholder:text-[14px] lg:placeholder:text-[20px] focus-visible:ring-0 focus-visible:ring-offset-0 border-0 ring-0 ring-offset-0 text-[14px] lg:text-[20px] shadow-none'
+            className='placeholder:text-[8F8F8F] placeholder:text-[14px] lg:placeholder:text-[16px] focus-visible:ring-0 focus-visible:ring-offset-0 border-0 ring-0 ring-offset-0 text-[14px] lg:text-[20px] shadow-none'
             //   style={{ fontSize: "30px" }} // Optional inline style for added assurance
 
             />
-            <Button variant="outline" className="hover:bg-[#FC6435] font-medium bg-[#FC6435] text-white px-[15px] lg:px-[56px] py-[10px] lg:py-[19px] hover:text-white active:scale-90 transition-all border-none w-max"
+            <Button variant="outline" className="hover:bg-[#FC6435] font-medium bg-[#FC6435] text-white px-[15px] lg:px-[45px] py-[10px] lg:py-[19px] hover:text-white active:scale-90 transition-all border-none w-max"
             onClick={handleSearch}
             >
               Search
